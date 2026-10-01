@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ITBC
 
-## Getting Started
+Website for the **Information Technology Business Council (ITBC)** — _Building India's Digital Knowledge Ecosystem_.
 
-First, run the development server:
+Built with **Next.js 16** (App Router), **React 19**, **TypeScript** and **Tailwind CSS v4**. Icons from [lucide-react](https://lucide.dev).
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | Lint with ESLint |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+  app/            layout, global styles, home page
+  components/     one file per page section (Header, Hero, Sidebar, Stakeholders, Hubs, Itccf, StatsBar, Footer, ...)
+  data/site.ts    all page content: nav, stats, stakeholders, events, partners
+```
 
-To learn more about Next.js, take a look at the following resources:
+Most text and numbers can be changed in `src/data/site.ts` without touching components.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Placeholders to replace
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Logo** — `src/components/Logo.tsx` draws an approximation; swap in the official logo.
+- **Photos** — stakeholder and ITCCF images load from Unsplash; replace with your own in `public/`.
+- **Trusted By** — partner names are shown as text; add official logos once usage rights are confirmed.
+- **Newsletter** — the form is not connected to a backend yet (see TODO in `src/components/Newsletter.tsx`).
+- **Links** — login pages and "Explore now" links are placeholders.
 
-## Deploy on Vercel
+## Sharing the dev server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`next.config.ts` allows `*.trycloudflare.com`, so you can share a running dev server with a Cloudflare quick tunnel:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+cloudflared tunnel --url http://localhost:3000
+```
