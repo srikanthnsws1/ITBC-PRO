@@ -264,8 +264,8 @@ export default function DashboardShell({
       {/* Main Layout Area */}
       <div className="flex-1 flex">
         {/* Left Sidebar (Desktop - Light Slate/White Theme); stays pinned under the header while the page scrolls */}
-        <aside className="hidden lg:flex w-64 flex-col justify-between gap-6 border-r border-slate-200 bg-white p-4 shrink-0 shadow-xs sticky top-16 h-[calc(100dvh-4rem)] overflow-y-auto">
-          <div className="space-y-6">
+        <aside className="hidden lg:flex w-64 flex-col justify-between gap-6 border-r border-slate-200 bg-white p-4 shrink-0 shadow-xs sticky top-[calc(4rem+1px)] h-[calc(100dvh-4rem-1px)] overflow-y-auto">
+          <div className="space-y-6 fit:space-y-4">
             {/* User Badge Card (Clean Light Styling) */}
             <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
               <div className="flex items-center gap-3 mb-2">
@@ -301,7 +301,7 @@ export default function DashboardShell({
                       key={item.id}
                       type="button"
                       onClick={() => setActiveTab(item.id)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer ${
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 fit:py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
                         isActive
                           ? "bg-blue-600 text-white shadow-sm font-bold"
                           : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
@@ -338,7 +338,7 @@ export default function DashboardShell({
               <span>Back to Public Website</span>
               <ExternalLink className="size-3.5" />
             </Link>
-            <p className="text-[10px] text-slate-400 mt-2">
+            <p className="text-[10px] text-slate-400 mt-2 fit:hidden">
               ITBC National Gateway • Support: info@itbc.world
             </p>
           </div>
@@ -352,7 +352,7 @@ export default function DashboardShell({
               onClick={() => setMobileMenuOpen(false)}
             />
             <div className="relative w-72 max-w-[85vw] h-full overflow-y-auto bg-white border-r border-slate-200 p-5 flex flex-col justify-between gap-6 z-10 shadow-2xl">
-              <div className="space-y-6">
+              <div className="space-y-6 fit:space-y-4">
                 <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                   <div className="flex items-center gap-2">
                     <CurrentIcon className="size-5 text-blue-600" />
@@ -415,8 +415,8 @@ export default function DashboardShell({
         )}
 
         {/* Content Area (Clean White / Soft Slate Background) */}
-        <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 bg-[#f8fafc]">
-          <div className="max-w-7xl mx-auto space-y-6">{children}</div>
+        <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 fit:px-4! fit:py-3! bg-[#f8fafc]">
+          <div className="max-w-7xl mx-auto space-y-6 fit:space-y-2.5">{children}</div>
         </main>
       </div>
     </div>

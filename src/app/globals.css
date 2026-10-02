@@ -15,6 +15,10 @@
   }
 }
 
+/* Desktop one-screen mode: the window is wide and tall enough to show a whole page without scrolling.
+   Below this size pages fall back to the normal scrolling layout. */
+@custom-variant fit (@media (width >= 80rem) and (height >= 36rem));
+
 html {
   scroll-behavior: smooth;
   /* keep #anchor targets clear of the sticky header (top bar + main bar) */

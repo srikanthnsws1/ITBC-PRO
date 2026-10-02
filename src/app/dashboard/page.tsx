@@ -33,14 +33,14 @@ export default function DashboardPortalPage() {
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-center px-4 py-8 sm:p-6 font-sans">
-      <div className="max-w-4xl mx-auto w-full">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-center px-4 py-8 sm:p-6 fit:py-3! font-sans">
+      <div className="max-w-4xl fit:max-w-6xl mx-auto w-full">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-block bg-white p-1 rounded-md border border-slate-200 shadow-sm mb-4">
+        <div className="text-center mb-8 fit:mb-3">
+          <div className="inline-block bg-white p-1 rounded-md border border-slate-200 shadow-sm mb-4 fit:mb-2">
             <Logo />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl fit:text-2xl! font-display font-extrabold text-slate-900 tracking-tight">
             ITBC Member Dashboards
           </h1>
           <p className="mt-2 text-sm text-slate-600 max-w-xl mx-auto">
@@ -49,14 +49,14 @@ export default function DashboardPortalPage() {
         </div>
 
         {/* Role Cards in Pure White */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 fit:grid-cols-4!">
           {(Object.keys(ROLE_CONFIGS) as Role[]).map((rKey) => {
             const cfg = ROLE_CONFIGS[rKey];
             const Icon = ROLE_ICONS[rKey];
             return (
               <div
                 key={rKey}
-                className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition flex flex-col justify-between"
+                className="p-5 sm:p-6 fit:p-4! rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-4">
@@ -67,7 +67,7 @@ export default function DashboardPortalPage() {
                       {cfg.badge}
                     </span>
                   </div>
-                  <h2 className="text-lg font-bold text-slate-900">
+                  <h2 className="text-lg fit:text-base font-bold text-slate-900">
                     {cfg.label} Dashboard
                   </h2>
                   <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
@@ -86,7 +86,7 @@ export default function DashboardPortalPage() {
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div className="mt-6 pt-4 fit:mt-4 fit:pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
                   <Link
                     href={cfg.loginPath}
                     className="text-xs font-bold text-slate-600 hover:text-blue-700 underline"
@@ -106,7 +106,7 @@ export default function DashboardPortalPage() {
           })}
         </div>
 
-        <div className="mt-8 text-center text-xs text-slate-500">
+        <div className="mt-8 fit:mt-3 text-center text-xs text-slate-500">
           <Link href="/" className="hover:text-blue-700 font-semibold underline">
             ← Return to ITBC Public Home
           </Link>

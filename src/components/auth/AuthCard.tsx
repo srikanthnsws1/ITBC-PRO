@@ -122,27 +122,32 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 py-6 sm:py-10 px-4 sm:px-6 lg:px-8 flex flex-col justify-center font-sans">
-      <div className="max-w-5xl mx-auto w-full">
+    <div className="min-h-screen bg-white text-slate-900 py-6 sm:py-10 fit:py-3! px-4 sm:px-6 lg:px-8 flex flex-col justify-center font-sans">
+      <div className="max-w-5xl mx-auto w-full fit:grid fit:max-w-6xl fit:grid-cols-[auto_minmax(0,1fr)] fit:items-center fit:gap-x-4 fit:gap-y-2.5">
         {/* Top Header / Brand */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-slate-200">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-slate-200 fit:mb-0! fit:border-0 fit:pb-0">
           <Link href="/" aria-label="Return to ITBC main portal" className="inline-flex items-center gap-3 group">
             <div className="bg-white p-1 rounded-md shadow border border-slate-200 shrink-0">
-              <LogoLockup />
+              <span className="block fit:hidden">
+                <LogoLockup />
+              </span>
+              <span className="hidden fit:block">
+                <LogoLockup compact />
+              </span>
             </div>
             <span className="text-xs text-slate-600 font-semibold tracking-wide group-hover:text-blue-700 transition">
               ← Return to Main Portal
             </span>
           </Link>
-          <div className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200 text-center">
+          <div className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200 text-center fit:hidden">
             <ShieldCheck className="size-4 shrink-0 text-emerald-600" />
             <span>Official ITBC Digital Gateway • 256-Bit SSL Secured</span>
           </div>
         </div>
 
         {/* Role Tabs */}
-        <div className="mb-6">
-          <div className="text-center sm:text-left mb-2.5">
+        <div className="mb-6 fit:mb-0">
+          <div className="text-center sm:text-left mb-2.5 fit:hidden">
             <span className="text-xs font-bold uppercase tracking-wider text-blue-700">
               Select Member Wing
             </span>
@@ -157,14 +162,14 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                   key={rKey}
                   type="button"
                   onClick={() => handleRoleChange(rKey)}
-                  className={`flex min-w-0 items-center gap-2 p-2.5 sm:gap-3 sm:p-3.5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
+                  className={`flex min-w-0 items-center gap-2 p-2.5 sm:gap-3 sm:p-3.5 fit:p-2! rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "bg-blue-50/80 border-blue-600 shadow-md ring-2 ring-blue-600/20"
                       : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700"
                   }`}
                 >
                   <div
-                    className={`size-8 sm:size-10 rounded-lg grid place-items-center shrink-0 ${
+                    className={`size-8 sm:size-10 fit:size-8! rounded-lg grid place-items-center shrink-0 ${
                       isActive ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
                     }`}
                   >
@@ -183,14 +188,14 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
         </div>
 
         {/* Main Card Container (Pure White UI) */}
-        <div className="rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.85fr)]">
+        <div className="fit:col-span-2 rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.85fr)]">
           {/* Form Side */}
-          <div className="p-5 sm:p-10 flex flex-col justify-between">
+          <div className="p-5 sm:p-10 fit:p-5! flex flex-col justify-between">
             <div>
               {/* Login vs Register Toggle */}
-              <div className="flex flex-col-reverse items-start gap-4 sm:flex-row sm:items-center sm:justify-between mb-6 pb-4 border-b border-slate-200">
+              <div className="flex flex-col-reverse items-start gap-4 sm:flex-row sm:items-center sm:justify-between mb-6 pb-4 fit:mb-3 fit:pb-2.5 border-b border-slate-200">
                 <div className="min-w-0">
-                  <h1 className="text-xl sm:text-2xl font-display font-extrabold text-slate-900 flex items-start gap-2.5">
+                  <h1 className="text-xl sm:text-2xl fit:text-xl! font-display font-extrabold text-slate-900 flex items-start gap-2.5">
                     <CurrentIcon className="size-6 shrink-0 mt-0.5 sm:mt-1 text-blue-600" />
                     <span>
                       {selectedRole === "student" && "Student"}
@@ -200,7 +205,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                       {currentMode === "login" ? "Sign In" : "Registration"}
                     </span>
                   </h1>
-                  <p className="text-xs text-slate-500 mt-1">{config.description}</p>
+                  <p className="text-xs text-slate-500 mt-1 fit:hidden">{config.description}</p>
                 </div>
                 <div className="inline-flex rounded-lg bg-slate-100 p-1 border border-slate-200 shrink-0">
                   <button
@@ -242,8 +247,8 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
               )}
 
               {/* TEST CREDENTIALS BOX (White/Light Theme with Auto-fill) */}
-              <div className="mb-6 p-4 rounded-xl bg-amber-50/80 border border-amber-200/80 text-slate-800">
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div className="mb-6 p-4 rounded-xl bg-amber-50/80 border border-amber-200/80 text-slate-800 fit:mb-3 fit:flex fit:flex-wrap fit:items-center fit:gap-x-2 fit:gap-y-1 fit:px-2.5 fit:py-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2 fit:contents">
                   <div className="flex items-center gap-2 text-xs font-bold text-amber-900">
                     <KeyRound className="size-4 shrink-0 text-amber-700" />
                     <span>Test Credentials ({config.shortLabel}):</span>
@@ -251,7 +256,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                   <button
                     type="button"
                     onClick={handleAutoFill}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px] shadow-sm transition cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px] shadow-sm transition cursor-pointer fit:order-last fit:ml-auto"
                   >
                     {copied ? (
                       <>
@@ -265,7 +270,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono bg-white p-2.5 rounded-lg border border-amber-200 break-all">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono bg-white p-2.5 rounded-lg border border-amber-200 break-all fit:flex fit:gap-2 fit:border-0 fit:bg-transparent fit:p-0">
                   <div>
                     <span className="text-slate-500 font-sans font-medium text-[11px]">Email: </span>
                     <strong className="text-slate-900 select-all">{config.testCredentials.email}</strong>
@@ -275,13 +280,13 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                     <strong className="text-slate-900 select-all">{config.testCredentials.password}</strong>
                   </div>
                 </div>
-                <p className="text-[11px] text-amber-800 mt-2 font-sans">
+                <p className="text-[11px] text-amber-800 mt-2 font-sans fit:hidden">
                   Click <strong>&quot;Auto-Fill Form&quot;</strong> above, then hit <strong>&quot;Sign In&quot;</strong> below to test the dashboard.
                 </p>
               </div>
 
               {/* Interactive Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 fit:grid fit:grid-cols-2 fit:items-end fit:gap-x-3 fit:gap-y-2 fit:space-y-0">
                 {currentMode === "register" && (
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">
@@ -293,7 +298,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={config.demoUser.name}
-                      className="w-full rounded-lg bg-white border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                      className="w-full rounded-lg bg-white border border-slate-300 px-3.5 py-2.5 fit:py-2 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                     />
                   </div>
                 )}
@@ -306,20 +311,20 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                     {selectedRole === "partner" && "Official Representative Email *"}
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3.5 top-3 size-4 text-slate-400" />
+                    <Mail className="absolute left-3.5 top-3 fit:top-2.5 size-4 text-slate-400" />
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={config.testCredentials.email}
-                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 fit:py-2 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                     />
                   </div>
                 </div>
 
                 {currentMode === "register" && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 fit:col-span-2 fit:items-end fit:gap-3">
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
                         {selectedRole === "student" && "College / University Name"}
@@ -328,13 +333,13 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                         {selectedRole === "partner" && "Organization / Council"}
                       </label>
                       <div className="relative">
-                        <Building2 className="absolute left-3.5 top-3 size-4 text-slate-400" />
+                        <Building2 className="absolute left-3.5 top-3 fit:top-2.5 size-4 text-slate-400" />
                         <input
                           type="text"
                           value={formData.organization}
                           onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                           placeholder={config.demoUser.organization}
-                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 fit:py-2 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                         />
                       </div>
                     </div>
@@ -346,7 +351,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                         {selectedRole === "partner" && "Partnership Category"}
                       </label>
                       <div className="relative">
-                        <GraduationCap className="absolute left-3.5 top-3 size-4 text-slate-400" />
+                        <GraduationCap className="absolute left-3.5 top-3 fit:top-2.5 size-4 text-slate-400" />
                         <input
                           type="text"
                           value={formData.designation}
@@ -360,7 +365,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                               ? "Enterprise Cloud"
                               : "Regional Incubation"
                           }
-                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 fit:py-2 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                         />
                       </div>
                     </div>
@@ -379,19 +384,19 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                     )}
                   </div>
                   <div className="relative">
-                    <Lock className="absolute left-3.5 top-3 size-4 text-slate-400" />
+                    <Lock className="absolute left-3.5 top-3 fit:top-2.5 size-4 text-slate-400" />
                     <input
                       type={showPassword ? "text" : "password"}
                       required
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       placeholder="••••••••••••"
-                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-10 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-10 py-2.5 fit:py-2 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword((v) => !v)}
-                      className="absolute right-3.5 top-3 text-slate-400 hover:text-slate-600"
+                      className="absolute right-3.5 top-3 fit:top-2.5 text-slate-400 hover:text-slate-600"
                     >
                       {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                     </button>
@@ -404,21 +409,21 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                       Confirm Password *
                     </label>
                     <div className="relative">
-                      <Lock className="absolute left-3.5 top-3 size-4 text-slate-400" />
+                      <Lock className="absolute left-3.5 top-3 fit:top-2.5 size-4 text-slate-400" />
                       <input
                         type={showPassword ? "text" : "password"}
                         required
                         value={formData.confirmPassword}
                         onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                         placeholder="••••••••••••"
-                        className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                        className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 fit:py-2 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                       />
                     </div>
                   </div>
                 )}
 
                 {currentMode === "register" ? (
-                  <div className="flex items-start gap-2.5 pt-1">
+                  <div className="flex items-start gap-2.5 pt-1 fit:col-span-2 fit:pt-0">
                     <input
                       type="checkbox"
                       id="terms"
@@ -435,7 +440,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                     </label>
                   </div>
                 ) : (
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 fit:col-span-2">
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input
                         type="checkbox"
@@ -450,7 +455,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-4 rounded-lg bg-blue-700 hover:bg-blue-800 px-3 py-3 text-xs sm:text-sm font-bold uppercase tracking-wide sm:tracking-wider text-white shadow-md hover:shadow-lg transition duration-150 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+                  className="w-full mt-4 fit:col-span-2 fit:mt-0.5 fit:py-2! rounded-lg bg-blue-700 hover:bg-blue-800 px-3 py-3 text-xs sm:text-sm font-bold uppercase tracking-wide sm:tracking-wider text-white shadow-md hover:shadow-lg transition duration-150 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                 >
                   {loading ? (
                     <div className="flex items-center gap-2 text-left">
@@ -471,7 +476,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
               </form>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-slate-200 text-center text-xs text-slate-600">
+            <div className="mt-8 pt-4 fit:mt-2.5 fit:pt-2 border-t border-slate-200 text-center text-xs text-slate-600">
               {currentMode === "login" ? (
                 <p>
                   Need a new {config.shortLabel} membership?{" "}
@@ -505,21 +510,21 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
           </div>
 
           {/* Right Hero / Benefits Side (Light Slate / Soft Blue theme) */}
-          <div className="bg-slate-50 p-5 sm:p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col justify-between">
+          <div className="bg-slate-50 p-5 sm:p-8 lg:p-10 fit:p-6! border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-xs font-bold text-blue-800 mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-xs font-bold text-blue-800 mb-6 fit:mb-3">
                 <span>ITBC Verified Network</span>
                 <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
               </div>
 
-              <h2 className="text-xl font-display font-extrabold text-slate-900 mb-3">
+              <h2 className="text-xl font-display font-extrabold text-slate-900 mb-3 fit:mb-2 fit:text-lg">
                 Why Join as a {config.label}?
               </h2>
-              <p className="text-xs text-slate-600 leading-relaxed mb-6">
+              <p className="text-xs text-slate-600 leading-relaxed mb-6 fit:mb-3">
                 Experience India&#39;s premier digital knowledge ecosystem uniting 125K+ professionals, 850+ colleges, and 1,200+ companies.
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 mb-8 fit:mb-4 fit:space-y-2.5">
                 {config.keyPoints.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <CheckCircle2 className="size-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -529,7 +534,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
               </div>
 
               {/* Verified Badge / Mock Profile info */}
-              <div className="rounded-xl border border-slate-200 bg-white p-4 text-xs shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-4 fit:p-3 text-xs shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="size-10 rounded-full bg-blue-700 text-white font-bold grid place-items-center text-sm shadow">
                     {config.demoUser.name.charAt(0)}
@@ -546,7 +551,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-slate-200 text-[11px] text-slate-500 leading-relaxed">
+            <div className="mt-8 pt-6 fit:mt-4 fit:pt-3 border-t border-slate-200 text-[11px] text-slate-500 leading-relaxed">
               Information Technology Business Council (ITBC) operates under established e-Governance & digital standards. Inquiries: <a href="mailto:info@itbc.world" className="text-blue-700 font-medium hover:underline">info@itbc.world</a>
             </div>
           </div>

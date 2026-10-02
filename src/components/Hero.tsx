@@ -4,39 +4,39 @@ import { companyClasses, dependentClasses, heroStats, opportunities } from "@/da
 
 function HeroIntro() {
   return (
-    <div className="flex flex-col justify-center py-2">
-      <p className="font-display text-2xl font-semibold text-white">Building India&apos;s</p>
-      <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+    <div className="relative flex flex-col justify-center py-2 fit:py-0">
+      <p className="font-display text-2xl font-semibold text-white fit:text-xl">Building India&apos;s</p>
+      <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl fit:text-[2rem]! fit:2xl:text-5xl!">
         <span className="text-white">DIGITAL</span>
         <br />
         <span className="text-amber-400">KNOWLEDGE</span>
         <br />
         <span className="text-lime-400">ECOSYSTEM</span>
       </h1>
-      <p className="mt-4 text-sm leading-relaxed text-slate-200">
+      <p className="mt-4 text-sm leading-relaxed text-slate-200 fit:mt-1.5 fit:text-xs fit:leading-normal">
         Connecting Education • Industry • Innovation •
         <br />
         Entrepreneurship • Government
       </p>
 
-      <dl className="mt-5 grid grid-cols-4 divide-x divide-white/25 sm:max-w-md lg:max-w-none">
+      <dl className="mt-5 grid grid-cols-4 divide-x divide-white/25 sm:max-w-md lg:max-w-none fit:mt-2.5">
         {heroStats.map(({ icon: Icon, value, label }) => (
           <div key={label} className="flex flex-col items-center px-1 text-center">
-            <span className="mb-1.5 grid size-10 place-items-center rounded-md border border-white/40 bg-white/10">
+            <span className="mb-1.5 grid size-10 place-items-center rounded-md border border-white/40 bg-white/10 fit:mb-1 fit:size-8">
               <Icon className="size-5 text-white" />
             </span>
             <dt className="sr-only">{label}</dt>
-            <dd className="font-display text-lg font-bold text-white">{value}</dd>
+            <dd className="font-display text-lg font-bold text-white fit:text-base">{value}</dd>
             <dd className="text-[11px] text-slate-300">{label}</dd>
           </div>
         ))}
       </dl>
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        <Link href="#join" className="flex items-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 text-sm font-semibold uppercase text-white shadow-lg shadow-blue-900/50 transition hover:bg-blue-500">
+      <div className="mt-6 flex flex-wrap gap-3 fit:mt-2.5 fit:gap-2">
+        <Link href="#join" className="flex items-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 text-sm font-semibold fit:px-3 fit:py-2 fit:text-xs uppercase text-white shadow-lg shadow-blue-900/50 transition hover:bg-blue-500">
           Join as Member <ArrowRight className="size-4" />
         </Link>
-        <Link href="#about" className="flex items-center gap-2 rounded-md border border-white/60 px-5 py-2.5 text-sm font-semibold uppercase text-white transition hover:bg-white/10">
+        <Link href="#about" className="flex items-center gap-2 rounded-md border border-white/60 px-5 py-2.5 text-sm font-semibold fit:px-3 fit:py-2 fit:text-xs uppercase text-white transition hover:bg-white/10">
           Explore ITBC <ArrowRight className="size-4" />
         </Link>
       </div>
@@ -94,7 +94,7 @@ function DiagramCanvas() {
   });
 
   return (
-    <div className="@container">
+    <div className="@container w-full fit:w-[min(100cqw,calc(100cqh*640/360))]">
       <div className="relative aspect-[640/360] text-white">
         <svg viewBox="0 0 640 360" className="absolute inset-0 size-full" aria-hidden>
           <defs>
@@ -214,23 +214,23 @@ function DiagramStacked() {
 
 function UniqueDiagram() {
   return (
-    <div className="relative">
+    <div className="relative fit:h-full fit:min-h-0">
       {/* bright glow behind the diagram */}
       <div className="pointer-events-none absolute inset-x-0 inset-y-[-6%] lg:left-[-6%] xl:right-[-6%] bg-[radial-gradient(ellipse_55%_45%_at_50%_22%,rgba(255,255,255,0.97)_0%,rgba(224,242,254,0.92)_35%,rgba(147,197,253,0.45)_70%,transparent_100%),radial-gradient(ellipse_at_50%_55%,rgba(96,165,250,0.45),rgba(37,99,235,0.2)_45%,transparent_70%)]" />
-      <div className="relative">
-        <div className="mb-3 text-center">
-          <h2 className="font-display text-2xl font-extrabold sm:text-[1.7rem]">
+      <div className="relative fit:flex fit:h-full fit:flex-col">
+        <div className="mb-3 text-center fit:mb-2 fit:shrink-0">
+          <h2 className="font-display text-2xl font-extrabold sm:text-[1.7rem] fit:text-xl!">
             <span className="text-violet-800">What Makes </span>
             <span className="text-red-600">ITBC</span>
             <span className="text-violet-800"> Unique?</span>
           </h2>
-          <p className="text-xs font-bold text-slate-900 sm:text-sm">
+          <p className="text-xs font-bold text-slate-900 sm:text-sm fit:text-xs!">
             A 360° Multi-Directional Framework Creating
             <br />
             Mutual &ldquo;Win-Win&rdquo; Value Across 4 Pillars
           </p>
         </div>
-        <div className="hidden sm:block">
+        <div className="hidden sm:block fit:grid! fit:min-h-0 fit:flex-1 fit:place-items-center fit:[container-type:size]">
           <DiagramCanvas />
         </div>
         <div className="sm:hidden">
@@ -241,15 +241,15 @@ function UniqueDiagram() {
   );
 }
 
-function OpportunitiesCard() {
+export function OpportunitiesCard() {
   return (
-    <div className="flex h-full flex-col rounded-lg border border-white/20 bg-[#0a1638]/90 p-5 text-white shadow-xl">
-      <h2 className="font-display text-lg font-bold leading-snug">
+    <div className="flex h-full flex-col rounded-lg border border-white/20 bg-[#0a1638]/90 p-5 text-white shadow-xl fit:p-3.5">
+      <h2 className="font-display text-lg font-bold leading-snug fit:text-sm">
         One Platform.
         <br />
         Endless Opportunities.
       </h2>
-      <ul className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-1">
+      <ul className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-1 fit:mt-2.5 fit:grid-cols-1! fit:gap-y-1.5 fit:text-xs">
         {opportunities.map((o, i) => (
           <li key={o} className="flex items-center gap-2">
             <CheckSquare className={`size-4 shrink-0 ${i >= opportunities.length - 2 ? "text-amber-400" : "text-slate-200"}`} />
@@ -259,7 +259,7 @@ function OpportunitiesCard() {
       </ul>
       <Link
         href="#join"
-        className="mt-auto flex items-center justify-center gap-2 rounded-md bg-orange-500 px-4 py-3 text-sm font-bold uppercase transition hover:bg-orange-600 max-2xl:mt-5 max-2xl:self-start max-2xl:px-8"
+        className="mt-auto flex items-center justify-center gap-2 rounded-md bg-orange-500 px-4 py-3 text-sm font-bold uppercase transition hover:bg-orange-600 max-2xl:mt-5 max-2xl:self-start max-2xl:px-8 fit:mt-auto! fit:self-stretch! fit:px-3! fit:py-2 fit:text-xs"
       >
         Get Started Now <ArrowRight className="size-4" />
       </Link>
@@ -267,13 +267,18 @@ function OpportunitiesCard() {
   );
 }
 
-/** Hero content. The dark full-bleed band behind it is rendered by the page grid. */
+/** Hero content on its dark band. */
 export default function Hero() {
   return (
-    <section className="relative grid gap-6 pb-14 pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] 2xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.45fr)_minmax(0,0.68fr)]">
+    <section className="relative grid gap-6 pb-14 pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] 2xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.45fr)_minmax(0,0.68fr)] xl:px-5 fit:h-full fit:grid-cols-[minmax(0,0.62fr)_minmax(0,1fr)]! fit:grid-rows-[minmax(0,1fr)] fit:items-center fit:gap-5 fit:overflow-hidden fit:rounded-xl fit:py-3">
+      {/* dark band: full-bleed below xl, a rounded card beside the sidebar from xl up */}
+      <div
+        aria-hidden
+        className="absolute inset-y-0 left-1/2 w-screen -translate-x-1/2 bg-[#06102e] bg-[radial-gradient(ellipse_at_52%_35%,rgba(59,130,246,0.55),transparent_45%),radial-gradient(ellipse_at_0%_100%,rgba(30,64,175,0.55),transparent_45%),radial-gradient(ellipse_at_100%_0%,rgba(30,58,138,0.6),transparent_40%)] xl:left-0 xl:w-full xl:translate-x-0 xl:rounded-xl"
+      />
       <HeroIntro />
       <UniqueDiagram />
-      <div className="lg:col-span-2 2xl:col-span-1">
+      <div className="relative lg:col-span-2 2xl:col-span-1 fit:hidden">
         <OpportunitiesCard />
       </div>
     </section>
