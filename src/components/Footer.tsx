@@ -8,7 +8,7 @@ const LOGO_COLORS = ["text-slate-800", "text-orange-600", "text-slate-700", "tex
 export default function Footer() {
   return (
     <footer id="contact" className="mt-6 border-t border-slate-200 bg-white">
-      <div className="container-x grid gap-6 py-6 lg:grid-cols-[2fr_1.2fr_1.2fr_1fr] lg:items-center">
+      <div className="container-x grid gap-x-8 gap-y-6 py-6 md:grid-cols-2 xl:grid-cols-[2fr_1.2fr_1.3fr_auto] xl:items-center xl:gap-x-6 [&>*]:min-w-0">
         <div>
           <p className="text-xs font-bold text-slate-900">Trusted By</p>
           {/* Replace these with official partner logos once usage rights are confirmed */}
@@ -21,23 +21,23 @@ export default function Footer() {
           </ul>
         </div>
 
-        <blockquote className="flex items-start gap-3 lg:border-l lg:border-slate-200 lg:pl-6">
+        <blockquote className="flex items-start gap-3 xl:border-l xl:border-slate-200 xl:pl-6">
           <Quote className="size-9 shrink-0 fill-blue-600 text-blue-600" />
           <p className="font-display text-sm font-semibold text-slate-800">
             A 360° Collaboration Today for a Stronger, Smarter &amp; Digital India Tomorrow.
           </p>
         </blockquote>
 
-        <div className="lg:border-l lg:border-slate-200 lg:pl-6">
+        <div className="xl:border-l xl:border-slate-200 xl:pl-6">
           <Newsletter />
         </div>
 
-        <div className="flex items-center gap-3 lg:border-l lg:border-slate-200 lg:pl-6">
+        <div className="flex items-center gap-3 xl:border-l xl:border-slate-200 xl:pl-6">
           <div>
             <p className="font-display text-sm font-bold text-slate-900">Download App</p>
             <p className="text-xs text-slate-600">Take ITBC with you anywhere, anytime.</p>
-            <div className="mt-2 flex gap-2">
-              <a href="#" className="flex items-center gap-1 rounded-md bg-black px-2 py-1 text-[10px] leading-tight text-white">
+            <div className="mt-2 flex flex-wrap gap-2">
+              <a href="#" className="flex items-center gap-1 whitespace-nowrap rounded-md bg-black px-2 py-1 text-[10px] leading-tight text-white">
                 <Play className="size-4 fill-white" />
                 <span>
                   GET IT ON
@@ -45,7 +45,7 @@ export default function Footer() {
                   <b className="text-xs">Google Play</b>
                 </span>
               </a>
-              <a href="#" className="flex items-center gap-1 rounded-md bg-black px-2 py-1 text-[10px] leading-tight text-white">
+              <a href="#" className="flex items-center gap-1 whitespace-nowrap rounded-md bg-black px-2 py-1 text-[10px] leading-tight text-white">
                 <Apple className="size-4 fill-white" />
                 <span>
                   Download on the
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-slate-200 py-3 text-center text-xs text-slate-500">
+      <div className="border-t border-slate-200 px-4 py-3 text-center text-xs text-slate-500">
         © {new Date().getFullYear()} Information Technology Business Council (ITBC). All rights reserved.
       </div>
     </footer>

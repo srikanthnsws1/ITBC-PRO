@@ -31,7 +31,7 @@ export default function PartnerDashboardPage() {
       menuItems={partnerMenuItems}
     >
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-700 via-amber-700 to-slate-900 p-6 sm:p-8 text-white shadow-md">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-700 via-amber-700 to-slate-900 p-5 sm:p-8 text-white shadow-md">
         <div className="relative z-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-orange-100 mb-3">
             <Sparkles className="size-3.5 text-amber-300" />
@@ -63,57 +63,57 @@ export default function PartnerDashboardPage() {
       </div>
 
       {/* Metrics Row (White Cards) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Affiliated Colleges</span>
-            <div className="p-2 rounded-lg bg-orange-50 text-orange-600">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 [&>*]:min-w-0">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Affiliated Colleges</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-orange-50 text-orange-600">
               <Landmark className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">48 Colleges</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">48 Colleges</div>
           <p className="text-[11px] text-orange-700 font-semibold mt-1">Under Regional Chapter</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Seed Capital</span>
-            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Seed Capital</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-emerald-50 text-emerald-600">
               <TrendingUp className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">₹10.2 Crore</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">₹10.2 Crore</div>
           <p className="text-[11px] text-emerald-700 font-semibold mt-1">24 Grants Disbursed</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Incubated Startups</span>
-            <div className="p-2 rounded-lg bg-amber-50 text-amber-600">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Incubated Startups</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-amber-50 text-amber-600">
               <Rocket className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">64 Startups</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">64 Startups</div>
           <p className="text-[11px] text-amber-700 font-semibold mt-1">14 Scaled to Series A</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Active MoUs</span>
-            <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Active MoUs</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-blue-50 text-blue-600">
               <Handshake className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">15 Executed</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">15 Executed</div>
           <p className="text-[11px] text-blue-700 font-semibold mt-1">State & Industry Bodies</p>
         </div>
       </div>
 
       {/* Main Grid */}
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Left: MoU Tracker */}
-        <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="xl:col-span-2 space-y-4 min-w-0">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
             <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
               <Handshake className="size-5 text-orange-600" />
               <span>Institutional MoUs & Chapters</span>
@@ -163,8 +163,8 @@ export default function PartnerDashboardPage() {
                 <h3 className="text-sm font-bold text-slate-900">{mou.institution}</h3>
                 <p className="text-xs text-slate-600 mt-1">{mou.focus}</p>
 
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 font-mono">Governance ID: #ITBC-MOU-2026-{100 + i}</span>
+                <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <span className="text-slate-500 font-mono break-all">Governance ID: #ITBC-MOU-2026-{100 + i}</span>
                   <button
                     type="button"
                     className="px-3.5 py-1.5 rounded-lg bg-orange-700 hover:bg-orange-800 font-bold text-white transition cursor-pointer shadow-xs"
@@ -178,7 +178,7 @@ export default function PartnerDashboardPage() {
         </div>
 
         {/* Right: Startup Accelerator */}
-        <div className="space-y-4">
+        <div className="space-y-4 min-w-0">
           <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
             <Rocket className="size-5 text-amber-600" />
             <span>Incubated Ventures</span>
@@ -206,9 +206,9 @@ export default function PartnerDashboardPage() {
               },
             ].map((venture, i) => (
               <div key={i} className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between mb-1">
+                <div className="flex items-start justify-between gap-2 mb-1">
                   <h4 className="text-sm font-bold text-slate-900">{venture.name}</h4>
-                  <span className="text-xs font-bold text-amber-700">{venture.seed}</span>
+                  <span className="shrink-0 whitespace-nowrap text-xs font-bold text-amber-700">{venture.seed}</span>
                 </div>
                 <p className="text-xs text-slate-600">{venture.domain}</p>
                 <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500">

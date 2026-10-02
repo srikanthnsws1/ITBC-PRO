@@ -6,9 +6,9 @@ import { itccfBenefits, itccfPillars } from "@/data/site";
 export default function Itccf() {
   return (
     <section id="itccf" className="grid overflow-hidden rounded-xl border border-blue-200 bg-white shadow-sm lg:grid-cols-[1.3fr_1fr_1.2fr]">
-      <div className="p-5">
+      <div className="min-w-0 p-5">
         <div className="flex items-center gap-3">
-          <Users className="size-12 shrink-0 text-blue-950" />
+          <Users className="size-10 shrink-0 text-blue-950 sm:size-12" />
           <div>
             <h2 className="font-display text-lg font-extrabold uppercase leading-tight text-blue-950 sm:text-xl">
               All India Training &amp; Placement Officers
@@ -16,7 +16,7 @@ export default function Itccf() {
             <p className="text-sm font-bold uppercase text-slate-700">ITCCF – ITBC Collaborative Council for Future</p>
           </div>
         </div>
-        <ul className="mt-5 grid grid-cols-3 gap-y-4 sm:grid-cols-6">
+        <ul className="mt-5 grid grid-cols-3 gap-x-2 gap-y-4 sm:grid-cols-6 lg:grid-cols-3 2xl:grid-cols-6">
           {itccfPillars.map(({ icon: Icon, label }) => (
             <li key={label} className="flex flex-col items-center gap-1 text-center">
               <Icon className="size-7 text-blue-800" strokeWidth={1.6} />
@@ -33,7 +33,7 @@ export default function Itccf() {
         </div>
         <ul className="mt-3 space-y-1.5">
           {itccfBenefits.map((b) => (
-            <li key={b} className="flex items-center gap-2 text-xs text-slate-800">
+            <li key={b} className="flex items-start gap-2 text-xs text-slate-800">
               <CheckCircle2 className="size-4 shrink-0 text-emerald-600" /> {b}
             </li>
           ))}

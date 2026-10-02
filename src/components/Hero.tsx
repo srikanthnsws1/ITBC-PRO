@@ -19,7 +19,7 @@ function HeroIntro() {
         Entrepreneurship • Government
       </p>
 
-      <dl className="mt-5 grid grid-cols-4 divide-x divide-white/25">
+      <dl className="mt-5 grid grid-cols-4 divide-x divide-white/25 sm:max-w-md lg:max-w-none">
         {heroStats.map(({ icon: Icon, value, label }) => (
           <div key={label} className="flex flex-col items-center px-1 text-center">
             <span className="mb-1.5 grid size-10 place-items-center rounded-md border border-white/40 bg-white/10">
@@ -57,7 +57,7 @@ function Emblem({ className = "" }: { className?: string }) {
       <div className="absolute inset-[24%] rounded-full bg-gradient-to-br from-amber-800 to-stone-900 ring-2 ring-amber-300/80" />
       <div className="relative text-center text-white">
         <div className="font-display text-[20cqw] font-extrabold leading-none tracking-wide drop-shadow">ITBC</div>
-        <div className="mt-[1.5cqw] text-[6.4cqw] leading-tight text-amber-100">
+        <div className="mt-[1.5cqw] text-[5.4cqw] leading-tight text-amber-100">
           e-Governance
           <br />
           Gateway &amp;
@@ -191,7 +191,7 @@ function DiagramStacked() {
       <div className="mx-auto size-36">
         <Emblem className="size-full" />
       </div>
-      <div className="grid grid-cols-2 gap-3 text-[11px]">
+      <div className="grid grid-cols-2 gap-3 text-[11px] [&>*]:min-w-0">
         <div className="rounded-md bg-gradient-to-b from-blue-600 to-blue-900 p-3">
           <p className="font-semibold">All Kinds of IT Companies &amp; Business Class</p>
           <PillarList items={companyClasses} className="mt-1" />
@@ -216,7 +216,7 @@ function UniqueDiagram() {
   return (
     <div className="relative">
       {/* bright glow behind the diagram */}
-      <div className="pointer-events-none absolute inset-[-6%] bg-[radial-gradient(ellipse_55%_45%_at_50%_22%,rgba(255,255,255,0.97)_0%,rgba(224,242,254,0.92)_35%,rgba(147,197,253,0.45)_70%,transparent_100%),radial-gradient(ellipse_at_50%_55%,rgba(96,165,250,0.45),rgba(37,99,235,0.2)_45%,transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-x-0 inset-y-[-6%] lg:left-[-6%] xl:right-[-6%] bg-[radial-gradient(ellipse_55%_45%_at_50%_22%,rgba(255,255,255,0.97)_0%,rgba(224,242,254,0.92)_35%,rgba(147,197,253,0.45)_70%,transparent_100%),radial-gradient(ellipse_at_50%_55%,rgba(96,165,250,0.45),rgba(37,99,235,0.2)_45%,transparent_70%)]" />
       <div className="relative">
         <div className="mb-3 text-center">
           <h2 className="font-display text-2xl font-extrabold sm:text-[1.7rem]">

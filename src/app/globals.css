@@ -17,6 +17,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* keep #anchor targets clear of the sticky header (top bar + main bar) */
+  scroll-padding-top: 6.75rem;
+  @media (width >= 640px) {
+    scroll-padding-top: 7.75rem;
+  }
 }
 
 body {

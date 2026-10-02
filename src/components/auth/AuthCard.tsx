@@ -22,7 +22,7 @@ import {
   Check,
 } from "lucide-react";
 import { ROLE_CONFIGS, Role, saveSession } from "@/lib/auth";
-import Logo from "@/components/Logo";
+import { LogoLockup } from "@/components/Logo";
 
 interface AuthCardProps {
   initialRole: Role;
@@ -122,20 +122,20 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 py-10 px-4 sm:px-6 lg:px-8 flex flex-col justify-center font-sans">
+    <div className="min-h-screen bg-white text-slate-900 py-6 sm:py-10 px-4 sm:px-6 lg:px-8 flex flex-col justify-center font-sans">
       <div className="max-w-5xl mx-auto w-full">
         {/* Top Header / Brand */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200">
-          <Link href="/" className="inline-flex items-center gap-3 group">
-            <div className="bg-white p-1 rounded-md shadow border border-slate-200">
-              <Logo />
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-slate-200">
+          <Link href="/" aria-label="Return to ITBC main portal" className="inline-flex items-center gap-3 group">
+            <div className="bg-white p-1 rounded-md shadow border border-slate-200 shrink-0">
+              <LogoLockup />
             </div>
-            <span className="text-xs text-slate-600 font-semibold tracking-wide hover:text-blue-700 transition">
+            <span className="text-xs text-slate-600 font-semibold tracking-wide group-hover:text-blue-700 transition">
               ← Return to Main Portal
             </span>
           </Link>
-          <div className="flex items-center gap-2 text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200">
-            <ShieldCheck className="size-4 text-emerald-600" />
+          <div className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200 text-center">
+            <ShieldCheck className="size-4 shrink-0 text-emerald-600" />
             <span>Official ITBC Digital Gateway • 256-Bit SSL Secured</span>
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
               Select Member Wing
             </span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
             {(Object.keys(ROLE_CONFIGS) as Role[]).map((rKey) => {
               const rCfg = ROLE_CONFIGS[rKey];
               const Icon = ROLE_ICONS[rKey];
@@ -157,18 +157,18 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                   key={rKey}
                   type="button"
                   onClick={() => handleRoleChange(rKey)}
-                  className={`flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
+                  className={`flex min-w-0 items-center gap-2 p-2.5 sm:gap-3 sm:p-3.5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "bg-blue-50/80 border-blue-600 shadow-md ring-2 ring-blue-600/20"
                       : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700"
                   }`}
                 >
                   <div
-                    className={`size-10 rounded-lg grid place-items-center shrink-0 ${
+                    className={`size-8 sm:size-10 rounded-lg grid place-items-center shrink-0 ${
                       isActive ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
                     }`}
                   >
-                    <Icon className="size-5" />
+                    <Icon className="size-4 sm:size-5" />
                   </div>
                   <div className="min-w-0">
                     <p className={`text-sm font-bold truncate ${isActive ? "text-blue-900" : "text-slate-800"}`}>
@@ -183,15 +183,15 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
         </div>
 
         {/* Main Card Container (Pure White UI) */}
-        <div className="rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden grid lg:grid-cols-[1.3fr_0.85fr]">
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.85fr)]">
           {/* Form Side */}
-          <div className="p-6 sm:p-10 flex flex-col justify-between">
+          <div className="p-5 sm:p-10 flex flex-col justify-between">
             <div>
               {/* Login vs Register Toggle */}
-              <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200">
-                <div>
-                  <h1 className="text-2xl font-display font-extrabold text-slate-900 flex items-center gap-2.5">
-                    <CurrentIcon className="size-6 text-blue-600" />
+              <div className="flex flex-col-reverse items-start gap-4 sm:flex-row sm:items-center sm:justify-between mb-6 pb-4 border-b border-slate-200">
+                <div className="min-w-0">
+                  <h1 className="text-xl sm:text-2xl font-display font-extrabold text-slate-900 flex items-start gap-2.5">
+                    <CurrentIcon className="size-6 shrink-0 mt-0.5 sm:mt-1 text-blue-600" />
                     <span>
                       {selectedRole === "student" && "Student"}
                       {selectedRole === "faculty" && "Faculty & Academic"}
@@ -243,9 +243,9 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
 
               {/* TEST CREDENTIALS BOX (White/Light Theme with Auto-fill) */}
               <div className="mb-6 p-4 rounded-xl bg-amber-50/80 border border-amber-200/80 text-slate-800">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-amber-900">
-                    <KeyRound className="size-4 text-amber-700" />
+                    <KeyRound className="size-4 shrink-0 text-amber-700" />
                     <span>Test Credentials ({config.shortLabel}):</span>
                   </div>
                   <button
@@ -265,7 +265,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                   </button>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-2 text-xs font-mono bg-white p-2.5 rounded-lg border border-amber-200">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono bg-white p-2.5 rounded-lg border border-amber-200 break-all">
                   <div>
                     <span className="text-slate-500 font-sans font-medium text-[11px]">Email: </span>
                     <strong className="text-slate-900 select-all">{config.testCredentials.email}</strong>
@@ -293,7 +293,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={config.demoUser.name}
-                      className="w-full rounded-lg bg-white border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                      className="w-full rounded-lg bg-white border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                     />
                   </div>
                 )}
@@ -313,13 +313,13 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={config.testCredentials.email}
-                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                     />
                   </div>
                 </div>
 
                 {currentMode === "register" && (
-                  <div className="grid sm:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
                         {selectedRole === "student" && "College / University Name"}
@@ -334,7 +334,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                           value={formData.organization}
                           onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                           placeholder={config.demoUser.organization}
-                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                         />
                       </div>
                     </div>
@@ -360,7 +360,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                               ? "Enterprise Cloud"
                               : "Regional Incubation"
                           }
-                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                          className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                         />
                       </div>
                     </div>
@@ -386,7 +386,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       placeholder="••••••••••••"
-                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-10 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                      className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-10 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                     />
                     <button
                       type="button"
@@ -411,7 +411,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                         value={formData.confirmPassword}
                         onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                         placeholder="••••••••••••"
-                        className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                        className="w-full rounded-lg bg-white border border-slate-300 pl-10 pr-3.5 py-2.5 text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
                       />
                     </div>
                   </div>
@@ -435,7 +435,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                     </label>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-between text-xs text-slate-600">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input
                         type="checkbox"
@@ -450,10 +450,10 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-4 rounded-lg bg-blue-700 hover:bg-blue-800 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-md hover:shadow-lg transition duration-150 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+                  className="w-full mt-4 rounded-lg bg-blue-700 hover:bg-blue-800 px-3 py-3 text-xs sm:text-sm font-bold uppercase tracking-wide sm:tracking-wider text-white shadow-md hover:shadow-lg transition duration-150 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                 >
                   {loading ? (
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 text-left">
                       <div className="size-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
                       <span>Authenticating & Entering Dashboard...</span>
                     </div>
@@ -505,7 +505,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
           </div>
 
           {/* Right Hero / Benefits Side (Light Slate / Soft Blue theme) */}
-          <div className="bg-slate-50 p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col justify-between">
+          <div className="bg-slate-50 p-5 sm:p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-xs font-bold text-blue-800 mb-6">
                 <span>ITBC Verified Network</span>
@@ -539,7 +539,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                     <p className="text-[11px] text-slate-500">{config.demoUser.organization}</p>
                   </div>
                 </div>
-                <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-[11px] text-slate-500">
                   <span>Role: <strong className="text-slate-800">{config.badge}</strong></span>
                   <span className="text-emerald-700 font-semibold">● Status: Active</span>
                 </div>

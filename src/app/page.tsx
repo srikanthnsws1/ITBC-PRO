@@ -28,11 +28,11 @@ export default function Home() {
           <div className="col-start-1 row-start-3 min-w-0">
             <Stakeholders />
           </div>
-          <div className="mt-6 xl:col-start-2 xl:row-span-3 xl:row-start-1 xl:mt-4">
+          <div className="mt-8 min-w-0 xl:col-start-2 xl:row-span-3 xl:row-start-1 xl:mt-4">
             <Sidebar />
           </div>
         </div>
-        <div className="mt-6 space-y-5">
+        <div className="mt-8 space-y-5 xl:mt-6">
           <Hubs />
           <Itccf />
           <StatsBar />

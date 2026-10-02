@@ -32,7 +32,7 @@ export default function CorporateDashboardPage() {
       menuItems={corporateMenuItems}
     >
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 p-6 sm:p-8 text-white shadow-md">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 p-5 sm:p-8 text-white shadow-md">
         <div className="relative z-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-emerald-100 mb-3">
             <Sparkles className="size-3.5 text-amber-300" />
@@ -64,57 +64,57 @@ export default function CorporateDashboardPage() {
       </div>
 
       {/* Metrics Row (White Cards) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Active Postings</span>
-            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 [&>*]:min-w-0">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Active Postings</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-emerald-50 text-emerald-600">
               <FolderPlus className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">5 Challenges</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">5 Challenges</div>
           <p className="text-[11px] text-emerald-700 font-semibold mt-1">3 Projects & 2 Internships</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Applicants</span>
-            <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Applicants</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-blue-50 text-blue-600">
               <Users2 className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">142 Talent</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">142 Talent</div>
           <p className="text-[11px] text-blue-700 font-semibold mt-1">38 Pre-Screened Matches</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Hired Trainees</span>
-            <div className="p-2 rounded-lg bg-teal-50 text-teal-600">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Hired Trainees</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-teal-50 text-teal-600">
               <UserCheck className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">18 Engineers</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">18 Engineers</div>
           <p className="text-[11px] text-teal-700 font-semibold mt-1">Joined in FY 2026</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-          <div className="flex items-center justify-between text-slate-500 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Verified Pool</span>
-            <div className="p-2 rounded-lg bg-amber-50 text-amber-600">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-start justify-between gap-2 text-slate-500 mb-2">
+            <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Verified Pool</span>
+            <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-amber-50 text-amber-600">
               <Building2 className="size-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">125K+</div>
+          <div className="text-lg sm:text-2xl font-bold leading-tight text-slate-900">125K+</div>
           <p className="text-[11px] text-amber-700 font-semibold mt-1">Across 850+ Accredited Colleges</p>
         </div>
       </div>
 
       {/* Main Grid: Active Postings & Shortlisted Candidates */}
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Left: Active Postings */}
-        <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="xl:col-span-2 space-y-4 min-w-0">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
             <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
               <FolderPlus className="size-5 text-emerald-600" />
               <span>Active Industry Postings</span>
@@ -167,8 +167,8 @@ export default function CorporateDashboardPage() {
                 <h3 className="text-sm font-bold text-slate-900">{item.title}</h3>
                 <p className="text-xs text-slate-600 mt-1">Compensation: <strong className="text-slate-800">{item.stipend}</strong></p>
 
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-4 text-slate-600">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600">
                     <span>
                       Total Applicants: <strong className="text-slate-900">{item.applicants}</strong>
                     </span>
@@ -189,8 +189,8 @@ export default function CorporateDashboardPage() {
         </div>
 
         {/* Right: Top Talent Matches */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="space-y-4 min-w-0">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
             <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
               <Users2 className="size-5 text-blue-600" />
               <span>AI Top Matches</span>
@@ -220,9 +220,9 @@ export default function CorporateDashboardPage() {
               },
             ].map((cand, i) => (
               <div key={i} className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between mb-1">
+                <div className="flex items-start justify-between gap-2 mb-1">
                   <h4 className="text-sm font-bold text-slate-900">{cand.name}</h4>
-                  <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                  <span className="shrink-0 whitespace-nowrap text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
                     {cand.score} Match
                   </span>
                 </div>

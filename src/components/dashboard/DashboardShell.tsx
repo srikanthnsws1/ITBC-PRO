@@ -18,7 +18,7 @@ import {
   ExternalLink,
   Lock,
 } from "lucide-react";
-import Logo from "@/components/Logo";
+import { LogoLockup, LogoMark } from "@/components/Logo";
 import { ROLE_CONFIGS, Role, UserSession, clearSession, getStoredSession, saveSession } from "@/lib/auth";
 
 interface NavMenuItem {
@@ -96,24 +96,26 @@ export default function DashboardShell({
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col font-sans">
       {/* Top Navbar (Pure White Header) */}
       <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
-        <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        <div className="px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
           {/* Left: Brand & Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
             <button
               type="button"
               onClick={() => setMobileMenuOpen((v) => !v)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 lg:hidden"
+              className="p-2 -ml-1 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 lg:hidden shrink-0"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
             </button>
 
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="bg-white p-1 rounded-md border border-slate-200 shadow-xs shrink-0">
-                <Logo />
+            <Link href="/" aria-label="ITBC home" className="flex items-center gap-3 group min-w-0">
+              {/* mark only on phones, compact lockup from sm up */}
+              <LogoMark className="size-8 shrink-0 sm:hidden" />
+              <div className="hidden sm:block shrink-0">
+                <LogoLockup compact />
               </div>
-              <div className="hidden sm:block leading-tight">
-                <div className="flex items-center gap-2">
+              <div className="hidden xl:block leading-tight border-l border-slate-200 pl-3">
+                <div className="flex items-center gap-2 whitespace-nowrap">
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-700">
                     {config.label} Dashboard
                   </span>
@@ -121,13 +123,13 @@ export default function DashboardShell({
                     Logged In
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500">Information Technology Business Council</p>
+                <p className="text-[11px] text-slate-500 whitespace-nowrap">Information Technology Business Council</p>
               </div>
             </Link>
           </div>
 
           {/* Center Search (Hidden on Mobile) */}
-          <div className="hidden md:flex items-center flex-1 max-w-md mx-4">
+          <div className="hidden md:flex items-center flex-1 min-w-0 max-w-md">
             <div className="relative w-full">
               <Search className="absolute left-3.5 top-2.5 size-4 text-slate-400" />
               <input
@@ -139,13 +141,18 @@ export default function DashboardShell({
           </div>
 
           {/* Right: Role Switcher, Notifications & Profile */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 sm:gap-3 shrink-0">
             {/* Quick Switcher between authorized roles */}
-            <div className="relative">
+            <div className="sm:relative">
               <button
                 type="button"
-                onClick={() => setRoleSwitcherOpen((v) => !v)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition cursor-pointer"
+                onClick={() => {
+                  setRoleSwitcherOpen((v) => !v);
+                  setNotificationsOpen(false);
+                }}
+                aria-label="Switch role dashboard"
+                aria-expanded={roleSwitcherOpen}
+                className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 whitespace-nowrap transition cursor-pointer"
               >
                 <CurrentIcon className="size-3.5 text-blue-600" />
                 <span className="hidden sm:inline">{config.shortLabel} View</span>
@@ -153,7 +160,7 @@ export default function DashboardShell({
               </button>
 
               {roleSwitcherOpen && (
-                <div className="absolute right-0 mt-2 w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-xl z-50">
+                <div className="absolute inset-x-3 top-full mt-2 sm:inset-x-auto sm:right-0 sm:w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-xl z-50">
                   <p className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     Switch Role Dashboard
                   </p>
@@ -187,10 +194,14 @@ export default function DashboardShell({
             </div>
 
             {/* Notification Bell */}
-            <div className="relative">
+            <div className="sm:relative">
               <button
                 type="button"
-                onClick={() => setNotificationsOpen((v) => !v)}
+                onClick={() => {
+                  setNotificationsOpen((v) => !v);
+                  setRoleSwitcherOpen(false);
+                }}
+                aria-expanded={notificationsOpen}
                 className="relative p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition cursor-pointer"
                 aria-label="Notifications"
               >
@@ -199,7 +210,7 @@ export default function DashboardShell({
               </button>
 
               {notificationsOpen && (
-                <div className="absolute right-0 mt-2 w-80 rounded-xl border border-slate-200 bg-white p-3 shadow-xl z-50">
+                <div className="absolute inset-x-3 top-full mt-2 sm:inset-x-auto sm:right-0 sm:w-80 rounded-xl border border-slate-200 bg-white p-3 shadow-xl z-50">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                     <span className="text-xs font-bold text-slate-900">Notifications</span>
                     <span className="text-[10px] text-blue-600 cursor-pointer hover:underline font-semibold">
@@ -227,8 +238,8 @@ export default function DashboardShell({
             </div>
 
             {/* User Profile & Sign Out */}
-            <div className="flex items-center gap-3 pl-3 border-l border-slate-200">
-              <div className="size-9 rounded-full bg-blue-700 text-white font-bold grid place-items-center text-xs shadow-sm">
+            <div className="flex items-center gap-1 sm:gap-3 pl-2 sm:pl-3 border-l border-slate-200">
+              <div className="size-8 sm:size-9 shrink-0 rounded-full bg-blue-700 text-white font-bold grid place-items-center text-xs shadow-sm">
                 {currentUserName.charAt(0)}
               </div>
               <div className="hidden lg:block text-left text-xs leading-tight">
@@ -239,10 +250,11 @@ export default function DashboardShell({
                 type="button"
                 onClick={handleLogout}
                 title="Sign Out of Dashboard"
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-rose-700 hover:bg-rose-50 text-xs font-semibold transition cursor-pointer"
+                aria-label="Sign out"
+                className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-rose-700 hover:bg-rose-50 text-xs font-semibold whitespace-nowrap transition cursor-pointer"
               >
                 <LogOut className="size-4" />
-                <span className="hidden sm:inline">Sign Out</span>
+                <span className="hidden md:inline">Sign Out</span>
               </button>
             </div>
           </div>
@@ -250,9 +262,9 @@ export default function DashboardShell({
       </header>
 
       {/* Main Layout Area */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar (Desktop - Light Slate/White Theme) */}
-        <aside className="hidden lg:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 shrink-0 shadow-xs">
+      <div className="flex-1 flex">
+        {/* Left Sidebar (Desktop - Light Slate/White Theme); stays pinned under the header while the page scrolls */}
+        <aside className="hidden lg:flex w-64 flex-col justify-between gap-6 border-r border-slate-200 bg-white p-4 shrink-0 shadow-xs sticky top-16 h-[calc(100dvh-4rem)] overflow-y-auto">
           <div className="space-y-6">
             {/* User Badge Card (Clean Light Styling) */}
             <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
@@ -295,13 +307,13 @@ export default function DashboardShell({
                           : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                       }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <Icon className={`size-4 ${isActive ? "text-white" : "text-slate-500"}`} />
+                      <div className="flex items-center gap-3 min-w-0 text-left">
+                        <Icon className={`size-4 shrink-0 ${isActive ? "text-white" : "text-slate-500"}`} />
                         <span>{item.label}</span>
                       </div>
                       {item.badge && (
                         <span
-                          className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                          className={`ml-2 shrink-0 whitespace-nowrap px-1.5 py-0.5 rounded text-[10px] font-bold ${
                             isActive
                               ? "bg-white/20 text-white"
                               : "bg-blue-100 text-blue-800 border border-blue-200"
@@ -339,7 +351,7 @@ export default function DashboardShell({
               className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs"
               onClick={() => setMobileMenuOpen(false)}
             />
-            <div className="relative w-72 max-w-full bg-white border-r border-slate-200 p-5 flex flex-col justify-between z-10 shadow-2xl">
+            <div className="relative w-72 max-w-[85vw] h-full overflow-y-auto bg-white border-r border-slate-200 p-5 flex flex-col justify-between gap-6 z-10 shadow-2xl">
               <div className="space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                   <div className="flex items-center gap-2">
@@ -373,12 +385,12 @@ export default function DashboardShell({
                             : "text-slate-700 hover:bg-slate-100"
                         }`}
                       >
-                        <div className="flex items-center gap-3">
-                          <Icon className="size-4" />
+                        <div className="flex items-center gap-3 min-w-0 text-left">
+                          <Icon className="size-4 shrink-0" />
                           <span>{item.label}</span>
                         </div>
                         {item.badge && (
-                          <span className="px-1.5 py-0.5 rounded text-[10px] bg-blue-100 text-blue-800">
+                          <span className="ml-2 shrink-0 whitespace-nowrap px-1.5 py-0.5 rounded text-[10px] bg-blue-100 text-blue-800">
                             {item.badge}
                           </span>
                         )}
@@ -403,7 +415,7 @@ export default function DashboardShell({
         )}
 
         {/* Content Area (Clean White / Soft Slate Background) */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-[#f8fafc]">
+        <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto space-y-6">{children}</div>
         </main>
       </div>

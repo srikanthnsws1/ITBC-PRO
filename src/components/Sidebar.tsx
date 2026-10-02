@@ -16,7 +16,7 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col gap-4">
+    <aside className="grid gap-4 md:grid-cols-2 xl:grid-cols-1 [&>*]:min-w-0 md:[&>*:last-child]:col-span-2 xl:[&>*:last-child]:col-span-1">
       <Panel title="ITBC Media Network">
         <div className="flex items-center gap-3">
           <YoutubeIcon className="size-12 shrink-0 text-red-600" />
@@ -68,7 +68,7 @@ export default function Sidebar() {
         <h2 className="bg-violet-800 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-white">
           ITBC Upcoming Live Events
         </h2>
-        <ul className="divide-y divide-slate-100 px-4">
+        <ul className="divide-y divide-slate-100 px-4 md:grid md:grid-cols-3 md:gap-x-4 md:divide-y-0 xl:block xl:divide-y">
           {events.map((e) => (
             <li key={e.title} className="flex gap-3 py-3">
               <CalendarDays className="mt-0.5 size-5 shrink-0 text-violet-700" />
@@ -82,7 +82,7 @@ export default function Sidebar() {
           ))}
         </ul>
         <div className="px-4 pb-4">
-          <Link href="#events" className="flex items-center justify-center gap-2 rounded-md bg-violet-800 py-2 text-sm font-semibold uppercase text-white transition hover:bg-violet-900">
+          <Link href="#events" className="mx-auto flex max-w-sm items-center xl:max-w-none justify-center gap-2 rounded-md bg-violet-800 py-2 text-sm font-semibold uppercase text-white transition hover:bg-violet-900">
             View All Events <ArrowRight className="size-4" />
           </Link>
         </div>
