@@ -13,6 +13,10 @@
   @media (width >= 640px) {
     padding-inline: 1.5rem;
   }
+  /* one-screen mode: the scaled canvas uses the full width */
+  @media (width >= 80rem) and (height >= 36rem) {
+    max-width: none;
+  }
 }
 
 /* Desktop one-screen mode: the window is wide and tall enough to show a whole page without scrolling.
