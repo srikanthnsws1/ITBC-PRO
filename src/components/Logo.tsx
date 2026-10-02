@@ -38,7 +38,7 @@ export function LogoLockup({ compact = false }: { compact?: boolean }) {
         <span className="block font-display text-2xl font-extrabold tracking-tight text-blue-900 sm:text-3xl">ITBC</span>
         <span className="block text-[9px] font-semibold text-slate-700">Information Technology</span>
         <span className="block text-[9px] font-semibold text-slate-700">Business Council (ITBC)</span>
-        <span className="block whitespace-nowrap text-[8px] text-slate-500 fit:hidden">e-Governance | Innovation | Excellence</span>
+        <span className="block whitespace-nowrap text-[8px] text-slate-500">e-Governance | Innovation | Excellence</span>
       </span>
     </span>
   );
