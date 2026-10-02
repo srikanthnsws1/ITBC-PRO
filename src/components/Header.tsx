@@ -2,40 +2,136 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown, Handshake, Mail, Menu, Phone, User, UserCog, Building, X } from "lucide-react";
+import {
+  ChevronDown,
+  Handshake,
+  Mail,
+  Menu,
+  Phone,
+  User,
+  UserCog,
+  Building,
+  X,
+  LayoutDashboard,
+  UserPlus,
+  LogIn,
+} from "lucide-react";
 import Logo from "./Logo";
-import { contact, logins, nav } from "@/data/site";
+import { contact, memberPortals, nav } from "@/data/site";
 import { socials } from "./SocialIcons";
 
-const loginIcons = [User, UserCog, Building, Handshake];
+const loginIcons = {
+  student: User,
+  faculty: UserCog,
+  corporate: Building,
+  partner: Handshake,
+};
 
 function TopBar() {
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
   return (
-    <div className="bg-[#0b0f1f] text-xs text-white">
+    <div className="bg-[#0b0f1f] text-xs text-white relative z-50">
       <div className="container-x flex h-9 items-center justify-between gap-4">
+        {/* Contact Info */}
         <div className="flex items-center gap-5">
-          <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="flex items-center gap-1.5 hover:text-sky-300">
-            <Phone className="size-3.5" /> {contact.phone}
+          <a
+            href={`tel:${contact.phone.replace(/\s/g, "")}`}
+            className="flex items-center gap-1.5 hover:text-sky-300 transition"
+          >
+            <Phone className="size-3.5 text-blue-400" /> {contact.phone}
           </a>
-          <a href={`mailto:${contact.email}`} className="hidden items-center gap-1.5 hover:text-sky-300 sm:flex">
-            <Mail className="size-3.5" /> {contact.email}
+          <a
+            href={`mailto:${contact.email}`}
+            className="hidden items-center gap-1.5 hover:text-sky-300 sm:flex transition"
+          >
+            <Mail className="size-3.5 text-blue-400" /> {contact.email}
           </a>
         </div>
+
+        {/* Member Portals (Login, Register, Dashboard) */}
         <div className="flex items-center gap-4">
-          <nav className="hidden items-center gap-4 lg:flex" aria-label="Logins">
-            {logins.map((l, i) => {
-              const Icon = loginIcons[i];
+          <nav className="hidden items-center gap-1 xl:flex" aria-label="Portals">
+            {memberPortals.map((portal) => {
+              const Icon = loginIcons[portal.role as keyof typeof loginIcons] || User;
               return (
-                <Link key={l.label} href={l.href} className="flex items-center gap-1.5 border-r border-white/25 pr-4 last:border-0 hover:text-sky-300">
-                  <Icon className="size-3.5" /> {l.label}
-                </Link>
+                <div
+                  key={portal.role}
+                  className="relative group py-1"
+                  onMouseEnter={() => setActiveDropdown(portal.role)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <button
+                    type="button"
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded text-slate-200 hover:text-white hover:bg-white/10 transition cursor-pointer"
+                  >
+                    <Icon className="size-3.5 text-sky-400" />
+                    <span className="font-medium">{portal.label}</span>
+                    <ChevronDown className="size-3 text-slate-400 group-hover:rotate-180 transition-transform" />
+                  </button>
+
+                  {/* Dropdown Menu with Login, Register, Dashboard */}
+                  <div
+                    className={`absolute right-0 top-full mt-0.5 w-52 rounded-xl border border-white/15 bg-[#09122c] p-2 shadow-2xl backdrop-blur-xl transition-all duration-150 z-50 ${
+                      activeDropdown === portal.role
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-1 pointer-events-none"
+                    }`}
+                  >
+                    <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 mb-1">
+                      {portal.label} Portal
+                    </div>
+
+                    <Link
+                      href={portal.loginHref}
+                      className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-xs text-slate-200 hover:bg-white/10 hover:text-white transition"
+                    >
+                      <LogIn className="size-3.5 text-blue-400" />
+                      <span>{portal.label} Login</span>
+                    </Link>
+
+                    <Link
+                      href={portal.registerHref}
+                      className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-xs text-slate-200 hover:bg-white/10 hover:text-white transition"
+                    >
+                      <UserPlus className="size-3.5 text-emerald-400" />
+                      <span>{portal.label} Register</span>
+                    </Link>
+
+                    <div className="pt-1 mt-1 border-t border-white/10">
+                      <Link
+                        href={portal.dashboardHref}
+                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-sky-300 hover:bg-blue-600/30 hover:text-white transition"
+                      >
+                        <LayoutDashboard className="size-3.5 text-sky-400" />
+                        <span>{portal.label} Dashboard</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               );
             })}
+
+            {/* Quick Access Dashboards Portal Button */}
+            <Link
+              href="/dashboard"
+              className="ml-2 flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-600/40 border border-blue-400/40 text-[11px] font-bold text-sky-200 hover:bg-blue-600 hover:text-white transition shadow"
+            >
+              <LayoutDashboard className="size-3" />
+              <span>Dashboards</span>
+            </Link>
           </nav>
+
+          {/* Social Icons */}
           <div className="flex items-center gap-3 border-l border-white/25 pl-4">
-            <span className="hidden md:inline">Follow Us:</span>
+            <span className="hidden md:inline text-slate-400">Follow:</span>
             {socials.slice(0, 5).map(({ name, Icon, href }) => (
-              <a key={name} href={href} aria-label={name} className="text-white hover:text-sky-300">
+              <a
+                key={name}
+                href={href}
+                aria-label={name}
+                className="text-white hover:text-sky-300 transition"
+              >
                 {name === "YouTube" ? (
                   <span className="grid h-4 w-6 place-items-center rounded-[3px] bg-red-600">
                     <Icon className="size-3.5" />
@@ -93,8 +189,8 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="#join"
-            className="hidden rounded-md bg-blue-700 px-7 py-3 text-sm font-semibold uppercase text-white shadow transition hover:bg-blue-800 sm:inline-block"
+            href="/register"
+            className="hidden rounded-md bg-blue-700 px-6 py-2.5 text-sm font-semibold uppercase text-white shadow transition hover:bg-blue-800 sm:inline-block"
           >
             Join ITBC
           </Link>
@@ -110,52 +206,111 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Mobile Drawer */}
       {open && (
-        <nav className="max-h-[70vh] overflow-y-auto border-t border-slate-200 bg-white xl:hidden" aria-label="Mobile">
-          <ul className="container-x py-2">
-            {nav.map((item) => (
-              <li key={item.label} className="border-b border-slate-100 last:border-0">
-                <div className="flex items-center justify-between">
-                  <Link href={item.href} onClick={() => setOpen(false)} className="block py-3 text-sm font-semibold uppercase text-slate-800">
-                    {item.label}
-                  </Link>
-                  {item.children && (
-                    <button
-                      type="button"
-                      aria-label={`Toggle ${item.label}`}
-                      onClick={() => setExpanded((e) => (e === item.label ? null : item.label))}
-                      className="p-2"
-                    >
-                      <ChevronDown className={`size-4 transition-transform ${expanded === item.label ? "rotate-180" : ""}`} />
-                    </button>
-                  )}
-                </div>
-                {item.children && expanded === item.label && (
-                  <ul className="pb-2 pl-4">
-                    {item.children.map((c) => (
-                      <li key={c.label}>
-                        <Link href={c.href} onClick={() => setOpen(false)} className="block py-2 text-sm text-slate-600">
-                          {c.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-            <li className="grid grid-cols-2 gap-2 py-3">
-              {logins.map((l) => (
-                <Link key={l.label} href={l.href} className="rounded border border-slate-200 px-3 py-2 text-center text-xs text-slate-700">
-                  {l.label}
+        <nav className="max-h-[85vh] overflow-y-auto border-t border-slate-200 bg-white xl:hidden shadow-2xl" aria-label="Mobile">
+          <div className="container-x py-4 space-y-4">
+            {/* Mobile Portals Box */}
+            <div className="rounded-xl bg-slate-900 text-white p-4 space-y-3">
+              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-sky-400">
+                  Member Access Portals
+                </span>
+                <Link
+                  href="/dashboard"
+                  onClick={() => setOpen(false)}
+                  className="text-xs font-bold text-sky-300 underline"
+                >
+                  All Dashboards →
                 </Link>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                {memberPortals.map((portal) => (
+                  <div key={portal.role} className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-1">
+                    <p className="font-bold text-white text-[11px] uppercase tracking-wide">
+                      {portal.label}
+                    </p>
+                    <div className="flex flex-col gap-1 text-[11px]">
+                      <Link
+                        href={portal.loginHref}
+                        onClick={() => setOpen(false)}
+                        className="text-slate-300 hover:text-white"
+                      >
+                        • Sign In
+                      </Link>
+                      <Link
+                        href={portal.registerHref}
+                        onClick={() => setOpen(false)}
+                        className="text-emerald-400 hover:text-emerald-300"
+                      >
+                        • Register
+                      </Link>
+                      <Link
+                        href={portal.dashboardHref}
+                        onClick={() => setOpen(false)}
+                        className="text-sky-300 hover:text-sky-200 font-semibold"
+                      >
+                        • Dashboard
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Standard Nav Links */}
+            <ul className="divide-y divide-slate-100">
+              {nav.map((item) => (
+                <li key={item.label} className="py-1">
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block py-2.5 text-sm font-semibold uppercase text-slate-800"
+                    >
+                      {item.label}
+                    </Link>
+                    {item.children && (
+                      <button
+                        type="button"
+                        aria-label={`Toggle ${item.label}`}
+                        onClick={() => setExpanded((e) => (e === item.label ? null : item.label))}
+                        className="p-2 text-slate-500"
+                      >
+                        <ChevronDown className={`size-4 transition-transform ${expanded === item.label ? "rotate-180" : ""}`} />
+                      </button>
+                    )}
+                  </div>
+                  {item.children && expanded === item.label && (
+                    <ul className="pb-2 pl-4 space-y-1">
+                      {item.children.map((c) => (
+                        <li key={c.label}>
+                          <Link
+                            href={c.href}
+                            onClick={() => setOpen(false)}
+                            className="block py-1.5 text-sm text-slate-600 hover:text-blue-700"
+                          >
+                            {c.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
               ))}
-            </li>
-            <li className="pb-4">
-              <Link href="#join" className="block rounded-md bg-blue-700 py-3 text-center text-sm font-semibold uppercase text-white">
+            </ul>
+
+            <div className="pt-2">
+              <Link
+                href="/register"
+                onClick={() => setOpen(false)}
+                className="block rounded-md bg-blue-700 py-3 text-center text-sm font-semibold uppercase text-white shadow"
+              >
                 Join ITBC
               </Link>
-            </li>
-          </ul>
+            </div>
+          </div>
         </nav>
       )}
     </header>

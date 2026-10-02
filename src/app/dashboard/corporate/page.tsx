@@ -1,0 +1,261 @@
+"use client";
+
+import { useState } from "react";
+import DashboardShell from "@/components/dashboard/DashboardShell";
+import {
+  Building2,
+  FolderPlus,
+  Users2,
+  CheckCircle2,
+  Clock,
+  Sparkles,
+  TrendingUp,
+  Search,
+  Filter,
+  UserCheck,
+  Send,
+  Building,
+  Briefcase,
+  Calendar,
+} from "lucide-react";
+
+const corporateMenuItems = [
+  { label: "Overview", id: "overview", icon: TrendingUp },
+  { label: "Posted Projects", id: "projects", icon: FolderPlus, badge: "5 Active" },
+  { label: "Talent Pipeline", id: "talent", icon: Users2, badge: "142 Applicants" },
+  { label: "Campus Recruitment", id: "campus", icon: Building2 },
+  { label: "Interviews", id: "interviews", icon: Calendar, badge: "6 Today" },
+];
+
+export default function CorporateDashboardPage() {
+  const [activeTab, setActiveTab] = useState("overview");
+
+  return (
+    <DashboardShell
+      role="corporate"
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      menuItems={corporateMenuItems}
+    >
+      {/* Welcome Banner */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 p-6 sm:p-8 text-white shadow-xl">
+        <div className="relative z-10 max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-emerald-200 mb-3">
+            <Sparkles className="size-3.5 text-amber-300" />
+            <span>Class A++ Enterprise Partner</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight">
+            Welcome, Vikramaditya Roy!
+          </h1>
+          <p className="mt-2 text-sm text-emerald-100 leading-relaxed">
+            TechVista Enterprise has <strong className="text-white">142 vetted candidates</strong> applying to your Cloud DevOps and Full-Stack internship challenges across 850+ ITBC affiliated engineering colleges.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => setActiveTab("projects")}
+              className="px-4 py-2 rounded-lg bg-white text-emerald-950 font-bold text-xs shadow hover:bg-emerald-50 transition flex items-center gap-1.5"
+            >
+              <FolderPlus className="size-4 text-emerald-700" /> Post New Project / Drive
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("talent")}
+              className="px-4 py-2 rounded-lg bg-emerald-600/40 border border-white/30 text-white font-bold text-xs hover:bg-emerald-600/60 transition flex items-center gap-1.5"
+            >
+              <Users2 className="size-4" /> View Candidates (142)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Metrics Row */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider">Active Postings</span>
+            <FolderPlus className="size-5 text-emerald-400" />
+          </div>
+          <div className="text-2xl font-bold text-white">5 Challenges</div>
+          <p className="text-[11px] text-emerald-400 mt-1">3 Projects & 2 Internships</p>
+        </div>
+
+        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider">Applicants</span>
+            <Users2 className="size-5 text-blue-400" />
+          </div>
+          <div className="text-2xl font-bold text-white">142 Talent</div>
+          <p className="text-[11px] text-blue-400 mt-1">38 Pre-Screened High Matches</p>
+        </div>
+
+        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider">Hired Trainees</span>
+            <UserCheck className="size-5 text-teal-400" />
+          </div>
+          <div className="text-2xl font-bold text-white">18 Engineers</div>
+          <p className="text-[11px] text-teal-300 mt-1">Joined in FY 2026</p>
+        </div>
+
+        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider">Verified Pool</span>
+            <Building2 className="size-5 text-amber-400" />
+          </div>
+          <div className="text-2xl font-bold text-white">125K+</div>
+          <p className="text-[11px] text-amber-300 mt-1">Across 850+ Accredited Colleges</p>
+        </div>
+      </div>
+
+      {/* Main Grid: Active Postings & Shortlisted Candidates */}
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Left: Active Postings */}
+        <div className="lg:col-span-2 space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
+              <FolderPlus className="size-5 text-emerald-400" />
+              <span>Active Industry Postings</span>
+            </h2>
+            <button
+              type="button"
+              className="text-xs font-semibold text-emerald-400 hover:text-emerald-300"
+            >
+              + Create New Listing
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                title: "Cloud DevOps Associate & Infrastructure Automation",
+                type: "Internship + Full-Time PPO",
+                stipend: "₹35,000 / mo",
+                applicants: 64,
+                shortlisted: 12,
+                status: "Applications Open",
+              },
+              {
+                title: "Enterprise Cybersecurity Threat Detection Pipeline",
+                type: "Applied Live Project Challenge",
+                stipend: "₹50,000 Milestone Prize",
+                applicants: 48,
+                shortlisted: 16,
+                status: "Evaluation Phase",
+              },
+              {
+                title: "NextGen Full-Stack React & Node.js Developer",
+                type: "Graduate Placement Drive",
+                stipend: "8.5 LPA Package",
+                applicants: 98,
+                shortlisted: 22,
+                status: "Interviews Active",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-emerald-500/40 transition"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                  <span className="text-xs font-bold text-emerald-300 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-500/30 w-fit">
+                    {item.status}
+                  </span>
+                  <span className="text-xs text-slate-400">{item.type}</span>
+                </div>
+                <h3 className="text-sm font-bold text-white">{item.title}</h3>
+                <p className="text-xs text-slate-300 mt-1">Compensation: {item.stipend}</p>
+
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-4 text-slate-300">
+                    <span>
+                      Total Applicants: <strong className="text-white">{item.applicants}</strong>
+                    </span>
+                    <span>
+                      Shortlisted: <strong className="text-emerald-400">{item.shortlisted}</strong>
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="px-3 py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600 border border-emerald-400/40 font-bold text-emerald-200 hover:text-white transition"
+                  >
+                    Manage Pipeline
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Top Talent Matches */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
+              <Users2 className="size-5 text-blue-400" />
+              <span>AI Top Matches</span>
+            </h2>
+            <span className="text-xs text-slate-400">Pre-vetted</span>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                name: "Aryan Sharma",
+                college: "NIT Trichy • B.Tech CSE",
+                score: "96%",
+                skills: ["Docker", "Kubernetes", "Next.js", "Python"],
+              },
+              {
+                name: "Ananya Deshmukh",
+                college: "IIIT Bangalore • M.Tech AI",
+                score: "94%",
+                skills: ["PyTorch", "FastAPI", "PostgreSQL"],
+              },
+              {
+                name: "Karan Singhania",
+                college: "BITS Pilani • Electronics",
+                score: "91%",
+                skills: ["Rust", "Embedded C", "AWS IoT"],
+              },
+            ].map((cand, i) => (
+              <div key={i} className="p-4 rounded-xl bg-white/[0.04] border border-white/10">
+                <div className="flex items-center justify-between mb-1">
+                  <h4 className="text-sm font-bold text-white">{cand.name}</h4>
+                  <span className="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30">
+                    {cand.score} Match
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400">{cand.college}</p>
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                  {cand.skills.map((s, si) => (
+                    <span
+                      key={si}
+                      className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  className="w-full mt-3 py-1.5 rounded-lg bg-blue-600/30 hover:bg-blue-600 border border-blue-400/40 text-xs font-bold text-blue-200 hover:text-white transition"
+                >
+                  Schedule Interview
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* ITBC Verified Guarantee */}
+          <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-950/40 to-teal-950/40 border border-emerald-500/30 text-xs">
+            <div className="flex items-center gap-2 text-emerald-300 font-bold mb-1">
+              <CheckCircle2 className="size-4" /> 100% Background & Skill Verified
+            </div>
+            <p className="text-[11px] text-slate-300 leading-relaxed">
+              Every candidate has executed verified GitHub live project commits and passed ITBC academic council evaluation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </DashboardShell>
+  );
+}

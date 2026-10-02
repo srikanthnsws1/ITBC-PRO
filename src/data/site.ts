@@ -41,6 +41,45 @@ export const logins = [
   { label: "Partner Login", href: "/login/partner" },
 ];
 
+export const registers = [
+  { label: "Student Register", href: "/register/student" },
+  { label: "Faculty Register", href: "/register/faculty" },
+  { label: "Corporate Register", href: "/register/corporate" },
+  { label: "Partner Register", href: "/register/partner" },
+];
+
+export const memberPortals = [
+  {
+    role: "student",
+    label: "Student",
+    loginHref: "/login/student",
+    registerHref: "/register/student",
+    dashboardHref: "/dashboard/student",
+  },
+  {
+    role: "faculty",
+    label: "Faculty",
+    loginHref: "/login/faculty",
+    registerHref: "/register/faculty",
+    dashboardHref: "/dashboard/faculty",
+  },
+  {
+    role: "corporate",
+    label: "Corporate",
+    loginHref: "/login/corporate",
+    registerHref: "/register/corporate",
+    dashboardHref: "/dashboard/corporate",
+  },
+  {
+    role: "partner",
+    label: "Partner",
+    loginHref: "/login/partner",
+    registerHref: "/register/partner",
+    dashboardHref: "/dashboard/partner",
+  },
+];
+
+
 export const nav: NavItem[] = [
   { label: "Home", href: "/" },
   {
