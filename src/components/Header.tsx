@@ -12,7 +12,6 @@ import {
   UserCog,
   Building,
   X,
-  LayoutDashboard,
   UserPlus,
   LogIn,
 } from "lucide-react";
@@ -49,7 +48,7 @@ function TopBar() {
           </a>
         </div>
 
-        {/* Member Portals (Login, Register, Dashboard) */}
+        {/* Member Portals (Login & Register Only - Dashboards appear after login) */}
         <div className="flex items-center gap-4">
           <nav className="hidden items-center gap-1 xl:flex" aria-label="Portals">
             {memberPortals.map((portal) => {
@@ -70,16 +69,16 @@ function TopBar() {
                     <ChevronDown className="size-3 text-slate-400 group-hover:rotate-180 transition-transform" />
                   </button>
 
-                  {/* Dropdown Menu with Login, Register, Dashboard */}
+                  {/* Dropdown Menu with Login and Register */}
                   <div
-                    className={`absolute right-0 top-full mt-0.5 w-52 rounded-xl border border-white/15 bg-[#09122c] p-2 shadow-2xl backdrop-blur-xl transition-all duration-150 z-50 ${
+                    className={`absolute right-0 top-full mt-0.5 w-48 rounded-xl border border-white/15 bg-[#09122c] p-2 shadow-2xl backdrop-blur-xl transition-all duration-150 z-50 ${
                       activeDropdown === portal.role
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-1 pointer-events-none"
                     }`}
                   >
                     <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 mb-1">
-                      {portal.label} Portal
+                      {portal.label} Access
                     </div>
 
                     <Link
@@ -97,29 +96,10 @@ function TopBar() {
                       <UserPlus className="size-3.5 text-emerald-400" />
                       <span>{portal.label} Register</span>
                     </Link>
-
-                    <div className="pt-1 mt-1 border-t border-white/10">
-                      <Link
-                        href={portal.dashboardHref}
-                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-sky-300 hover:bg-blue-600/30 hover:text-white transition"
-                      >
-                        <LayoutDashboard className="size-3.5 text-sky-400" />
-                        <span>{portal.label} Dashboard</span>
-                      </Link>
-                    </div>
                   </div>
                 </div>
               );
             })}
-
-            {/* Quick Access Dashboards Portal Button */}
-            <Link
-              href="/dashboard"
-              className="ml-2 flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-600/40 border border-blue-400/40 text-[11px] font-bold text-sky-200 hover:bg-blue-600 hover:text-white transition shadow"
-            >
-              <LayoutDashboard className="size-3" />
-              <span>Dashboards</span>
-            </Link>
           </nav>
 
           {/* Social Icons */}
@@ -210,19 +190,12 @@ export default function Header() {
       {open && (
         <nav className="max-h-[85vh] overflow-y-auto border-t border-slate-200 bg-white xl:hidden shadow-2xl" aria-label="Mobile">
           <div className="container-x py-4 space-y-4">
-            {/* Mobile Portals Box */}
+            {/* Mobile Portals Box (Login & Register Only) */}
             <div className="rounded-xl bg-slate-900 text-white p-4 space-y-3">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+              <div className="border-b border-white/10 pb-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-sky-400">
                   Member Access Portals
                 </span>
-                <Link
-                  href="/dashboard"
-                  onClick={() => setOpen(false)}
-                  className="text-xs font-bold text-sky-300 underline"
-                >
-                  All Dashboards →
-                </Link>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
@@ -245,13 +218,6 @@ export default function Header() {
                         className="text-emerald-400 hover:text-emerald-300"
                       >
                         • Register
-                      </Link>
-                      <Link
-                        href={portal.dashboardHref}
-                        onClick={() => setOpen(false)}
-                        className="text-sky-300 hover:text-sky-200 font-semibold"
-                      >
-                        • Dashboard
                       </Link>
                     </div>
                   </div>

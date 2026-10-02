@@ -11,9 +11,7 @@ import {
   Calendar,
   Sparkles,
   TrendingUp,
-  CheckCircle2,
   Clock,
-  ArrowUpRight,
   GraduationCap,
   Briefcase,
 } from "lucide-react";
@@ -37,9 +35,9 @@ export default function FacultyDashboardPage() {
       menuItems={facultyMenuItems}
     >
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-800 via-violet-800 to-indigo-900 p-6 sm:p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-800 via-violet-800 to-indigo-900 p-6 sm:p-8 text-white shadow-md">
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-purple-200 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-purple-100 mb-3">
             <Sparkles className="size-3.5 text-amber-300" />
             <span>Senior Academic Research Fellow</span>
           </div>
@@ -53,14 +51,14 @@ export default function FacultyDashboardPage() {
             <button
               type="button"
               onClick={() => setActiveTab("mentees")}
-              className="px-4 py-2 rounded-lg bg-white text-purple-900 font-bold text-xs shadow hover:bg-purple-50 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-white text-purple-900 font-bold text-xs shadow-sm hover:bg-purple-50 transition flex items-center gap-1.5 cursor-pointer"
             >
-              <FileCheck2 className="size-4" /> Review Submissions (6)
+              <FileCheck2 className="size-4 text-purple-700" /> Review Submissions (6)
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("grants")}
-              className="px-4 py-2 rounded-lg bg-purple-600/40 border border-white/30 text-white font-bold text-xs hover:bg-purple-600/60 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-purple-600/40 border border-white/30 text-white font-bold text-xs hover:bg-purple-600/60 transition flex items-center gap-1.5 cursor-pointer"
             >
               <Landmark className="size-4" /> R&D Grants Portal
             </button>
@@ -68,42 +66,50 @@ export default function FacultyDashboardPage() {
         </div>
       </div>
 
-      {/* Metrics Row */}
+      {/* Metrics Row (White Cards) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Supervised Mentees</span>
-            <Users className="size-5 text-purple-400" />
+            <div className="p-2 rounded-lg bg-purple-50 text-purple-600">
+              <Users className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">24 Students</div>
-          <p className="text-[11px] text-purple-300 mt-1">Across 8 Live Project Squads</p>
+          <div className="text-2xl font-bold text-slate-900">24 Students</div>
+          <p className="text-[11px] text-purple-700 font-semibold mt-1">Across 8 Live Project Squads</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Active R&D Grants</span>
-            <Landmark className="size-5 text-emerald-400" />
+            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+              <Landmark className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">₹45 Lakhs</div>
-          <p className="text-[11px] text-emerald-400 mt-1">2 Industry-Funded Grants</p>
+          <div className="text-2xl font-bold text-slate-900">₹45 Lakhs</div>
+          <p className="text-[11px] text-emerald-700 font-semibold mt-1">2 Industry-Funded Grants</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Industry Collabs</span>
-            <Briefcase className="size-5 text-blue-400" />
+            <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+              <Briefcase className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">8 Corporates</div>
-          <p className="text-[11px] text-blue-300 mt-1">TechVista, TCS, DRDO labs</p>
+          <div className="text-2xl font-bold text-slate-900">8 Corporates</div>
+          <p className="text-[11px] text-blue-700 font-semibold mt-1">TechVista, TCS, DRDO labs</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Academic Credits</span>
-            <Award className="size-5 text-amber-400" />
+            <div className="p-2 rounded-lg bg-amber-50 text-amber-600">
+              <Award className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">320 FDC</div>
-          <p className="text-[11px] text-amber-300 mt-1">Faculty Excellence Status</p>
+          <div className="text-2xl font-bold text-slate-900">320 FDC</div>
+          <p className="text-[11px] text-amber-700 font-semibold mt-1">Faculty Excellence Status</p>
         </div>
       </div>
 
@@ -112,11 +118,11 @@ export default function FacultyDashboardPage() {
         {/* Left: Mentee Submissions */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-              <FileCheck2 className="size-5 text-purple-400" />
+            <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+              <FileCheck2 className="size-5 text-purple-600" />
               <span>Pending Student Project Reviews</span>
             </h2>
-            <span className="text-xs text-slate-400">6 requiring grading</span>
+            <span className="text-xs text-slate-500 font-medium">6 requiring grading</span>
           </div>
 
           <div className="space-y-3">
@@ -145,29 +151,29 @@ export default function FacultyDashboardPage() {
             ].map((sub, i) => (
               <div
                 key={i}
-                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-500/40 transition"
+                className="p-5 rounded-xl bg-white border border-slate-200 hover:border-purple-300 hover:shadow-md transition"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                  <h3 className="text-sm font-bold text-white">{sub.project}</h3>
-                  <span className="text-[11px] text-purple-300 flex items-center gap-1">
+                  <h3 className="text-sm font-bold text-slate-900">{sub.project}</h3>
+                  <span className="text-[11px] text-purple-700 font-semibold flex items-center gap-1">
                     <Clock className="size-3" /> {sub.time}
                   </span>
                 </div>
-                <p className="text-xs text-slate-300">
-                  By <strong className="text-white">{sub.student}</strong> • {sub.college}
+                <p className="text-xs text-slate-600">
+                  By <strong className="text-slate-900">{sub.student}</strong> • {sub.college}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">Deliverable: {sub.milestone}</p>
+                <p className="text-xs text-slate-500 mt-1">Deliverable: {sub.milestone}</p>
 
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-end gap-3">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end gap-3">
                   <button
                     type="button"
-                    className="px-3 py-1.5 rounded-lg border border-white/20 text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition"
+                    className="px-3.5 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
                   >
                     View Code & Report
                   </button>
                   <button
                     type="button"
-                    className="px-4 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white transition"
+                    className="px-4 py-1.5 rounded-lg bg-purple-700 hover:bg-purple-800 text-xs font-bold text-white transition cursor-pointer shadow-xs"
                   >
                     Grade & Approve
                   </button>
@@ -179,8 +185,8 @@ export default function FacultyDashboardPage() {
 
         {/* Right: Grants & Advisory */}
         <div className="space-y-4">
-          <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-            <Landmark className="size-5 text-emerald-400" />
+          <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+            <Landmark className="size-5 text-emerald-600" />
             <span>Research Grants & MoUs</span>
           </h2>
 
@@ -205,30 +211,30 @@ export default function FacultyDashboardPage() {
                 status: "Proposal Under Review",
               },
             ].map((g, i) => (
-              <div key={i} className="p-4 rounded-xl bg-white/[0.04] border border-white/10">
+              <div key={i} className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-bold text-emerald-400">{g.amount}</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-slate-300">
+                  <span className="text-xs font-bold text-emerald-700">{g.amount}</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 font-semibold text-slate-700">
                     {g.status}
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-white">{g.title}</h4>
-                <p className="text-xs text-slate-400 mt-1">{g.sponsor}</p>
+                <h4 className="text-sm font-bold text-slate-800">{g.title}</h4>
+                <p className="text-xs text-slate-500 mt-1">{g.sponsor}</p>
               </div>
             ))}
           </div>
 
           {/* Academic Advisory Card */}
-          <div className="p-4 rounded-xl bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-purple-500/30 text-xs">
-            <div className="flex items-center gap-2 text-purple-300 font-bold mb-1">
-              <GraduationCap className="size-4" /> 2026 Curriculum Advisory
+          <div className="p-4 rounded-xl bg-purple-50/70 border border-purple-200 text-xs text-slate-700">
+            <div className="flex items-center gap-2 text-purple-900 font-bold mb-1">
+              <GraduationCap className="size-4 text-purple-700" /> 2026 Curriculum Advisory
             </div>
-            <p className="text-[11px] text-slate-300 leading-relaxed">
+            <p className="text-[11px] text-slate-600 leading-relaxed">
               Contribute to the ITBC standardized AI & Quantum computing undergraduate syllabus recommended to 850+ colleges.
             </p>
             <button
               type="button"
-              className="mt-3 px-3 py-1.5 rounded bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs"
+              className="mt-3 px-3 py-1.5 rounded bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs cursor-pointer shadow-xs"
             >
               Open Advisory Board
             </button>

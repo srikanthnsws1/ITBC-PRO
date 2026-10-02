@@ -7,15 +7,9 @@ import {
   FolderPlus,
   Users2,
   CheckCircle2,
-  Clock,
   Sparkles,
   TrendingUp,
-  Search,
-  Filter,
   UserCheck,
-  Send,
-  Building,
-  Briefcase,
   Calendar,
 } from "lucide-react";
 
@@ -38,9 +32,9 @@ export default function CorporateDashboardPage() {
       menuItems={corporateMenuItems}
     >
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 p-6 sm:p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 p-6 sm:p-8 text-white shadow-md">
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-emerald-200 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-emerald-100 mb-3">
             <Sparkles className="size-3.5 text-amber-300" />
             <span>Class A++ Enterprise Partner</span>
           </div>
@@ -54,14 +48,14 @@ export default function CorporateDashboardPage() {
             <button
               type="button"
               onClick={() => setActiveTab("projects")}
-              className="px-4 py-2 rounded-lg bg-white text-emerald-950 font-bold text-xs shadow hover:bg-emerald-50 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-white text-emerald-950 font-bold text-xs shadow-sm hover:bg-emerald-50 transition flex items-center gap-1.5 cursor-pointer"
             >
               <FolderPlus className="size-4 text-emerald-700" /> Post New Project / Drive
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("talent")}
-              className="px-4 py-2 rounded-lg bg-emerald-600/40 border border-white/30 text-white font-bold text-xs hover:bg-emerald-600/60 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-emerald-600/40 border border-white/30 text-white font-bold text-xs hover:bg-emerald-600/60 transition flex items-center gap-1.5 cursor-pointer"
             >
               <Users2 className="size-4" /> View Candidates (142)
             </button>
@@ -69,42 +63,50 @@ export default function CorporateDashboardPage() {
         </div>
       </div>
 
-      {/* Metrics Row */}
+      {/* Metrics Row (White Cards) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Active Postings</span>
-            <FolderPlus className="size-5 text-emerald-400" />
+            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+              <FolderPlus className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">5 Challenges</div>
-          <p className="text-[11px] text-emerald-400 mt-1">3 Projects & 2 Internships</p>
+          <div className="text-2xl font-bold text-slate-900">5 Challenges</div>
+          <p className="text-[11px] text-emerald-700 font-semibold mt-1">3 Projects & 2 Internships</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Applicants</span>
-            <Users2 className="size-5 text-blue-400" />
+            <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+              <Users2 className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">142 Talent</div>
-          <p className="text-[11px] text-blue-400 mt-1">38 Pre-Screened High Matches</p>
+          <div className="text-2xl font-bold text-slate-900">142 Talent</div>
+          <p className="text-[11px] text-blue-700 font-semibold mt-1">38 Pre-Screened Matches</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Hired Trainees</span>
-            <UserCheck className="size-5 text-teal-400" />
+            <div className="p-2 rounded-lg bg-teal-50 text-teal-600">
+              <UserCheck className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">18 Engineers</div>
-          <p className="text-[11px] text-teal-300 mt-1">Joined in FY 2026</p>
+          <div className="text-2xl font-bold text-slate-900">18 Engineers</div>
+          <p className="text-[11px] text-teal-700 font-semibold mt-1">Joined in FY 2026</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Verified Pool</span>
-            <Building2 className="size-5 text-amber-400" />
+            <div className="p-2 rounded-lg bg-amber-50 text-amber-600">
+              <Building2 className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">125K+</div>
-          <p className="text-[11px] text-amber-300 mt-1">Across 850+ Accredited Colleges</p>
+          <div className="text-2xl font-bold text-slate-900">125K+</div>
+          <p className="text-[11px] text-amber-700 font-semibold mt-1">Across 850+ Accredited Colleges</p>
         </div>
       </div>
 
@@ -113,13 +115,13 @@ export default function CorporateDashboardPage() {
         {/* Left: Active Postings */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-              <FolderPlus className="size-5 text-emerald-400" />
+            <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+              <FolderPlus className="size-5 text-emerald-600" />
               <span>Active Industry Postings</span>
             </h2>
             <button
               type="button"
-              className="text-xs font-semibold text-emerald-400 hover:text-emerald-300"
+              className="text-xs font-bold text-emerald-700 hover:text-emerald-800 cursor-pointer"
             >
               + Create New Listing
             </button>
@@ -154,29 +156,29 @@ export default function CorporateDashboardPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-emerald-500/40 transition"
+                className="p-5 rounded-xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-md transition"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                  <span className="text-xs font-bold text-emerald-300 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-500/30 w-fit">
+                  <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 w-fit">
                     {item.status}
                   </span>
-                  <span className="text-xs text-slate-400">{item.type}</span>
+                  <span className="text-xs text-slate-500 font-medium">{item.type}</span>
                 </div>
-                <h3 className="text-sm font-bold text-white">{item.title}</h3>
-                <p className="text-xs text-slate-300 mt-1">Compensation: {item.stipend}</p>
+                <h3 className="text-sm font-bold text-slate-900">{item.title}</h3>
+                <p className="text-xs text-slate-600 mt-1">Compensation: <strong className="text-slate-800">{item.stipend}</strong></p>
 
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-4 text-slate-300">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-4 text-slate-600">
                     <span>
-                      Total Applicants: <strong className="text-white">{item.applicants}</strong>
+                      Total Applicants: <strong className="text-slate-900">{item.applicants}</strong>
                     </span>
                     <span>
-                      Shortlisted: <strong className="text-emerald-400">{item.shortlisted}</strong>
+                      Shortlisted: <strong className="text-emerald-700">{item.shortlisted}</strong>
                     </span>
                   </div>
                   <button
                     type="button"
-                    className="px-3 py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600 border border-emerald-400/40 font-bold text-emerald-200 hover:text-white transition"
+                    className="px-3.5 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 font-bold text-white transition cursor-pointer shadow-xs"
                   >
                     Manage Pipeline
                   </button>
@@ -189,11 +191,11 @@ export default function CorporateDashboardPage() {
         {/* Right: Top Talent Matches */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-              <Users2 className="size-5 text-blue-400" />
+            <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+              <Users2 className="size-5 text-blue-600" />
               <span>AI Top Matches</span>
             </h2>
-            <span className="text-xs text-slate-400">Pre-vetted</span>
+            <span className="text-xs text-slate-500 font-medium">Pre-vetted</span>
           </div>
 
           <div className="space-y-3">
@@ -217,19 +219,19 @@ export default function CorporateDashboardPage() {
                 skills: ["Rust", "Embedded C", "AWS IoT"],
               },
             ].map((cand, i) => (
-              <div key={i} className="p-4 rounded-xl bg-white/[0.04] border border-white/10">
+              <div key={i} className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
                 <div className="flex items-center justify-between mb-1">
-                  <h4 className="text-sm font-bold text-white">{cand.name}</h4>
-                  <span className="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30">
+                  <h4 className="text-sm font-bold text-slate-900">{cand.name}</h4>
+                  <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
                     {cand.score} Match
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400">{cand.college}</p>
+                <p className="text-[11px] text-slate-500">{cand.college}</p>
                 <div className="flex flex-wrap gap-1.5 mt-2">
                   {cand.skills.map((s, si) => (
                     <span
                       key={si}
-                      className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10"
+                      className="text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200"
                     >
                       {s}
                     </span>
@@ -237,7 +239,7 @@ export default function CorporateDashboardPage() {
                 </div>
                 <button
                   type="button"
-                  className="w-full mt-3 py-1.5 rounded-lg bg-blue-600/30 hover:bg-blue-600 border border-blue-400/40 text-xs font-bold text-blue-200 hover:text-white transition"
+                  className="w-full mt-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-xs font-bold text-white transition cursor-pointer shadow-xs"
                 >
                   Schedule Interview
                 </button>
@@ -246,11 +248,11 @@ export default function CorporateDashboardPage() {
           </div>
 
           {/* ITBC Verified Guarantee */}
-          <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-950/40 to-teal-950/40 border border-emerald-500/30 text-xs">
-            <div className="flex items-center gap-2 text-emerald-300 font-bold mb-1">
-              <CheckCircle2 className="size-4" /> 100% Background & Skill Verified
+          <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 text-xs text-slate-700">
+            <div className="flex items-center gap-2 text-emerald-900 font-bold mb-1">
+              <CheckCircle2 className="size-4 text-emerald-600" /> 100% Background & Skill Verified
             </div>
-            <p className="text-[11px] text-slate-300 leading-relaxed">
+            <p className="text-[11px] text-slate-600 leading-relaxed">
               Every candidate has executed verified GitHub live project commits and passed ITBC academic council evaluation.
             </p>
           </div>

@@ -12,10 +12,7 @@ import {
   Clock,
   ArrowUpRight,
   TrendingUp,
-  FileCode2,
   Sparkles,
-  Search,
-  Filter,
 } from "lucide-react";
 
 const studentMenuItems = [
@@ -38,9 +35,9 @@ export default function StudentDashboardPage() {
       menuItems={studentMenuItems}
     >
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 p-6 sm:p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 p-6 sm:p-8 text-white shadow-md">
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-blue-200 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-blue-100 mb-3">
             <Sparkles className="size-3.5 text-amber-300" />
             <span>Digital Knowledge Scholar Member</span>
           </div>
@@ -54,14 +51,14 @@ export default function StudentDashboardPage() {
             <button
               type="button"
               onClick={() => setActiveTab("projects")}
-              className="px-4 py-2 rounded-lg bg-white text-blue-900 font-bold text-xs shadow hover:bg-blue-50 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-white text-blue-900 font-bold text-xs shadow-sm hover:bg-blue-50 transition flex items-center gap-1.5 cursor-pointer"
             >
               <FolderKanban className="size-4" /> View My Projects
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("jobs")}
-              className="px-4 py-2 rounded-lg bg-blue-600/40 border border-white/30 text-white font-bold text-xs hover:bg-blue-600/60 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-blue-600/40 border border-white/30 text-white font-bold text-xs hover:bg-blue-600/60 transition flex items-center gap-1.5 cursor-pointer"
             >
               <Briefcase className="size-4" /> Explore Internships
             </button>
@@ -69,46 +66,54 @@ export default function StudentDashboardPage() {
         </div>
       </div>
 
-      {/* Metrics Row */}
+      {/* Metrics Row (White Cards) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Live Projects</span>
-            <FolderKanban className="size-5 text-blue-400" />
+            <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+              <FolderKanban className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">4 Active</div>
-          <p className="text-[11px] text-emerald-400 mt-1 flex items-center gap-1">
+          <div className="text-2xl font-bold text-slate-900">4 Active</div>
+          <p className="text-[11px] text-emerald-700 font-semibold mt-1 flex items-center gap-1">
             <CheckCircle2 className="size-3" /> 2 Milestones Submitted
           </p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Internships Applied</span>
-            <Briefcase className="size-5 text-indigo-400" />
+            <div className="p-2 rounded-lg bg-indigo-50 text-indigo-600">
+              <Briefcase className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">7 Drives</div>
-          <p className="text-[11px] text-blue-400 mt-1 flex items-center gap-1">
+          <div className="text-2xl font-bold text-slate-900">7 Drives</div>
+          <p className="text-[11px] text-blue-700 font-semibold mt-1 flex items-center gap-1">
             <Clock className="size-3" /> 2 Interviews Scheduled
           </p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Verified Badges</span>
-            <Award className="size-5 text-amber-400" />
+            <div className="p-2 rounded-lg bg-amber-50 text-amber-600">
+              <Award className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">12 Badges</div>
-          <p className="text-[11px] text-amber-300 mt-1">Full-Stack, Cloud & DevOps</p>
+          <div className="text-2xl font-bold text-slate-900">12 Badges</div>
+          <p className="text-[11px] text-amber-700 font-semibold mt-1">Full-Stack, Cloud & DevOps</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">AI Readiness</span>
-            <BrainCircuit className="size-5 text-emerald-400" />
+            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+              <BrainCircuit className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">88% Score</div>
-          <p className="text-[11px] text-emerald-400 mt-1">Top 5% across National Hubs</p>
+          <div className="text-2xl font-bold text-slate-900">88% Score</div>
+          <p className="text-[11px] text-emerald-700 font-semibold mt-1">Top 5% across National Hubs</p>
         </div>
       </div>
 
@@ -117,13 +122,13 @@ export default function StudentDashboardPage() {
         {/* Left Column: Active Projects */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-              <FolderKanban className="size-5 text-blue-400" />
+            <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+              <FolderKanban className="size-5 text-blue-600" />
               <span>Enrolled Industry Projects</span>
             </h2>
             <button
               type="button"
-              className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1"
+              className="text-xs font-bold text-blue-700 hover:text-blue-800 flex items-center gap-1 cursor-pointer"
             >
               Browse All (3,500+) <ArrowUpRight className="size-3.5" />
             </button>
@@ -158,37 +163,37 @@ export default function StudentDashboardPage() {
             ].map((p, i) => (
               <div
                 key={i}
-                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-blue-400/40 transition group"
+                className="p-5 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30 w-fit">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 w-fit">
                     {p.tag}
                   </span>
-                  <span className="text-xs text-slate-400 flex items-center gap-1">
-                    <Clock className="size-3 text-slate-500" /> Due: {p.deadline}
+                  <span className="text-xs text-slate-500 flex items-center gap-1 font-medium">
+                    <Clock className="size-3 text-slate-400" /> Due: {p.deadline}
                   </span>
                 </div>
-                <h3 className="text-sm font-bold text-white group-hover:text-blue-300 transition">
+                <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition">
                   {p.title}
                 </h3>
-                <p className="text-xs text-slate-400 mt-1">Sponsored by: {p.partner}</p>
+                <p className="text-xs text-slate-500 mt-1">Sponsored by: {p.partner}</p>
 
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between gap-4">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center justify-between text-xs text-slate-300 mb-1">
+                    <div className="flex items-center justify-between text-xs text-slate-600 mb-1">
                       <span>Milestone Progress</span>
-                      <span className="font-bold text-white">{p.progress}%</span>
+                      <span className="font-bold text-slate-900">{p.progress}%</span>
                     </div>
-                    <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                       <div
-                        className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"
+                        className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"
                         style={{ width: `${p.progress}%` }}
                       />
                     </div>
                   </div>
                   <button
                     type="button"
-                    className="px-3 py-1.5 rounded-lg bg-blue-600/30 hover:bg-blue-600 border border-blue-400/40 text-xs font-bold text-white transition shrink-0"
+                    className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-xs font-bold text-white transition shrink-0 cursor-pointer shadow-xs"
                   >
                     Submit Work
                   </button>
@@ -201,11 +206,11 @@ export default function StudentDashboardPage() {
         {/* Right Column: Recommended Opportunities */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-              <Briefcase className="size-5 text-emerald-400" />
+            <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+              <Briefcase className="size-5 text-emerald-600" />
               <span>Recommended Drives</span>
             </h2>
-            <span className="text-xs text-slate-400">Match score</span>
+            <span className="text-xs text-slate-500 font-medium">Match score</span>
           </div>
 
           <div className="space-y-3">
@@ -234,22 +239,22 @@ export default function StudentDashboardPage() {
             ].map((j, i) => (
               <div
                 key={i}
-                className="p-4 rounded-xl bg-white/[0.04] border border-white/10 hover:border-emerald-500/40 transition"
+                className="p-4 rounded-xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-bold text-white">{j.company}</span>
-                  <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">
+                  <span className="text-xs font-bold text-slate-900">{j.company}</span>
+                  <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                     {j.score} Match
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-200">{j.title}</h4>
-                <div className="flex items-center justify-between text-xs text-slate-400 mt-2">
-                  <span>{j.stipend}</span>
-                  <span className="text-blue-300">{j.type}</span>
+                <h4 className="text-sm font-bold text-slate-800">{j.title}</h4>
+                <div className="flex items-center justify-between text-xs text-slate-500 mt-2">
+                  <span className="font-semibold text-slate-700">{j.stipend}</span>
+                  <span className="text-blue-700 font-medium">{j.type}</span>
                 </div>
                 <button
                   type="button"
-                  className="w-full mt-3 py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600 border border-emerald-400/40 text-xs font-bold text-emerald-200 hover:text-white transition"
+                  className="w-full mt-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-xs font-bold text-white transition cursor-pointer shadow-xs"
                 >
                   1-Click Apply with ITBC Profile
                 </button>
@@ -258,16 +263,16 @@ export default function StudentDashboardPage() {
           </div>
 
           {/* Quick Skill Test */}
-          <div className="p-4 rounded-xl bg-gradient-to-br from-indigo-900/30 to-purple-900/30 border border-indigo-500/30 text-xs text-slate-300">
-            <div className="flex items-center gap-2 text-indigo-300 font-bold mb-1">
-              <BrainCircuit className="size-4" /> AI Skill Assessment Available
+          <div className="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 text-xs text-slate-700">
+            <div className="flex items-center gap-2 text-indigo-900 font-bold mb-1">
+              <BrainCircuit className="size-4 text-indigo-600" /> AI Skill Assessment Available
             </div>
-            <p className="text-[11px] leading-relaxed">
+            <p className="text-[11px] text-slate-600 leading-relaxed">
               Verify your Python & System Design credentials to unlock Class A++ verified company listings.
             </p>
             <button
               type="button"
-              className="mt-2.5 px-3 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs"
+              className="mt-2.5 px-3 py-1.5 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs cursor-pointer shadow-xs"
             >
               Start 15-Min Test
             </button>

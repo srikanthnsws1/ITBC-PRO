@@ -10,7 +10,7 @@ import {
   Handshake,
   ArrowRight,
   ShieldCheck,
-  LayoutDashboard,
+  KeyRound,
 } from "lucide-react";
 import Logo from "@/components/Logo";
 import { ROLE_CONFIGS, Role, getStoredSession } from "@/lib/auth";
@@ -24,10 +24,8 @@ const ROLE_ICONS = {
 
 export default function DashboardPortalPage() {
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const session = getStoredSession();
     if (session && session.role && ROLE_CONFIGS[session.role]) {
       router.push(ROLE_CONFIGS[session.role].dashboardPath);
@@ -35,58 +33,81 @@ export default function DashboardPortalPage() {
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-[#070e24] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-[#070e24] to-[#040816] text-white flex flex-col justify-center p-6">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-center p-6 font-sans">
       <div className="max-w-4xl mx-auto w-full">
+        {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-block bg-white p-1 rounded-md shadow mb-4">
+          <div className="inline-block bg-white p-1 rounded-md border border-slate-200 shadow-sm mb-4">
             <Logo />
           </div>
-          <h1 className="text-3xl font-display font-extrabold tracking-tight">
+          <h1 className="text-3xl font-display font-extrabold text-slate-900 tracking-tight">
             ITBC Member Dashboards
           </h1>
-          <p className="mt-2 text-sm text-slate-300 max-w-xl mx-auto">
-            Choose your authorized wing to enter the dedicated management environment or inspect role-specific capabilities.
+          <p className="mt-2 text-sm text-slate-600 max-w-xl mx-auto">
+            Select your member wing below to access your live workspace. Dashboards appear upon successful authorization.
           </p>
         </div>
 
+        {/* Role Cards in Pure White */}
         <div className="grid sm:grid-cols-2 gap-4">
           {(Object.keys(ROLE_CONFIGS) as Role[]).map((rKey) => {
             const cfg = ROLE_CONFIGS[rKey];
             const Icon = ROLE_ICONS[rKey];
             return (
-              <Link
+              <div
                 key={rKey}
-                href={cfg.dashboardPath}
-                className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-blue-400/40 hover:bg-white/[0.08] transition shadow-xl group flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="size-12 rounded-xl bg-blue-600/20 border border-blue-400/30 text-blue-300 grid place-items-center group-hover:scale-105 transition">
+                    <div className="size-12 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 grid place-items-center">
                       <Icon className="size-6" />
                     </div>
-                    <span className="text-xs font-bold text-blue-300 bg-blue-500/10 px-2.5 py-1 rounded-full border border-blue-500/20">
+                    <span className="text-xs font-bold text-blue-800 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
                       {cfg.badge}
                     </span>
                   </div>
-                  <h2 className="text-lg font-bold text-white group-hover:text-blue-300 transition">
+                  <h2 className="text-lg font-bold text-slate-900">
                     {cfg.label} Dashboard
                   </h2>
-                  <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                  <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                     {cfg.description}
                   </p>
+
+                  {/* Test Credentials Snippet */}
+                  <div className="mt-3.5 p-2.5 rounded-lg bg-amber-50/80 border border-amber-200 text-[11px] text-slate-700 flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <KeyRound className="size-3.5 text-amber-700 shrink-0" />
+                      <span>
+                        Test: <code className="font-mono text-slate-900 font-bold">{cfg.testCredentials.email}</code>
+                      </span>
+                    </div>
+                    <span className="text-slate-500 font-mono">pw: password123</span>
+                  </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold text-blue-400 group-hover:text-blue-300">
-                  <span>Enter Dashboard</span>
-                  <ArrowRight className="size-4 group-hover:translate-x-1 transition" />
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                  <Link
+                    href={cfg.loginPath}
+                    className="text-xs font-bold text-slate-600 hover:text-blue-700 underline"
+                  >
+                    Go to Login
+                  </Link>
+                  <Link
+                    href={cfg.dashboardPath}
+                    className="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-xs font-bold text-white shadow-sm flex items-center gap-1.5 transition"
+                  >
+                    <span>Enter Workspace</span>
+                    <ArrowRight className="size-3.5" />
+                  </Link>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
 
-        <div className="mt-8 text-center text-xs text-slate-400">
-          <Link href="/" className="hover:text-white underline">
+        <div className="mt-8 text-center text-xs text-slate-500">
+          <Link href="/" className="hover:text-blue-700 font-semibold underline">
             ← Return to ITBC Public Home
           </Link>
         </div>

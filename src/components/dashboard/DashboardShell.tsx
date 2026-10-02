@@ -14,12 +14,12 @@ import {
   UserCog,
   Building,
   Handshake,
-  CheckCircle,
-  ExternalLink,
   ShieldCheck,
+  ExternalLink,
+  Lock,
 } from "lucide-react";
 import Logo from "@/components/Logo";
-import { ROLE_CONFIGS, Role, UserSession, clearSession, getStoredSession } from "@/lib/auth";
+import { ROLE_CONFIGS, Role, UserSession, clearSession, getStoredSession, saveSession } from "@/lib/auth";
 
 interface NavMenuItem {
   label: string;
@@ -55,6 +55,7 @@ export default function DashboardShell({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [roleSwitcherOpen, setRoleSwitcherOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   const config = ROLE_CONFIGS[role];
   const CurrentIcon = ROLE_ICONS[role];
@@ -64,8 +65,11 @@ export default function DashboardShell({
     if (stored && stored.role === role) {
       setSession(stored);
     } else {
+      // If user came directly, set the demo session for convenience
+      saveSession(config.demoUser);
       setSession(config.demoUser);
     }
+    setIsReady(true);
   }, [role, config.demoUser]);
 
   const handleLogout = () => {
@@ -77,31 +81,47 @@ export default function DashboardShell({
   const currentUserOrg = session?.organization || config.demoUser.organization;
   const currentUserId = session?.id || config.demoUser.id;
 
+  if (!isReady) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="flex items-center gap-3 text-slate-600 text-sm font-semibold">
+          <div className="size-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <span>Verifying Member Session...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-[#070e24] text-slate-100 flex flex-col font-sans">
-      {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#0a1435]/95 backdrop-blur border-b border-white/10">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col font-sans">
+      {/* Top Navbar (Pure White Header) */}
+      <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
         <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           {/* Left: Brand & Mobile Toggle */}
           <div className="flex items-center gap-4">
             <button
               type="button"
               onClick={() => setMobileMenuOpen((v) => !v)}
-              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 lg:hidden"
+              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 lg:hidden"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
             </button>
 
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="bg-white p-1 rounded-md shadow shrink-0">
+              <div className="bg-white p-1 rounded-md border border-slate-200 shadow-xs shrink-0">
                 <Logo />
               </div>
               <div className="hidden sm:block leading-tight">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                  Dashboard Portal
-                </span>
-                <p className="text-[11px] text-slate-400">Information Technology Business Council</p>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-700">
+                    {config.label} Dashboard
+                  </span>
+                  <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+                    Logged In
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-500">Information Technology Business Council</p>
               </div>
             </Link>
           </div>
@@ -112,30 +132,30 @@ export default function DashboardShell({
               <Search className="absolute left-3.5 top-2.5 size-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search projects, internships, verified members, research papers..."
-                className="w-full rounded-full bg-white/5 border border-white/15 pl-10 pr-4 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400"
+                placeholder="Search live projects, applications, academic grants..."
+                className="w-full rounded-full bg-slate-100 border border-slate-200 pl-10 pr-4 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-100 transition"
               />
             </div>
           </div>
 
           {/* Right: Role Switcher, Notifications & Profile */}
           <div className="flex items-center gap-3">
-            {/* Quick Role Switcher */}
+            {/* Quick Switcher between authorized roles */}
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setRoleSwitcherOpen((v) => !v)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-200 transition"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition cursor-pointer"
               >
-                <CurrentIcon className="size-3.5 text-blue-400" />
+                <CurrentIcon className="size-3.5 text-blue-600" />
                 <span className="hidden sm:inline">{config.shortLabel} View</span>
-                <ChevronDown className={`size-3 text-slate-400 transition ${roleSwitcherOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`size-3 text-slate-500 transition ${roleSwitcherOpen ? "rotate-180" : ""}`} />
               </button>
 
               {roleSwitcherOpen && (
-                <div className="absolute right-0 mt-2 w-56 rounded-xl border border-white/15 bg-[#0b1432] p-2 shadow-2xl backdrop-blur-xl z-50">
+                <div className="absolute right-0 mt-2 w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-xl z-50">
                   <p className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    Switch Dashboard
+                    Switch Role Dashboard
                   </p>
                   {(Object.keys(ROLE_CONFIGS) as Role[]).map((rKey) => {
                     const rCfg = ROLE_CONFIGS[rKey];
@@ -149,13 +169,15 @@ export default function DashboardShell({
                         className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition ${
                           isSelected
                             ? "bg-blue-600 text-white font-bold"
-                            : "text-slate-300 hover:bg-white/10 hover:text-white"
+                            : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                         }`}
                       >
                         <RIcon className="size-4 shrink-0" />
                         <div className="min-w-0">
                           <p className="truncate">{rCfg.label}</p>
-                          <p className="text-[10px] text-slate-400 truncate">{rCfg.badge}</p>
+                          <p className={`text-[10px] truncate ${isSelected ? "text-blue-100" : "text-slate-500"}`}>
+                            {rCfg.badge}
+                          </p>
                         </div>
                       </Link>
                     );
@@ -169,57 +191,58 @@ export default function DashboardShell({
               <button
                 type="button"
                 onClick={() => setNotificationsOpen((v) => !v)}
-                className="relative p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition"
+                className="relative p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition cursor-pointer"
                 aria-label="Notifications"
               >
                 <Bell className="size-4" />
-                <span className="absolute top-1.5 right-1.5 size-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="absolute top-1.5 right-1.5 size-2 rounded-full bg-emerald-500 ring-2 ring-white" />
               </button>
 
               {notificationsOpen && (
-                <div className="absolute right-0 mt-2 w-80 rounded-xl border border-white/15 bg-[#0b1432] p-3 shadow-2xl backdrop-blur-xl z-50">
-                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <span className="text-xs font-bold text-white">Notifications</span>
-                    <span className="text-[10px] text-blue-400 cursor-pointer hover:underline">
+                <div className="absolute right-0 mt-2 w-80 rounded-xl border border-slate-200 bg-white p-3 shadow-xl z-50">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <span className="text-xs font-bold text-slate-900">Notifications</span>
+                    <span className="text-[10px] text-blue-600 cursor-pointer hover:underline font-semibold">
                       Mark all read
                     </span>
                   </div>
                   <div className="space-y-2 mt-2">
-                    <div className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-xs transition cursor-pointer">
-                      <p className="font-semibold text-white">New Live Project Match</p>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
+                    <div className="p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs transition cursor-pointer border border-slate-100">
+                      <p className="font-semibold text-slate-900">New Project Milestone Available</p>
+                      <p className="text-[11px] text-slate-600 mt-0.5">
                         Cybersecurity Hub posted an enterprise challenge open to your role.
                       </p>
-                      <span className="text-[10px] text-slate-500">10m ago</span>
+                      <span className="text-[10px] text-slate-400 mt-1 block">10m ago</span>
                     </div>
-                    <div className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-xs transition cursor-pointer">
-                      <p className="font-semibold text-white">ITBC Member Verified</p>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
-                        Your credentials have been successfully accredited on the e-Governance gateway.
+                    <div className="p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs transition cursor-pointer border border-slate-100">
+                      <p className="font-semibold text-slate-900">ITBC Accreditation Confirmed</p>
+                      <p className="text-[11px] text-slate-600 mt-0.5">
+                        Your credentials have been successfully accredited on the national gateway.
                       </p>
-                      <span className="text-[10px] text-slate-500">2h ago</span>
+                      <span className="text-[10px] text-slate-400 mt-1 block">2h ago</span>
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* User Profile & Logout */}
-            <div className="flex items-center gap-3 pl-3 border-l border-white/15">
-              <div className="size-9 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold grid place-items-center text-xs shadow-md border border-white/20">
+            {/* User Profile & Sign Out */}
+            <div className="flex items-center gap-3 pl-3 border-l border-slate-200">
+              <div className="size-9 rounded-full bg-blue-700 text-white font-bold grid place-items-center text-xs shadow-sm">
                 {currentUserName.charAt(0)}
               </div>
               <div className="hidden lg:block text-left text-xs leading-tight">
-                <p className="font-bold text-white truncate max-w-[130px]">{currentUserName}</p>
-                <p className="text-[10px] text-blue-400 truncate max-w-[130px]">{currentUserId}</p>
+                <p className="font-bold text-slate-900 truncate max-w-[140px]">{currentUserName}</p>
+                <p className="text-[10px] text-blue-700 font-semibold truncate max-w-[140px]">{currentUserId}</p>
               </div>
               <button
                 type="button"
                 onClick={handleLogout}
-                title="Sign Out"
-                className="p-2 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition"
+                title="Sign Out of Dashboard"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-rose-700 hover:bg-rose-50 text-xs font-semibold transition cursor-pointer"
               >
                 <LogOut className="size-4" />
+                <span className="hidden sm:inline">Sign Out</span>
               </button>
             </div>
           </div>
@@ -228,34 +251,34 @@ export default function DashboardShell({
 
       {/* Main Layout Area */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar (Desktop) */}
-        <aside className="hidden lg:flex w-64 flex-col justify-between border-r border-white/10 bg-[#08112d] p-4 shrink-0">
+        {/* Left Sidebar (Desktop - Light Slate/White Theme) */}
+        <aside className="hidden lg:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 shrink-0 shadow-xs">
           <div className="space-y-6">
-            {/* User Badge Card */}
-            <div className="p-3.5 rounded-xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10">
+            {/* User Badge Card (Clean Light Styling) */}
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
               <div className="flex items-center gap-3 mb-2">
-                <div className="size-10 rounded-lg bg-blue-600/30 border border-blue-400/40 text-blue-300 grid place-items-center">
+                <div className="size-10 rounded-lg bg-blue-100 border border-blue-200 text-blue-700 grid place-items-center">
                   <CurrentIcon className="size-5" />
                 </div>
                 <div className="min-w-0">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">
-                    <ShieldCheck className="size-3 text-emerald-400" />
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
+                    <ShieldCheck className="size-3 text-emerald-600" />
                     Verified Member
                   </span>
-                  <p className="text-xs font-bold text-white truncate mt-1">{currentUserName}</p>
+                  <p className="text-xs font-bold text-slate-900 truncate mt-1">{currentUserName}</p>
                 </div>
               </div>
-              <p className="text-[11px] text-slate-400 truncate">{currentUserOrg}</p>
-              <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
-                <span>ID: {currentUserId}</span>
-                <span className="text-emerald-400 font-semibold">● Active</span>
+              <p className="text-[11px] text-slate-600 truncate">{currentUserOrg}</p>
+              <div className="mt-2.5 pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] text-slate-500">
+                <span>ID: <strong className="text-slate-700">{currentUserId}</strong></span>
+                <span className="text-emerald-700 font-bold">● Active Session</span>
               </div>
             </div>
 
             {/* Navigation Menu */}
             <div>
               <p className="px-3 mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                Menu Navigation
+                Workspace Menu
               </p>
               <nav className="space-y-1">
                 {menuItems.map((item) => {
@@ -268,20 +291,20 @@ export default function DashboardShell({
                       onClick={() => setActiveTab(item.id)}
                       className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer ${
                         isActive
-                          ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
-                          : "text-slate-300 hover:bg-white/5 hover:text-white"
+                          ? "bg-blue-600 text-white shadow-sm font-bold"
+                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <Icon className={`size-4 ${isActive ? "text-white" : "text-slate-400"}`} />
+                        <Icon className={`size-4 ${isActive ? "text-white" : "text-slate-500"}`} />
                         <span>{item.label}</span>
                       </div>
                       {item.badge && (
                         <span
-                          className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
+                          className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                             isActive
                               ? "bg-white/20 text-white"
-                              : "bg-blue-500/20 text-blue-300 border border-blue-400/30"
+                              : "bg-blue-100 text-blue-800 border border-blue-200"
                           }`}
                         >
                           {item.badge}
@@ -294,17 +317,17 @@ export default function DashboardShell({
             </div>
           </div>
 
-          {/* Bottom Help / Link */}
-          <div className="pt-4 border-t border-white/10">
+          {/* Bottom Help / Main Site Link */}
+          <div className="pt-4 border-t border-slate-200">
             <Link
               href="/"
-              className="flex items-center justify-between text-xs text-slate-400 hover:text-blue-400 py-1"
+              className="flex items-center justify-between text-xs text-slate-600 hover:text-blue-700 py-1 font-medium transition"
             >
-              <span>ITBC Main Website</span>
+              <span>Back to Public Website</span>
               <ExternalLink className="size-3.5" />
             </Link>
-            <p className="text-[10px] text-slate-500 mt-2">
-              National Digital Knowledge Ecosystem • Support: info@itbc.world
+            <p className="text-[10px] text-slate-400 mt-2">
+              ITBC National Gateway • Support: info@itbc.world
             </p>
           </div>
         </aside>
@@ -313,20 +336,20 @@ export default function DashboardShell({
         {mobileMenuOpen && (
           <div className="fixed inset-0 z-50 lg:hidden flex">
             <div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+              className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs"
               onClick={() => setMobileMenuOpen(false)}
             />
-            <div className="relative w-72 max-w-full bg-[#08112d] border-r border-white/10 p-5 flex flex-col justify-between z-10">
+            <div className="relative w-72 max-w-full bg-white border-r border-slate-200 p-5 flex flex-col justify-between z-10 shadow-2xl">
               <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                   <div className="flex items-center gap-2">
-                    <CurrentIcon className="size-5 text-blue-400" />
-                    <span className="font-bold text-sm text-white">{config.label}</span>
+                    <CurrentIcon className="size-5 text-blue-600" />
+                    <span className="font-bold text-sm text-slate-900">{config.label}</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-white"
+                    className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900"
                   >
                     <X className="size-5" />
                   </button>
@@ -346,8 +369,8 @@ export default function DashboardShell({
                         }}
                         className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
                           isActive
-                            ? "bg-blue-600 text-white"
-                            : "text-slate-300 hover:bg-white/5 hover:text-white"
+                            ? "bg-blue-600 text-white font-bold"
+                            : "text-slate-700 hover:bg-slate-100"
                         }`}
                       >
                         <div className="flex items-center gap-3">
@@ -355,7 +378,7 @@ export default function DashboardShell({
                           <span>{item.label}</span>
                         </div>
                         {item.badge && (
-                          <span className="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-300">
+                          <span className="px-1.5 py-0.5 rounded text-[10px] bg-blue-100 text-blue-800">
                             {item.badge}
                           </span>
                         )}
@@ -365,11 +388,11 @@ export default function DashboardShell({
                 </nav>
               </div>
 
-              <div className="pt-4 border-t border-white/10 space-y-2">
+              <div className="pt-4 border-t border-slate-200 space-y-2">
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold text-rose-400 hover:bg-rose-500/10 transition"
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-bold text-rose-700 hover:bg-rose-50 transition"
                 >
                   <LogOut className="size-4" />
                   <span>Sign Out</span>
@@ -379,8 +402,8 @@ export default function DashboardShell({
           </div>
         )}
 
-        {/* Content Area */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-[#060c20]">
+        {/* Content Area (Clean White / Soft Slate Background) */}
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto space-y-6">{children}</div>
         </main>
       </div>

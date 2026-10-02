@@ -6,14 +6,9 @@ import {
   Handshake,
   Landmark,
   Rocket,
-  Building,
   TrendingUp,
   Sparkles,
-  CheckCircle2,
-  FileText,
-  Clock,
   Globe2,
-  Calendar,
   Layers,
 } from "lucide-react";
 
@@ -36,9 +31,9 @@ export default function PartnerDashboardPage() {
       menuItems={partnerMenuItems}
     >
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-700 via-amber-700 to-slate-900 p-6 sm:p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-700 via-amber-700 to-slate-900 p-6 sm:p-8 text-white shadow-md">
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-orange-200 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-orange-100 mb-3">
             <Sparkles className="size-3.5 text-amber-300" />
             <span>Regional Apex Institutional Partner</span>
           </div>
@@ -52,14 +47,14 @@ export default function PartnerDashboardPage() {
             <button
               type="button"
               onClick={() => setActiveTab("mous")}
-              className="px-4 py-2 rounded-lg bg-white text-orange-950 font-bold text-xs shadow hover:bg-orange-50 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-white text-orange-950 font-bold text-xs shadow-sm hover:bg-orange-50 transition flex items-center gap-1.5 cursor-pointer"
             >
               <Handshake className="size-4 text-orange-700" /> View Active MoUs (15)
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("incubator")}
-              className="px-4 py-2 rounded-lg bg-orange-600/40 border border-white/30 text-white font-bold text-xs hover:bg-orange-600/60 transition flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-orange-600/40 border border-white/30 text-white font-bold text-xs hover:bg-orange-600/60 transition flex items-center gap-1.5 cursor-pointer"
             >
               <Rocket className="size-4" /> Startup Accelerator
             </button>
@@ -67,42 +62,50 @@ export default function PartnerDashboardPage() {
         </div>
       </div>
 
-      {/* Metrics Row */}
+      {/* Metrics Row (White Cards) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Affiliated Colleges</span>
-            <Landmark className="size-5 text-orange-400" />
+            <div className="p-2 rounded-lg bg-orange-50 text-orange-600">
+              <Landmark className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">48 Colleges</div>
-          <p className="text-[11px] text-orange-300 mt-1">Under Regional Chapter</p>
+          <div className="text-2xl font-bold text-slate-900">48 Colleges</div>
+          <p className="text-[11px] text-orange-700 font-semibold mt-1">Under Regional Chapter</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Seed Capital Deployed</span>
-            <TrendingUp className="size-5 text-emerald-400" />
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider">Seed Capital</span>
+            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+              <TrendingUp className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">₹10.2 Crore</div>
-          <p className="text-[11px] text-emerald-400 mt-1">24 Grants Disbursed</p>
+          <div className="text-2xl font-bold text-slate-900">₹10.2 Crore</div>
+          <p className="text-[11px] text-emerald-700 font-semibold mt-1">24 Grants Disbursed</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Incubated Startups</span>
-            <Rocket className="size-5 text-amber-400" />
+            <div className="p-2 rounded-lg bg-amber-50 text-amber-600">
+              <Rocket className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">64 Startups</div>
-          <p className="text-[11px] text-amber-300 mt-1">14 Scaled to Series A</p>
+          <div className="text-2xl font-bold text-slate-900">64 Startups</div>
+          <p className="text-[11px] text-amber-700 font-semibold mt-1">14 Scaled to Series A</p>
         </div>
 
-        <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Active MoUs</span>
-            <Handshake className="size-5 text-blue-400" />
+            <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+              <Handshake className="size-4" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-white">15 Executed</div>
-          <p className="text-[11px] text-blue-300 mt-1">State & Industry Bodies</p>
+          <div className="text-2xl font-bold text-slate-900">15 Executed</div>
+          <p className="text-[11px] text-blue-700 font-semibold mt-1">State & Industry Bodies</p>
         </div>
       </div>
 
@@ -111,13 +114,13 @@ export default function PartnerDashboardPage() {
         {/* Left: MoU Tracker */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-              <Handshake className="size-5 text-orange-400" />
+            <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+              <Handshake className="size-5 text-orange-600" />
               <span>Institutional MoUs & Chapters</span>
             </h2>
             <button
               type="button"
-              className="text-xs font-semibold text-orange-400 hover:text-orange-300"
+              className="text-xs font-bold text-orange-700 hover:text-orange-800 cursor-pointer"
             >
               + Draft New Agreement
             </button>
@@ -149,22 +152,22 @@ export default function PartnerDashboardPage() {
             ].map((mou, i) => (
               <div
                 key={i}
-                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-orange-500/40 transition"
+                className="p-5 rounded-xl bg-white border border-slate-200 hover:border-orange-300 hover:shadow-md transition"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                  <span className="text-xs font-bold text-orange-300 bg-orange-500/10 px-2.5 py-0.5 rounded border border-orange-500/30 w-fit">
+                  <span className="text-xs font-bold text-orange-800 bg-orange-50 px-2.5 py-0.5 rounded border border-orange-200 w-fit">
                     {mou.status} • {mou.centers}
                   </span>
-                  <span className="text-xs text-slate-400">{mou.term}</span>
+                  <span className="text-xs text-slate-500 font-medium">{mou.term}</span>
                 </div>
-                <h3 className="text-sm font-bold text-white">{mou.institution}</h3>
-                <p className="text-xs text-slate-300 mt-1">{mou.focus}</p>
+                <h3 className="text-sm font-bold text-slate-900">{mou.institution}</h3>
+                <p className="text-xs text-slate-600 mt-1">{mou.focus}</p>
 
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-                  <span className="text-slate-400">Governance ID: #ITBC-MOU-2026-{100 + i}</span>
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span className="text-slate-500 font-mono">Governance ID: #ITBC-MOU-2026-{100 + i}</span>
                   <button
                     type="button"
-                    className="px-3 py-1.5 rounded-lg bg-orange-600/30 hover:bg-orange-600 border border-orange-400/40 font-bold text-orange-200 hover:text-white transition"
+                    className="px-3.5 py-1.5 rounded-lg bg-orange-700 hover:bg-orange-800 font-bold text-white transition cursor-pointer shadow-xs"
                   >
                     View Terms & Audit
                   </button>
@@ -176,8 +179,8 @@ export default function PartnerDashboardPage() {
 
         {/* Right: Startup Accelerator */}
         <div className="space-y-4">
-          <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-            <Rocket className="size-5 text-amber-400" />
+          <h2 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
+            <Rocket className="size-5 text-amber-600" />
             <span>Incubated Ventures</span>
           </h2>
 
@@ -202,24 +205,24 @@ export default function PartnerDashboardPage() {
                 stage: "Commercial Scaling",
               },
             ].map((venture, i) => (
-              <div key={i} className="p-4 rounded-xl bg-white/[0.04] border border-white/10">
+              <div key={i} className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
                 <div className="flex items-center justify-between mb-1">
-                  <h4 className="text-sm font-bold text-white">{venture.name}</h4>
-                  <span className="text-xs font-bold text-amber-400">{venture.seed}</span>
+                  <h4 className="text-sm font-bold text-slate-900">{venture.name}</h4>
+                  <span className="text-xs font-bold text-amber-700">{venture.seed}</span>
                 </div>
-                <p className="text-xs text-slate-300">{venture.domain}</p>
-                <div className="mt-2 flex items-center justify-between text-[11px] text-slate-400">
-                  <span className="text-emerald-400 font-medium">{venture.stage}</span>
+                <p className="text-xs text-slate-600">{venture.domain}</p>
+                <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500">
+                  <span className="text-emerald-700 font-semibold">{venture.stage}</span>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="p-4 rounded-xl bg-gradient-to-br from-orange-950/40 to-amber-950/40 border border-orange-500/30 text-xs">
-            <div className="flex items-center gap-2 text-orange-300 font-bold mb-1">
-              <Globe2 className="size-4" /> Regional Chapter Summit 2026
+          <div className="p-4 rounded-xl bg-orange-50/70 border border-orange-200 text-xs text-slate-700">
+            <div className="flex items-center gap-2 text-orange-900 font-bold mb-1">
+              <Globe2 className="size-4 text-orange-600" /> Regional Chapter Summit 2026
             </div>
-            <p className="text-[11px] text-slate-300 leading-relaxed">
+            <p className="text-[11px] text-slate-600 leading-relaxed">
               Hosting the National ITBC Leadership Conclave with participation from state IT ministries, venture capitalists, and academic chancellors.
             </p>
           </div>
