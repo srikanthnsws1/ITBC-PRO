@@ -122,12 +122,12 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 py-6 sm:py-10 fit:py-3! px-4 sm:px-6 lg:px-8 flex flex-col justify-center font-sans">
+    <div className="dot-paper min-h-screen bg-slate-50 text-slate-900 py-6 sm:py-10 fit:py-3! px-4 sm:px-6 lg:px-8 flex flex-col justify-center font-sans">
       <div className="max-w-5xl mx-auto w-full fit:grid fit:max-w-6xl fit:grid-cols-[auto_minmax(0,1fr)] fit:items-center fit:gap-x-4 fit:gap-y-2.5">
         {/* Top Header / Brand */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-slate-200 fit:mb-0! fit:border-0 fit:pb-0">
           <Link href="/" aria-label="Return to ITBC main portal" className="inline-flex items-center gap-3 group">
-            <div className="bg-white p-1 rounded-md shadow border border-slate-200 shrink-0">
+            <div className="bg-white p-1 rounded-md border border-slate-200 shrink-0">
               <span className="block fit:hidden">
                 <LogoLockup />
               </span>
@@ -148,7 +148,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
         {/* Role Tabs */}
         <div className="mb-6 fit:mb-0">
           <div className="text-center sm:text-left mb-2.5 fit:hidden">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-700">
+            <span className="text-xs font-medium text-slate-500">
               Select Member Wing
             </span>
           </div>
@@ -162,24 +162,24 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                   key={rKey}
                   type="button"
                   onClick={() => handleRoleChange(rKey)}
-                  className={`flex min-w-0 items-center gap-2 p-2.5 sm:gap-3 sm:p-3.5 fit:p-2! rounded-xl border text-left transition-all duration-200 cursor-pointer ${
+                  className={`flex min-w-0 items-center gap-2 p-2.5 sm:gap-3 sm:p-3.5 fit:p-2! rounded-xl border text-left transition-colors duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-blue-50/80 border-blue-600 shadow-md ring-2 ring-blue-600/20"
+                      ? "bg-[#0b1437] border-[#0b1437] shadow-lg shadow-blue-900/20"
                       : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700"
                   }`}
                 >
                   <div
                     className={`size-8 sm:size-10 fit:size-8! rounded-lg grid place-items-center shrink-0 ${
-                      isActive ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
+                      isActive ? "bg-amber-400 text-[#0b1437]" : "bg-slate-100 text-slate-600"
                     }`}
                   >
                     <Icon className="size-4 sm:size-5" />
                   </div>
                   <div className="min-w-0">
-                    <p className={`text-sm font-bold truncate ${isActive ? "text-blue-900" : "text-slate-800"}`}>
+                    <p className={`text-sm font-bold truncate ${isActive ? "text-white" : "text-slate-800"}`}>
                       {rCfg.shortLabel}
                     </p>
-                    <p className="text-[11px] text-slate-500 truncate">{rCfg.badge}</p>
+                    <p className={`text-[11px] truncate ${isActive ? "text-slate-300" : "text-slate-500"}`}>{rCfg.badge}</p>
                   </div>
                 </button>
               );
@@ -188,14 +188,14 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
         </div>
 
         {/* Main Card Container (Pure White UI) */}
-        <div className="fit:col-span-2 rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.85fr)]">
+        <div className="fit:col-span-2 rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/10 overflow-hidden grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.85fr)]">
           {/* Form Side */}
           <div className="p-5 sm:p-10 fit:p-5! flex flex-col justify-between">
             <div>
               {/* Login vs Register Toggle */}
               <div className="flex flex-col-reverse items-start gap-4 sm:flex-row sm:items-center sm:justify-between mb-6 pb-4 fit:mb-3 fit:pb-2.5 border-b border-slate-200">
                 <div className="min-w-0">
-                  <h1 className="text-xl sm:text-2xl fit:text-xl! font-display font-extrabold text-slate-900 flex items-start gap-2.5">
+                  <h1 className="text-xl sm:text-2xl fit:text-xl! font-display font-bold text-slate-900 flex items-start gap-2.5">
                     <CurrentIcon className="size-6 shrink-0 mt-0.5 sm:mt-1 text-blue-600" />
                     <span>
                       {selectedRole === "student" && "Student"}
@@ -247,16 +247,16 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
               )}
 
               {/* TEST CREDENTIALS BOX (White/Light Theme with Auto-fill) */}
-              <div className="mb-6 p-4 rounded-xl bg-amber-50/80 border border-amber-200/80 text-slate-800 fit:mb-3 fit:flex fit:flex-wrap fit:items-center fit:gap-x-2 fit:gap-y-1 fit:px-2.5 fit:py-2">
+              <div className="mb-6 p-4 rounded-xl bg-slate-50 border border-dashed border-slate-300 text-slate-800 fit:mb-3 fit:flex fit:flex-wrap fit:items-center fit:gap-x-2 fit:gap-y-1 fit:px-2.5 fit:py-2">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2 fit:contents">
-                  <div className="flex items-center gap-2 text-xs font-bold text-amber-900">
-                    <KeyRound className="size-4 shrink-0 text-amber-700" />
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-800">
+                    <KeyRound className="size-4 shrink-0 text-slate-500" />
                     <span>Test Credentials ({config.shortLabel}):</span>
                   </div>
                   <button
                     type="button"
                     onClick={handleAutoFill}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px] shadow-sm transition cursor-pointer fit:order-last fit:ml-auto"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-900 text-white font-semibold text-[11px] transition cursor-pointer fit:order-last fit:ml-auto"
                   >
                     {copied ? (
                       <>
@@ -270,7 +270,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono bg-white p-2.5 rounded-lg border border-amber-200 break-all fit:flex fit:gap-2 fit:border-0 fit:bg-transparent fit:p-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono bg-white p-2.5 rounded-lg border border-slate-200 break-all fit:flex fit:gap-2 fit:border-0 fit:bg-transparent fit:p-0">
                   <div>
                     <span className="text-slate-500 font-sans font-medium text-[11px]">Email: </span>
                     <strong className="text-slate-900 select-all">{config.testCredentials.email}</strong>
@@ -280,7 +280,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                     <strong className="text-slate-900 select-all">{config.testCredentials.password}</strong>
                   </div>
                 </div>
-                <p className="text-[11px] text-amber-800 mt-2 font-sans fit:hidden">
+                <p className="text-[11px] text-slate-500 mt-2 font-sans fit:hidden">
                   Click <strong>&quot;Auto-Fill Form&quot;</strong> above, then hit <strong>&quot;Sign In&quot;</strong> below to test the dashboard.
                 </p>
               </div>
@@ -455,7 +455,7 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-4 fit:col-span-2 fit:mt-0.5 fit:py-2! rounded-lg bg-blue-700 hover:bg-blue-800 px-3 py-3 text-xs sm:text-sm font-bold uppercase tracking-wide sm:tracking-wider text-white shadow-md hover:shadow-lg transition duration-150 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+                  className="w-full mt-4 fit:col-span-2 fit:mt-0.5 fit:py-2! rounded-lg bg-[#0b1437] hover:bg-blue-700 px-3 py-3 shadow-md shadow-blue-900/20 text-sm font-semibold text-white transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                 >
                   {loading ? (
                     <div className="flex items-center gap-2 text-left">
@@ -510,49 +510,49 @@ export default function AuthCard({ initialRole, mode }: AuthCardProps) {
           </div>
 
           {/* Right Hero / Benefits Side (Light Slate / Soft Blue theme) */}
-          <div className="bg-slate-50 p-5 sm:p-8 lg:p-10 fit:p-6! border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col justify-between">
+          <div className="ink-panel p-5 sm:p-8 lg:p-10 fit:p-6! text-white flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-xs font-bold text-blue-800 mb-6 fit:mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white mb-6 fit:mb-3">
                 <span>ITBC Verified Network</span>
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="size-2 rounded-full bg-emerald-400 motion-safe:animate-pulse" />
               </div>
 
-              <h2 className="text-xl font-display font-extrabold text-slate-900 mb-3 fit:mb-2 fit:text-lg">
+              <h2 className="text-xl font-display font-extrabold text-white mb-3 fit:mb-2 fit:text-lg">
                 Why Join as a {config.label}?
               </h2>
-              <p className="text-xs text-slate-600 leading-relaxed mb-6 fit:mb-3">
+              <p className="text-xs text-slate-300 leading-relaxed mb-6 fit:mb-3">
                 Experience India&#39;s premier digital knowledge ecosystem uniting 125K+ professionals, 850+ colleges, and 1,200+ companies.
               </p>
 
               <div className="space-y-4 mb-8 fit:mb-4 fit:space-y-2.5">
                 {config.keyPoints.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="size-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <p className="text-xs text-slate-700 leading-snug font-medium">{point}</p>
+                    <CheckCircle2 className="size-4 text-amber-400 shrink-0 mt-0.5" />
+                    <p className="text-xs text-slate-100 leading-snug font-medium">{point}</p>
                   </div>
                 ))}
               </div>
 
               {/* Verified Badge / Mock Profile info */}
-              <div className="rounded-xl border border-slate-200 bg-white p-4 fit:p-3 text-xs shadow-sm">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4 fit:p-3 text-xs backdrop-blur-sm">
                 <div className="flex items-center gap-3">
-                  <div className="size-10 rounded-full bg-blue-700 text-white font-bold grid place-items-center text-sm shadow">
+                  <div className="size-10 rounded-full bg-amber-400 text-[#0b1437] font-bold grid place-items-center text-sm">
                     {config.demoUser.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-bold text-slate-900">{config.demoUser.name}</p>
-                    <p className="text-[11px] text-slate-500">{config.demoUser.organization}</p>
+                    <p className="font-bold text-white">{config.demoUser.name}</p>
+                    <p className="text-[11px] text-slate-400">{config.demoUser.organization}</p>
                   </div>
                 </div>
-                <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-[11px] text-slate-500">
-                  <span>Role: <strong className="text-slate-800">{config.badge}</strong></span>
-                  <span className="text-emerald-700 font-semibold">● Status: Active</span>
+                <div className="mt-3 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-[11px] text-slate-400">
+                  <span>Role: <strong className="text-white">{config.badge}</strong></span>
+                  <span className="text-emerald-400 font-semibold">● Status: Active</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 pt-6 fit:mt-4 fit:pt-3 border-t border-slate-200 text-[11px] text-slate-500 leading-relaxed">
-              Information Technology Business Council (ITBC) operates under established e-Governance & digital standards. Inquiries: <a href="mailto:info@itbc.world" className="text-blue-700 font-medium hover:underline">info@itbc.world</a>
+            <div className="mt-8 pt-6 fit:mt-4 fit:pt-3 border-t border-white/10 text-[11px] text-slate-400 leading-relaxed">
+              Information Technology Business Council (ITBC) operates under established e-Governance & digital standards. Inquiries: <a href="mailto:info@itbc.world" className="text-amber-300 font-medium hover:underline">info@itbc.world</a>
             </div>
           </div>
         </div>

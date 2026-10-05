@@ -17,7 +17,9 @@ export type Block =
   | { type: "contact" }
   | { type: "links"; items: { label: string; href: string; primary?: boolean }[] };
 
-export type Section = { id: string; title: string; blocks: Block[] };
+export type SectionImage = { src: string; alt: string };
+
+export type Section = { id: string; title: string; image?: SectionImage; blocks: Block[] };
 
 export type InfoPage = {
   eyebrow: string;
@@ -45,6 +47,9 @@ const journey = (user: string) => {
 
 const journeyTable = (...users: string[]): Block => ({ type: "table", head: ["User", "Journey"], rows: users.map(journey) });
 
+/** Section photos live in public/images/sections/ */
+const photo = (name: string, alt: string): SectionImage => ({ src: `/images/sections/${name}.webp`, alt });
+
 const IMPORTANT_NOTE =
   "ITBC is presented as a proposed ecosystem. Government affiliation, statutory authority, accreditation, certification, funding, placement or official partnership should only be claimed after formal authorization or agreement.";
 
@@ -59,6 +64,7 @@ export const aboutPage: InfoPage = {
     {
       id: "who-we-are",
       title: "Who We Are",
+      image: photo("about-who-we-are", "Students, faculty and IT professionals talking in a technology campus atrium"),
       blocks: [
         {
           type: "text",
@@ -124,6 +130,7 @@ export const aboutPage: InfoPage = {
     {
       id: "vision-mission",
       title: "Vision & Mission",
+      image: photo("about-vision-mission", "An engineer looking out over a city skyline at sunrise"),
       blocks: [
         { type: "heading", text: "Vision" },
         {
@@ -184,6 +191,7 @@ export const aboutPage: InfoPage = {
     {
       id: "leadership",
       title: "Leadership & Strategic Councils",
+      image: photo("about-leadership", "Senior leaders in discussion around a boardroom table"),
       blocks: [
         { type: "heading", text: "Organizational Structure" },
         {
@@ -244,6 +252,7 @@ export const aboutPage: InfoPage = {
     {
       id: "roadmap",
       title: "Roadmap & Impact",
+      image: photo("about-roadmap", "A project team planning a timeline with sticky notes on a glass wall"),
       blocks: [
         { type: "heading", text: "Implementation and Execution Plan" },
         {
@@ -291,6 +300,7 @@ export const wingsPage: InfoPage = {
     {
       id: "itccf",
       title: "ITCCF – IT Coaching Centres Foundation",
+      image: photo("wings-itccf", "A trainer guiding students at computers in an IT coaching centre"),
       blocks: [
         {
           type: "text",
@@ -319,6 +329,7 @@ export const wingsPage: InfoPage = {
     {
       id: "startup-hub",
       title: "Startup Hub",
+      image: photo("wings-startup-hub", "Startup founders working on a hardware prototype in a co-working space"),
       blocks: [
         { type: "flow", label: "Startup pathway", steps: ["Idea", "Validation", "Technology", "Prototype", "Market", "Funding", "Business", "Scale"] },
         {
@@ -344,6 +355,7 @@ export const wingsPage: InfoPage = {
     {
       id: "research",
       title: "Research & Innovation",
+      image: photo("wings-research", "Researchers examining a robotic arm and circuit boards in a lab"),
       blocks: [
         { type: "flow", label: "Research-to-Market pathway", steps: ["Research", "Documentation", "IP", "Prototype", "Industry", "Commercialization"] },
         {
@@ -380,6 +392,7 @@ export const membershipPage: InfoPage = {
     {
       id: "stakeholders",
       title: "Stakeholder Ecosystem",
+      image: photo("membership-stakeholders", "Professionals greeting each other at a networking gathering"),
       blocks: [
         {
           type: "text",
@@ -394,6 +407,7 @@ export const membershipPage: InfoPage = {
     {
       id: "students",
       title: "Student Membership",
+      image: photo("membership-students", "Engineering students working together on laptops on campus"),
       blocks: [
         {
           type: "text",
@@ -416,6 +430,7 @@ export const membershipPage: InfoPage = {
     {
       id: "institutions",
       title: "Institution Membership",
+      image: photo("membership-institutions", "A professor walking and talking with students in a college corridor"),
       blocks: [
         {
           type: "text",
@@ -433,6 +448,7 @@ export const membershipPage: InfoPage = {
     {
       id: "corporate",
       title: "Corporate Membership",
+      image: photo("membership-corporate", "IT professionals in a meeting in a glass-walled office"),
       blocks: [
         {
           type: "text",
@@ -471,6 +487,7 @@ export const projectsPage: InfoPage = {
     {
       id: "live-projects",
       title: "Live Projects",
+      image: photo("projects-live-projects", "Young developers collaborating on a software project at their monitors"),
       blocks: [
         { type: "heading", text: "What each project contains" },
         {
@@ -497,6 +514,7 @@ export const projectsPage: InfoPage = {
     {
       id: "post-project",
       title: "Post a Project",
+      image: photo("projects-post-project", "A shop owner showing a tablet to an IT consultant who is taking notes"),
       blocks: [
         {
           type: "text",
@@ -562,6 +580,7 @@ export const internshipsPage: InfoPage = {
     {
       id: "internships",
       title: "Internships",
+      image: photo("internships-internships", "A senior engineer mentoring an intern at her laptop"),
       blocks: [
         { type: "flow", label: "Training pathway", steps: ["Training", "Skill", "Project", "Assessment", "Internship", "Employment / Entrepreneurship"] },
         { type: "heading", text: "ITBC Opportunity Bank" },
@@ -581,6 +600,7 @@ export const internshipsPage: InfoPage = {
     {
       id: "placements",
       title: "Placements",
+      image: photo("internships-placements", "A graduate in a placement interview with two recruiters"),
       blocks: [
         {
           type: "text",
@@ -618,6 +638,7 @@ export const resourcesPage: InfoPage = {
     {
       id: "certifications",
       title: "Certifications & Verification",
+      image: photo("resources-certifications", "An officer reviewing an applicant’s documents at a desk"),
       blocks: [
         {
           type: "note",
@@ -666,6 +687,7 @@ export const resourcesPage: InfoPage = {
     {
       id: "blogs",
       title: "Blogs & Knowledge Library",
+      image: photo("resources-blogs", "A technology writer working on a laptop in a library"),
       blocks: [
         {
           type: "text",
@@ -690,6 +712,7 @@ export const resourcesPage: InfoPage = {
     {
       id: "talks",
       title: "ITBC Talks",
+      image: photo("resources-talks", "A host interviewing a technology expert in a podcast studio"),
       blocks: [
         { type: "text", paragraphs: ["Potential programmes include:"] },
         {
@@ -738,6 +761,7 @@ export const eventsPage: InfoPage = {
     {
       id: "programmes",
       title: "Programmes",
+      image: photo("events-programmes", "A speaker addressing students in a college auditorium"),
       blocks: [
         { type: "text", paragraphs: ["Potential programmes include:"] },
         {
@@ -764,6 +788,7 @@ export const eventsPage: InfoPage = {
     {
       id: "pilot",
       title: "Pilot Ecosystem",
+      image: photo("events-pilot", "Office workers walking through a technology district of glass towers"),
       blocks: [
         {
           type: "text",
@@ -777,6 +802,7 @@ export const eventsPage: InfoPage = {
     {
       id: "calendar",
       title: "12-Month Execution Matrix",
+      image: photo("events-calendar", "Two colleagues marking dates on a monthly planner"),
       blocks: [
         {
           type: "table",
@@ -813,6 +839,7 @@ export const contactPage: InfoPage = {
     {
       id: "reach-us",
       title: "Reach ITBC",
+      image: photo("contact-reach-us", "A support executive with a headset smiling at her desk"),
       blocks: [
         { type: "contact" },
         {
@@ -828,6 +855,7 @@ export const contactPage: InfoPage = {
     {
       id: "feedback",
       title: "Feedback, Complaints & Corrections",
+      image: photo("contact-feedback", "A man taking notes while a woman explains her feedback"),
       blocks: [
         {
           type: "text",

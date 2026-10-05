@@ -33,6 +33,23 @@
   }
 }
 
+/* Dark branded surface for the inner pages: ink navy, faint grid, blue and amber glows */
+@utility ink-panel {
+  background-color: #070d26;
+  background-image:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(56, 132, 255, 0.38), transparent 60%),
+    radial-gradient(40rem 24rem at -5% 110%, rgba(245, 158, 11, 0.16), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: auto, auto, 32px 32px, 32px 32px;
+}
+
+/* Faint dotted backdrop behind the auth card and dashboards */
+@utility dot-paper {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
 html {
   scroll-behavior: smooth;
   /* keep #anchor targets clear of the sticky header (top bar + main bar) */

@@ -36,7 +36,7 @@ export default function PartnerDashboardPage() {
       menuItems={partnerMenuItems}
     >
       {/* Welcome Banner */}
-      <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-700 via-amber-700 to-slate-900 p-5 sm:p-8 text-white shadow-md fit:px-4! fit:py-3! ${overviewOnly}`}>
+      <div className={`relative overflow-hidden rounded-2xl ink-panel p-5 sm:p-8 text-white shadow-xl shadow-slate-900/10 fit:px-4! fit:py-3! ${overviewOnly}`}>
         <div className="relative z-10 max-w-2xl fit:grid fit:max-w-none fit:grid-cols-[minmax(0,1fr)_auto] fit:items-center fit:gap-x-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold text-orange-100 mb-3 fit:mb-1.5 fit:justify-self-start">
             <Sparkles className="size-3.5 text-amber-300" />
@@ -69,47 +69,47 @@ export default function PartnerDashboardPage() {
 
       {/* Metrics Row (White Cards) */}
       <div className={`grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 [&>*]:min-w-0 fit:gap-3! ${overviewOnly}`}>
-        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! rounded-xl bg-white border border-slate-200 shadow-xs">
+        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! relative overflow-hidden rounded-xl bg-white border border-slate-200 shadow-xs before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-gradient-to-r before:from-orange-500 before:to-transparent">
           <div className="flex items-start justify-between gap-2 text-slate-500 mb-2 fit:mb-0.5">
             <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Affiliated Colleges</span>
             <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-orange-50 text-orange-600">
               <Landmark className="size-4" />
             </div>
           </div>
-          <div className="text-lg sm:text-2xl fit:text-xl! font-bold leading-tight text-slate-900">48 Colleges</div>
+          <div className="text-lg sm:text-2xl fit:text-xl! font-display font-extrabold leading-tight text-slate-900">48 Colleges</div>
           <p className="text-[11px] text-orange-700 font-semibold mt-1">Under Regional Chapter</p>
         </div>
 
-        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! rounded-xl bg-white border border-slate-200 shadow-xs">
+        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! relative overflow-hidden rounded-xl bg-white border border-slate-200 shadow-xs before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-gradient-to-r before:from-orange-500 before:to-transparent">
           <div className="flex items-start justify-between gap-2 text-slate-500 mb-2 fit:mb-0.5">
             <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Seed Capital</span>
             <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-emerald-50 text-emerald-600">
               <TrendingUp className="size-4" />
             </div>
           </div>
-          <div className="text-lg sm:text-2xl fit:text-xl! font-bold leading-tight text-slate-900">₹10.2 Crore</div>
+          <div className="text-lg sm:text-2xl fit:text-xl! font-display font-extrabold leading-tight text-slate-900">₹10.2 Crore</div>
           <p className="text-[11px] text-emerald-700 font-semibold mt-1">24 Grants Disbursed</p>
         </div>
 
-        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! rounded-xl bg-white border border-slate-200 shadow-xs">
+        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! relative overflow-hidden rounded-xl bg-white border border-slate-200 shadow-xs before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-gradient-to-r before:from-orange-500 before:to-transparent">
           <div className="flex items-start justify-between gap-2 text-slate-500 mb-2 fit:mb-0.5">
             <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Incubated Startups</span>
             <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-amber-50 text-amber-600">
               <Rocket className="size-4" />
             </div>
           </div>
-          <div className="text-lg sm:text-2xl fit:text-xl! font-bold leading-tight text-slate-900">64 Startups</div>
+          <div className="text-lg sm:text-2xl fit:text-xl! font-display font-extrabold leading-tight text-slate-900">64 Startups</div>
           <p className="text-[11px] text-amber-700 font-semibold mt-1">14 Scaled to Series A</p>
         </div>
 
-        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! rounded-xl bg-white border border-slate-200 shadow-xs">
+        <div className="p-3.5 sm:p-5 fit:px-3! fit:py-2.5! relative overflow-hidden rounded-xl bg-white border border-slate-200 shadow-xs before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-gradient-to-r before:from-orange-500 before:to-transparent">
           <div className="flex items-start justify-between gap-2 text-slate-500 mb-2 fit:mb-0.5">
             <span className="min-w-0 text-[11px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider">Active MoUs</span>
             <div className="max-[359px]:hidden shrink-0 p-1.5 sm:p-2 rounded-lg bg-blue-50 text-blue-600">
               <Handshake className="size-4" />
             </div>
           </div>
-          <div className="text-lg sm:text-2xl fit:text-xl! font-bold leading-tight text-slate-900">15 Executed</div>
+          <div className="text-lg sm:text-2xl fit:text-xl! font-display font-extrabold leading-tight text-slate-900">15 Executed</div>
           <p className="text-[11px] text-blue-700 font-semibold mt-1">State & Industry Bodies</p>
         </div>
       </div>
@@ -157,7 +157,7 @@ export default function PartnerDashboardPage() {
             ].map((mou, i) => (
               <div
                 key={i}
-                className="p-5 fit:p-3 fit:flex fit:flex-col fit:[&>p]:mb-1.5 rounded-xl bg-white border border-slate-200 hover:border-orange-300 hover:shadow-md transition"
+                className="p-5 fit:p-3 fit:flex fit:flex-col fit:[&>p]:mb-1.5 rounded-xl bg-white border border-slate-200 hover:border-orange-300 hover:shadow-lg hover:shadow-slate-900/5 hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 transition duration-200"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                   <span className="text-xs font-bold text-orange-800 bg-orange-50 px-2.5 py-0.5 rounded border border-orange-200 w-fit">

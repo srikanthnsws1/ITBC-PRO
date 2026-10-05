@@ -116,7 +116,7 @@ export default function DashboardShell({
               </div>
               <div className="hidden xl:block leading-tight border-l border-slate-200 pl-3">
                 <div className="flex items-center gap-2 whitespace-nowrap">
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-700">
+                  <span className="text-xs font-semibold text-slate-900">
                     {config.label} Dashboard
                   </span>
                   <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full border border-emerald-200">
@@ -160,7 +160,7 @@ export default function DashboardShell({
               </button>
 
               {roleSwitcherOpen && (
-                <div className="absolute inset-x-3 top-full mt-2 sm:inset-x-auto sm:right-0 sm:w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-xl z-50">
+                <div className="absolute inset-x-3 top-full mt-2 sm:inset-x-auto sm:right-0 sm:w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-lg z-50">
                   <p className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     Switch Role Dashboard
                   </p>
@@ -210,7 +210,7 @@ export default function DashboardShell({
               </button>
 
               {notificationsOpen && (
-                <div className="absolute inset-x-3 top-full mt-2 sm:inset-x-auto sm:right-0 sm:w-80 rounded-xl border border-slate-200 bg-white p-3 shadow-xl z-50">
+                <div className="absolute inset-x-3 top-full mt-2 sm:inset-x-auto sm:right-0 sm:w-80 rounded-xl border border-slate-200 bg-white p-3 shadow-lg z-50">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                     <span className="text-xs font-bold text-slate-900">Notifications</span>
                     <span className="text-[10px] text-blue-600 cursor-pointer hover:underline font-semibold">
@@ -239,7 +239,7 @@ export default function DashboardShell({
 
             {/* User Profile & Sign Out */}
             <div className="flex items-center gap-1 sm:gap-3 pl-2 sm:pl-3 border-l border-slate-200">
-              <div className="size-8 sm:size-9 shrink-0 rounded-full bg-blue-700 text-white font-bold grid place-items-center text-xs shadow-sm">
+              <div className="size-8 sm:size-9 shrink-0 rounded-full bg-[#0b1437] text-amber-300 font-bold grid place-items-center text-xs shadow-sm">
                 {currentUserName.charAt(0)}
               </div>
               <div className="hidden lg:block text-left text-xs leading-tight">
@@ -267,23 +267,23 @@ export default function DashboardShell({
         <aside className="hidden lg:flex w-64 flex-col justify-between gap-6 border-r border-slate-200 bg-white p-4 shrink-0 shadow-xs sticky top-[calc(4rem+1px)] h-[calc(100dvh-4rem-1px)] overflow-y-auto">
           <div className="space-y-6 fit:space-y-4">
             {/* User Badge Card (Clean Light Styling) */}
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <div className="ink-panel p-3.5 rounded-xl text-white">
               <div className="flex items-center gap-3 mb-2">
-                <div className="size-10 rounded-lg bg-blue-100 border border-blue-200 text-blue-700 grid place-items-center">
+                <div className="size-10 rounded-lg bg-white/10 border border-white/15 text-amber-300 grid place-items-center">
                   <CurrentIcon className="size-5" />
                 </div>
                 <div className="min-w-0">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
-                    <ShieldCheck className="size-3 text-emerald-600" />
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-white/10 text-white border border-white/15">
+                    <ShieldCheck className="size-3 text-emerald-400" />
                     Verified Member
                   </span>
-                  <p className="text-xs font-bold text-slate-900 truncate mt-1">{currentUserName}</p>
+                  <p className="text-xs font-bold text-white truncate mt-1">{currentUserName}</p>
                 </div>
               </div>
-              <p className="text-[11px] text-slate-600 truncate">{currentUserOrg}</p>
-              <div className="mt-2.5 pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] text-slate-500">
-                <span>ID: <strong className="text-slate-700">{currentUserId}</strong></span>
-                <span className="text-emerald-700 font-bold">● Active Session</span>
+              <p className="text-[11px] text-slate-300 truncate">{currentUserOrg}</p>
+              <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
+                <span>ID: <strong className="text-white">{currentUserId}</strong></span>
+                <span className="text-emerald-400 font-bold">● Active Session</span>
               </div>
             </div>
 
@@ -303,7 +303,7 @@ export default function DashboardShell({
                       onClick={() => setActiveTab(item.id)}
                       className={`w-full flex items-center justify-between px-3.5 py-2.5 fit:py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
                         isActive
-                          ? "bg-blue-600 text-white shadow-sm font-bold"
+                          ? "bg-[#0b1437] text-white font-semibold shadow-md shadow-blue-900/15"
                           : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                       }`}
                     >
@@ -415,7 +415,7 @@ export default function DashboardShell({
         )}
 
         {/* Content Area (Clean White / Soft Slate Background) */}
-        <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 fit:px-4! fit:py-3! bg-[#f8fafc]">
+        <main className="dot-paper flex-1 min-w-0 p-4 sm:p-6 lg:p-8 fit:px-4! fit:py-3! bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto space-y-6 fit:space-y-2.5">{children}</div>
         </main>
       </div>
