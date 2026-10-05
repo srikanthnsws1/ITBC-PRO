@@ -27,7 +27,7 @@ export default function FitToScreen({ children, designHeight = 1040 }: { childre
   return (
     <div
       ref={ref}
-      className="fit:flex fit:h-[calc(100dvh/var(--fit-zoom,1))] fit:flex-col fit:overflow-hidden fit:[zoom:var(--fit-zoom,1)]"
+      className="fit-canvas fit:flex fit:h-[calc(100dvh/var(--fit-zoom,1))] fit:flex-col fit:overflow-clip fit:[zoom:var(--fit-zoom,1)]"
     >
       {children}
     </div>

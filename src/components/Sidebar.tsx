@@ -104,7 +104,7 @@ export default function Sidebar() {
           ))}
         </ul>
         <div className="px-4 pb-4 fit:px-3 fit:pb-2.5">
-          <Link href="#events" className="mx-auto flex max-w-sm items-center xl:max-w-none justify-center gap-2 rounded-md bg-violet-800 py-2 text-sm font-semibold uppercase text-white transition hover:bg-violet-900 fit:py-1.5 fit:text-xs">
+          <Link href="/events" className="mx-auto flex max-w-sm items-center xl:max-w-none justify-center gap-2 rounded-md bg-violet-800 py-2 text-sm font-semibold uppercase text-white transition hover:bg-violet-900 fit:py-1.5 fit:text-xs">
             View All Events <ArrowRight className="size-4" />
           </Link>
         </div>

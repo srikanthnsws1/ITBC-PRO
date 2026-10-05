@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
   ChevronDown,
@@ -31,7 +32,7 @@ function TopBar() {
 
   return (
     <div className="bg-[#0b0f1f] text-xs text-white relative z-50">
-      <div className="container-x flex h-9 items-center justify-between gap-3 sm:gap-4 fit:h-8">
+      <div className="container-x flex h-9 items-center justify-between gap-3 sm:gap-4 zoomfit:h-8">
         {/* Contact Info */}
         <div className="flex items-center gap-5">
           <a
@@ -131,13 +132,15 @@ function TopBar() {
 }
 
 export default function Header() {
+  const pathname = usePathname();
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 shrink-0 bg-white shadow-sm">
       <TopBar />
-      <div className="container-x flex h-16 items-center justify-between gap-4 sm:h-20 xl:gap-3 2xl:gap-6 fit:h-14!">
+      <div className="container-x flex h-16 items-center justify-between gap-4 sm:h-20 xl:gap-3 2xl:gap-6 zoomfit:h-14!">
         <Logo />
 
         <nav className="hidden xl:block" aria-label="Main">
@@ -146,8 +149,9 @@ export default function Header() {
               <li key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className={`flex h-20 fit:h-14 items-center gap-0.5 whitespace-nowrap px-1.5 text-xs font-semibold uppercase transition-colors hover:text-blue-700 2xl:gap-1 2xl:px-3 2xl:text-[13px] 2xl:tracking-wide fit:gap-1! fit:px-3! fit:text-[13px]! fit:tracking-wide ${
-                    item.href === "/" ? "border-b-2 border-blue-700 text-blue-700" : "text-slate-800"
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className={`flex h-20 zoomfit:h-14 items-center gap-0.5 whitespace-nowrap px-1.5 text-xs font-semibold uppercase transition-colors hover:text-blue-700 2xl:gap-1 2xl:px-3 2xl:text-[13px] 2xl:tracking-wide zoomfit:gap-1! zoomfit:px-3! zoomfit:text-[13px]! zoomfit:tracking-wide ${
+                    isActive(item.href) ? "border-b-2 border-blue-700 text-blue-700" : "text-slate-800"
                   }`}
                 >
                   {item.label}
@@ -172,7 +176,7 @@ export default function Header() {
         <div className="flex shrink-0 items-center gap-3">
           <Link
             href="/register"
-            className="hidden whitespace-nowrap rounded-md bg-blue-700 px-6 py-2.5 text-sm font-semibold uppercase text-white shadow transition hover:bg-blue-800 sm:inline-block xl:px-4 2xl:px-6 fit:py-2"
+            className="hidden whitespace-nowrap rounded-md bg-blue-700 px-6 py-2.5 text-sm font-semibold uppercase text-white shadow transition hover:bg-blue-800 sm:inline-block xl:px-4 2xl:px-6 zoomfit:py-2"
           >
             Join ITBC
           </Link>
@@ -235,7 +239,8 @@ export default function Header() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="block py-2.5 text-sm font-semibold uppercase text-slate-800"
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                      className={`block py-2.5 text-sm font-semibold uppercase ${isActive(item.href) ? "text-blue-700" : "text-slate-800"}`}
                     >
                       {item.label}
                     </Link>

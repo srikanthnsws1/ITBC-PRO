@@ -13,15 +13,25 @@
   @media (width >= 640px) {
     padding-inline: 1.5rem;
   }
-  /* one-screen mode: the scaled canvas uses the full width */
+  /* one-screen home page: the scaled canvas uses the full width */
   @media (width >= 80rem) and (height >= 36rem) {
-    max-width: none;
+    :where(.fit-canvas) & {
+      max-width: none;
+    }
   }
 }
 
 /* Desktop one-screen mode: the window is wide and tall enough to show a whole page without scrolling.
    Below this size pages fall back to the normal scrolling layout. */
 @custom-variant fit (@media (width >= 80rem) and (height >= 36rem));
+/* the same mode, but only inside the zoomed home-page canvas (FitToScreen) — for shared parts like the header and footer */
+@custom-variant zoomfit {
+  @media (width >= 80rem) and (height >= 36rem) {
+    :where(.fit-canvas) & {
+      @slot;
+    }
+  }
+}
 
 html {
   scroll-behavior: smooth;

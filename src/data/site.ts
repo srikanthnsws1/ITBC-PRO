@@ -84,58 +84,59 @@ export const nav: NavItem[] = [
   { label: "Home", href: "/" },
   {
     label: "About ITBC",
-    href: "#about",
+    href: "/about",
     children: [
-      { label: "Who We Are", href: "#about" },
-      { label: "Vision & Mission", href: "#about" },
-      { label: "Leadership", href: "#about" },
+      { label: "Who We Are", href: "/about#who-we-are" },
+      { label: "Vision & Mission", href: "/about#vision-mission" },
+      { label: "Leadership", href: "/about#leadership" },
+      { label: "Roadmap & Impact", href: "/about#roadmap" },
     ],
   },
   {
     label: "Our Wings",
-    href: "#wings",
+    href: "/wings",
     children: [
-      { label: "ITCCF", href: "#itccf" },
-      { label: "Startup Hub", href: "#startups" },
-      { label: "Research & Innovation", href: "#research" },
+      { label: "ITCCF", href: "/wings#itccf" },
+      { label: "Startup Hub", href: "/wings#startup-hub" },
+      { label: "Research & Innovation", href: "/wings#research" },
     ],
   },
   {
     label: "Membership",
-    href: "#membership",
+    href: "/membership",
     children: [
-      { label: "Student Membership", href: "#membership" },
-      { label: "Institution Membership", href: "#membership" },
-      { label: "Corporate Membership", href: "#membership" },
+      { label: "Student Membership", href: "/membership#students" },
+      { label: "Institution Membership", href: "/membership#institutions" },
+      { label: "Corporate Membership", href: "/membership#corporate" },
     ],
   },
   {
     label: "Projects",
-    href: "#projects",
+    href: "/projects",
     children: [
-      { label: "Live Projects", href: "#projects" },
-      { label: "Post a Project", href: "#projects" },
+      { label: "Live Projects", href: "/projects#live-projects" },
+      { label: "Post a Project", href: "/projects#post-project" },
     ],
   },
   {
     label: "Internship & Jobs",
-    href: "#jobs",
+    href: "/internships",
     children: [
-      { label: "Internships", href: "#jobs" },
-      { label: "Placements", href: "#jobs" },
+      { label: "Internships", href: "/internships#internships" },
+      { label: "Placements", href: "/internships#placements" },
     ],
   },
   {
     label: "Resources",
-    href: "#resources",
+    href: "/resources",
     children: [
-      { label: "Certifications", href: "#resources" },
-      { label: "Blogs", href: "#resources" },
-      { label: "ITBC Talks", href: "#resources" },
+      { label: "Certifications", href: "/resources#certifications" },
+      { label: "Blogs", href: "/resources#blogs" },
+      { label: "ITBC Talks", href: "/resources#talks" },
     ],
   },
-  { label: "Events", href: "#events" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Events", href: "/events" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export type Stat = { icon: LucideIcon; value: string; label: string; color?: string };
@@ -165,13 +166,13 @@ export const opportunities = [
 export type QuickLink = { icon: LucideIcon; label: string; href: string; color: string };
 
 export const quickLinks: QuickLink[] = [
-  { icon: FolderKanban, label: "Project Marketplace", href: "#projects", color: "text-blue-700" },
-  { icon: Users, label: "Internship & Jobs", href: "#jobs", color: "text-blue-700" },
-  { icon: BrainCircuit, label: "AI Career Guidance", href: "#ai", color: "text-blue-700" },
-  { icon: Award, label: "Certifications & Courses", href: "#resources", color: "text-blue-700" },
-  { icon: Rocket, label: "Startup Hub", href: "#startups", color: "text-orange-500" },
-  { icon: Lightbulb, label: "Research & Innovation", href: "#research", color: "text-blue-700" },
-  { icon: CloudCog, label: "Digital Transformation", href: "#digital", color: "text-blue-700" },
+  { icon: FolderKanban, label: "Project Marketplace", href: "/projects#live-projects", color: "text-blue-700" },
+  { icon: Users, label: "Internship & Jobs", href: "/internships", color: "text-blue-700" },
+  { icon: BrainCircuit, label: "AI Career Guidance", href: "/internships#internships", color: "text-blue-700" },
+  { icon: Award, label: "Certifications & Courses", href: "/resources#certifications", color: "text-blue-700" },
+  { icon: Rocket, label: "Startup Hub", href: "/wings#startup-hub", color: "text-orange-500" },
+  { icon: Lightbulb, label: "Research & Innovation", href: "/wings#research", color: "text-blue-700" },
+  { icon: CloudCog, label: "Digital Transformation", href: "/projects#post-project", color: "text-blue-700" },
 ];
 
 export type Stakeholder = {
@@ -181,6 +182,7 @@ export type Stakeholder = {
   image: string;
   accent: string; // tailwind bg class for the badge
   titleColor: string;
+  href: string;
 };
 
 const u = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=600&q=70`;
@@ -193,6 +195,7 @@ export const stakeholders: Stakeholder[] = [
     image: u("photo-1522202176988-66273c2fd55f"),
     accent: "bg-emerald-600",
     titleColor: "text-emerald-700",
+    href: "/membership#students",
   },
   {
     icon: UserCheck,
@@ -201,6 +204,7 @@ export const stakeholders: Stakeholder[] = [
     image: u("photo-1524178232363-1fb2b075b655"),
     accent: "bg-blue-600",
     titleColor: "text-blue-700",
+    href: "/membership#institutions",
   },
   {
     icon: Building2,
@@ -209,6 +213,7 @@ export const stakeholders: Stakeholder[] = [
     image: u("photo-1562774053-701939374585"),
     accent: "bg-indigo-700",
     titleColor: "text-indigo-700",
+    href: "/membership#institutions",
   },
   {
     icon: Briefcase,
@@ -217,6 +222,7 @@ export const stakeholders: Stakeholder[] = [
     image: u("photo-1521791136064-7986c2920216"),
     accent: "bg-orange-500",
     titleColor: "text-orange-600",
+    href: "/membership#corporate",
   },
   {
     icon: Rocket,
@@ -225,6 +231,7 @@ export const stakeholders: Stakeholder[] = [
     image: u("photo-1552664730-d307ca884978"),
     accent: "bg-violet-600",
     titleColor: "text-violet-700",
+    href: "/wings#startup-hub",
   },
   {
     icon: BarChart3,
@@ -233,6 +240,7 @@ export const stakeholders: Stakeholder[] = [
     image: u("photo-1556761175-b413da4baf72"),
     accent: "bg-blue-700",
     titleColor: "text-blue-800",
+    href: "/wings#startup-hub",
   },
 ];
 

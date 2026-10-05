@@ -10,7 +10,7 @@ export default function Stakeholders() {
       <SectionTitle>Empowering Every Stakeholder</SectionTitle>
       {/* one-screen mode: six compact cards in a row, picture on the left */}
       <ul className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 fit:mt-1.5 fit:grid-cols-6! fit:gap-2.5">
-        {stakeholders.map(({ icon: Icon, title, text, image, accent, titleColor }) => (
+        {stakeholders.map(({ icon: Icon, title, text, image, accent, titleColor, href }) => (
           <li key={title} className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg fit:flex-row fit:hover:translate-y-0">
             <div className="relative h-36 bg-gradient-to-br from-slate-300 to-slate-400 fit:h-auto fit:w-24 fit:shrink-0">
               <Image src={image} alt="" fill sizes="(min-width:1536px) 16vw, (min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
@@ -21,7 +21,7 @@ export default function Stakeholders() {
             <div className="flex flex-1 flex-col px-4 pb-4 pt-7 fit:min-w-0 fit:justify-center fit:p-2.5">
               <h3 className={`font-display text-base font-bold fit:text-sm ${titleColor}`}>{title}</h3>
               <p className="mt-1 flex-1 text-sm text-slate-600 fit:mt-0.5 fit:flex-none fit:text-xs fit:leading-snug">{text}</p>
-              <Link href="#" className={`mt-3 flex items-center gap-1 text-xs font-bold uppercase fit:mt-1.5 fit:text-[11px] ${titleColor}`}>
+              <Link href={href} className={`mt-3 flex items-center gap-1 text-xs font-bold uppercase fit:mt-1.5 fit:text-[11px] ${titleColor}`}>
                 Explore Now <ArrowRight className="size-3.5 transition group-hover:translate-x-1" />
               </Link>
             </div>

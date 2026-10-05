@@ -33,10 +33,10 @@ function HeroIntro() {
       </dl>
 
       <div className="mt-6 flex flex-wrap gap-3 fit:mt-2.5 fit:gap-2">
-        <Link href="#join" className="flex items-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 text-sm font-semibold fit:px-3 fit:py-2 fit:text-xs uppercase text-white shadow-lg shadow-blue-900/50 transition hover:bg-blue-500">
+        <Link href="/register" className="flex items-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 text-sm font-semibold fit:px-3 fit:py-2 fit:text-xs uppercase text-white shadow-lg shadow-blue-900/50 transition hover:bg-blue-500">
           Join as Member <ArrowRight className="size-4" />
         </Link>
-        <Link href="#about" className="flex items-center gap-2 rounded-md border border-white/60 px-5 py-2.5 text-sm font-semibold fit:px-3 fit:py-2 fit:text-xs uppercase text-white transition hover:bg-white/10">
+        <Link href="/about" className="flex items-center gap-2 rounded-md border border-white/60 px-5 py-2.5 text-sm font-semibold fit:px-3 fit:py-2 fit:text-xs uppercase text-white transition hover:bg-white/10">
           Explore ITBC <ArrowRight className="size-4" />
         </Link>
       </div>
@@ -258,7 +258,7 @@ export function OpportunitiesCard() {
         ))}
       </ul>
       <Link
-        href="#join"
+        href="/register"
         className="mt-auto flex items-center justify-center gap-2 rounded-md bg-orange-500 px-4 py-3 text-sm font-bold uppercase transition hover:bg-orange-600 max-2xl:mt-5 max-2xl:self-start max-2xl:px-8 fit:mt-3! fit:self-start! fit:px-6! fit:py-2 fit:text-xs"
       >
         Get Started Now <ArrowRight className="size-4" />

@@ -38,7 +38,7 @@ export default function Itccf() {
             </li>
           ))}
         </ul>
-        <Link href="#itccf" className="mt-4 flex items-center justify-center gap-2 rounded-md bg-blue-700 py-2 fit:mt-2.5 fit:py-1.5 text-xs font-bold uppercase text-white transition hover:bg-blue-800">
+        <Link href="/wings#itccf" className="mt-4 flex items-center justify-center gap-2 rounded-md bg-blue-700 py-2 fit:mt-2.5 fit:py-1.5 text-xs font-bold uppercase text-white transition hover:bg-blue-800">
           Join ITCCF Network <ArrowRight className="size-4" />
         </Link>
       </div>
