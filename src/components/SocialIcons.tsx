@@ -61,7 +61,7 @@ export const socials = [
   { name: "LinkedIn", Icon: LinkedinIcon, bg: "bg-[#0a66c2]", href: "#" },
   { name: "Twitter", Icon: TwitterIcon, bg: "bg-[#1da1f2]", href: "#" },
   { name: "Instagram", Icon: InstagramIcon, bg: "bg-gradient-to-br from-[#feda75] via-[#d62976] to-[#4f5bd5]", href: "#" },
-  { name: "YouTube", Icon: YoutubeIcon, bg: "bg-[#ff0000]", href: "#" },
+  { name: "YouTube", Icon: YoutubeIcon, bg: "bg-[#ff0000]", href: "https://www.youtube.com/watch?v=2R0A25kK72I" },
   { name: "Telegram", Icon: TelegramIcon, bg: "bg-[#229ed9]", href: "#" },
   { name: "WhatsApp", Icon: WhatsappIcon, bg: "bg-[#25d366]", href: "#" },
   { name: "Koo App", Icon: KooIcon, bg: "bg-[#facc15]", href: "#" },

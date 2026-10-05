@@ -110,6 +110,8 @@ function TopBar() {
                 key={name}
                 href={href}
                 aria-label={name}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="text-white hover:text-sky-300 transition"
               >
                 {name === "YouTube" ? (

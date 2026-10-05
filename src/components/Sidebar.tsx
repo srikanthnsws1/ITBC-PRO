@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Play } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import { events } from "@/data/site";
 import { socials, YoutubeIcon } from "./SocialIcons";
 
@@ -29,32 +29,38 @@ export default function Sidebar() {
     <aside className="grid gap-4 md:grid-cols-2 xl:grid-cols-1 [&>*]:min-w-0 md:[&>*:last-child]:col-span-2 xl:[&>*:last-child]:col-span-1 fit:flex fit:h-full fit:flex-col fit:gap-2">
       {/* one-screen mode: this panel takes whatever height is left, the video shrinks with it */}
       <Panel title="ITBC Media Network" className="fit:min-h-0 fit:flex-1">
-        <div className="flex items-center gap-3 fit:gap-2">
+        <a
+          href="https://www.youtube.com/watch?v=2R0A25kK72I"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 fit:gap-2 transition hover:opacity-90"
+        >
           <YoutubeIcon className="size-12 shrink-0 text-red-600 fit:size-8" />
           <div>
             <p className="font-display text-base font-bold text-red-600 fit:text-sm fit:leading-tight">ITBC YouTube Channel</p>
             <p className="text-xs text-slate-600">(IIP Channel)</p>
           </div>
-        </div>
+        </a>
         <p className="mt-2 text-center text-sm text-slate-700 fit:hidden">
           Meet Experts. Hear Stories.
           <br />
           Learn Insights. Shape Future.
         </p>
-        <a href="#" className="group relative mt-3 block aspect-video overflow-hidden rounded-lg bg-gradient-to-br from-slate-900 via-blue-950 to-slate-800 fit:mt-2 fit:aspect-auto fit:min-h-10 fit:flex-1">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.4),transparent_60%)]" />
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 font-display text-3xl font-extrabold leading-none text-white fit:text-lg">
-            ITBC <br className="fit:hidden" />
-            TALKS
-          </div>
-          <span className="absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-xl bg-red-600 shadow-lg transition group-hover:scale-110 fit:size-8 fit:rounded-lg">
-            <Play className="size-6 fill-white text-white fit:size-4" />
-          </span>
-          <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20">
-            <div className="h-full w-1/3 bg-red-600" />
-          </div>
-        </a>
-        <a href="#" className="mt-3 flex items-center justify-center gap-2 rounded-md bg-red-600 py-2 text-sm font-semibold text-white transition hover:bg-red-700 fit:mt-2 fit:shrink-0 fit:py-1.5 fit:text-xs">
+        <div className="relative mt-3 aspect-video w-full overflow-hidden rounded-lg bg-black shadow-md fit:mt-2 fit:aspect-auto fit:min-h-[140px] fit:flex-1">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/2R0A25kK72I?rel=0"
+            title="ITBC Media Network YouTube Video"
+            className="h-full w-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+        <a
+          href="https://www.youtube.com/watch?v=2R0A25kK72I"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 flex items-center justify-center gap-2 rounded-md bg-red-600 py-2 text-sm font-semibold text-white transition hover:bg-red-700 fit:mt-2 fit:shrink-0 fit:py-1.5 fit:text-xs"
+        >
           <YoutubeIcon className="size-4" /> Subscribe &amp; Stay Updated
         </a>
       </Panel>
@@ -63,7 +69,13 @@ export default function Sidebar() {
         <ul className="grid grid-cols-4 gap-y-3 fit:grid-cols-8 fit:gap-y-0">
           {socials.map(({ name, Icon, bg, href }) => (
             <li key={name}>
-              <a href={href} title={name} className="flex flex-col items-center gap-1 text-[10px] text-slate-600 hover:text-blue-700">
+              <a
+                href={href}
+                title={name}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="flex flex-col items-center gap-1 text-[10px] text-slate-600 hover:text-blue-700"
+              >
                 <span className={`grid size-9 place-items-center rounded-full text-white shadow fit:size-7 ${bg}`}>
                   <Icon className="size-5 fit:size-4" />
                 </span>
