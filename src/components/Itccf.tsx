@@ -45,7 +45,7 @@ export default function Itccf() {
 
       <div className="relative min-h-56 fit:min-h-0 bg-gradient-to-br from-slate-200 to-slate-300">
         <Image
-          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=70"
+          src="/images/sections/wings-itccf.webp"
           alt="Training and placement officers"
           fill
           sizes="(min-width:1024px) 35vw, 100vw"

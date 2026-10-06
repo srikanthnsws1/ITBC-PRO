@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -70,14 +71,30 @@ function TopBar() {
                     <ChevronDown className="size-3 text-slate-400 group-hover:rotate-180 transition-transform" />
                   </button>
 
-                  {/* Dropdown Menu with Login and Register */}
+                  {/* Dropdown Menu with Image Banner, Login and Register */}
                   <div
-                    className={`absolute right-0 top-full mt-0.5 w-48 rounded-xl border border-white/15 bg-[#09122c] p-2 shadow-2xl backdrop-blur-xl transition-all duration-150 z-50 ${
+                    className={`absolute right-0 top-full mt-0.5 w-52 rounded-xl border border-white/15 bg-[#09122c] p-2.5 shadow-2xl backdrop-blur-xl transition-all duration-150 z-50 ${
                       activeDropdown === portal.role
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-1 pointer-events-none"
                     }`}
                   >
+                    {portal.image && (
+                      <div className="relative mb-2 h-16 w-full overflow-hidden rounded-lg ring-1 ring-white/10">
+                        <Image
+                          src={portal.image}
+                          alt={portal.label}
+                          fill
+                          sizes="208px"
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#09122c] via-[#09122c]/40 to-transparent" />
+                        <span className="absolute bottom-1.5 left-2 text-[11px] font-bold text-white drop-shadow">
+                          {portal.label} Portal
+                        </span>
+                      </div>
+                    )}
+
                     <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 mb-1">
                       {portal.label} Access
                     </div>
@@ -158,15 +175,52 @@ export default function Header() {
                   {item.children && <ChevronDown className="size-3 shrink-0 transition-transform group-hover:rotate-180 2xl:size-3.5" />}
                 </Link>
                 {item.children && (
-                  <ul className="invisible absolute left-0 top-full min-w-52 translate-y-2 rounded-lg border border-slate-100 bg-white py-2 opacity-0 shadow-xl transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    {item.children.map((c) => (
-                      <li key={c.label}>
-                        <Link href={c.href} className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700">
-                          {c.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="invisible absolute left-0 top-full w-80 sm:w-96 rounded-2xl border border-slate-200/90 bg-white p-3 shadow-2xl opacity-0 translate-y-2 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 z-50">
+                    <div className="mb-2 px-2.5 py-1 flex items-center justify-between border-b border-slate-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700">
+                        {item.label} Overview
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-medium">
+                        {item.children.length} Sections
+                      </span>
+                    </div>
+                    <ul className="space-y-1">
+                      {item.children.map((c) => (
+                        <li key={c.label}>
+                          <Link
+                            href={c.href}
+                            className="group/item flex items-center gap-3 rounded-xl p-2 transition-all hover:bg-blue-50/80"
+                          >
+                            {c.image ? (
+                              <div className="relative size-12 shrink-0 overflow-hidden rounded-lg bg-slate-100 ring-1 ring-slate-200/80 shadow-xs">
+                                <Image
+                                  src={c.image}
+                                  alt={c.label}
+                                  fill
+                                  sizes="48px"
+                                  className="object-cover transition-transform duration-300 group-hover/item:scale-110"
+                                />
+                              </div>
+                            ) : (
+                              <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-700 font-bold text-xs">
+                                IT
+                              </span>
+                            )}
+                            <div className="min-w-0 flex-1">
+                              <p className="text-xs font-bold text-slate-800 group-hover/item:text-blue-700 transition-colors">
+                                {c.label}
+                              </p>
+                              {c.desc && (
+                                <p className="text-[11px] text-slate-500 line-clamp-1">
+                                  {c.desc}
+                                </p>
+                              )}
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </li>
             ))}
@@ -206,7 +260,13 @@ export default function Header() {
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 {memberPortals.map((portal) => (
-                  <div key={portal.role} className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-1">
+                  <div key={portal.role} className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-2">
+                    {portal.image && (
+                      <div className="relative h-10 w-full overflow-hidden rounded-md">
+                        <Image src={portal.image} alt={portal.label} fill sizes="140px" className="object-cover" />
+                        <div className="absolute inset-0 bg-slate-900/40" />
+                      </div>
+                    )}
                     <p className="font-bold text-white text-[11px] uppercase tracking-wide">
                       {portal.label}
                     </p>
@@ -256,15 +316,23 @@ export default function Header() {
                     )}
                   </div>
                   {item.children && expanded === item.label && (
-                    <ul className="pb-2 pl-4 space-y-1">
+                    <ul className="pb-2 pl-2 space-y-1.5 pt-1">
                       {item.children.map((c) => (
                         <li key={c.label}>
                           <Link
                             href={c.href}
                             onClick={() => setOpen(false)}
-                            className="block py-1.5 text-sm text-slate-600 hover:text-blue-700"
+                            className="flex items-center gap-2.5 rounded-lg p-1.5 text-xs text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition"
                           >
-                            {c.label}
+                            {c.image && (
+                              <div className="relative size-9 shrink-0 overflow-hidden rounded-md bg-slate-100 ring-1 ring-slate-200">
+                                <Image src={c.image} alt={c.label} fill sizes="36px" className="object-cover" />
+                              </div>
+                            )}
+                            <div className="min-w-0">
+                              <span className="font-semibold block leading-tight">{c.label}</span>
+                              {c.desc && <span className="text-[10px] text-slate-500 line-clamp-1">{c.desc}</span>}
+                            </div>
                           </Link>
                         </li>
                       ))}

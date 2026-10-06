@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { events } from "@/data/site";
@@ -87,7 +88,21 @@ export default function Sidebar() {
       </Panel>
 
       <section id="events" className="overflow-hidden rounded-xl border border-violet-200 bg-white shadow-sm fit:shrink-0">
-        <h2 className="bg-violet-800 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-white fit:py-1.5 fit:text-xs">
+        <div className="relative h-20 w-full overflow-hidden fit:hidden">
+          <Image
+            src="/images/sections/events-calendar.webp"
+            alt="ITBC Events"
+            fill
+            sizes="300px"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-violet-950/85 via-violet-950/40 to-transparent flex items-end p-2.5">
+            <h2 className="font-display text-xs font-bold uppercase tracking-wide text-white">
+              ITBC Upcoming Live Events
+            </h2>
+          </div>
+        </div>
+        <h2 className="hidden bg-violet-800 py-1.5 text-center font-display text-xs font-bold uppercase tracking-wide text-white fit:block!">
           ITBC Upcoming Live Events
         </h2>
         <ul className="divide-y divide-slate-100 px-4 md:grid md:grid-cols-3 md:gap-x-4 md:divide-y-0 xl:block xl:divide-y fit:px-3">

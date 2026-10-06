@@ -30,7 +30,18 @@ import {
   CloudCog,
 } from "lucide-react";
 
-export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
+export type NavChild = {
+  label: string;
+  href: string;
+  image?: string;
+  desc?: string;
+};
+
+export type NavItem = {
+  label: string;
+  href: string;
+  children?: NavChild[];
+};
 
 export const contact = { phone: "+91 12345 67890", email: "info@itbc.world" };
 
@@ -55,6 +66,7 @@ export const memberPortals = [
     loginHref: "/login/student",
     registerHref: "/register/student",
     dashboardHref: "/dashboard/student",
+    image: "/images/sections/membership-students.webp",
   },
   {
     role: "faculty",
@@ -62,6 +74,7 @@ export const memberPortals = [
     loginHref: "/login/faculty",
     registerHref: "/register/faculty",
     dashboardHref: "/dashboard/faculty",
+    image: "/images/sections/membership-institutions.webp",
   },
   {
     role: "corporate",
@@ -69,6 +82,7 @@ export const memberPortals = [
     loginHref: "/login/corporate",
     registerHref: "/register/corporate",
     dashboardHref: "/dashboard/corporate",
+    image: "/images/sections/membership-corporate.webp",
   },
   {
     role: "partner",
@@ -76,6 +90,7 @@ export const memberPortals = [
     loginHref: "/login/partner",
     registerHref: "/register/partner",
     dashboardHref: "/dashboard/partner",
+    image: "/images/sections/membership-stakeholders.webp",
   },
 ];
 
@@ -86,53 +101,138 @@ export const nav: NavItem[] = [
     label: "About ITBC",
     href: "/about",
     children: [
-      { label: "Who We Are", href: "/about#who-we-are" },
-      { label: "Vision & Mission", href: "/about#vision-mission" },
-      { label: "Leadership", href: "/about#leadership" },
-      { label: "Roadmap & Impact", href: "/about#roadmap" },
+      {
+        label: "Who We Are",
+        href: "/about#who-we-are",
+        image: "/images/sections/about-who-we-are.webp",
+        desc: "Ecosystem overview & digital mission",
+      },
+      {
+        label: "Vision & Mission",
+        href: "/about#vision-mission",
+        image: "/images/sections/about-vision-mission.webp",
+        desc: "Foundational pillars & national goals",
+      },
+      {
+        label: "Leadership",
+        href: "/about#leadership",
+        image: "/images/sections/about-leadership.webp",
+        desc: "Governing board & strategic advisors",
+      },
+      {
+        label: "Roadmap & Impact",
+        href: "/about#roadmap",
+        image: "/images/sections/about-roadmap.webp",
+        desc: "Growth trajectory & measurable impact",
+      },
     ],
   },
   {
     label: "Our Wings",
     href: "/wings",
     children: [
-      { label: "ITCCF", href: "/wings#itccf" },
-      { label: "Startup Hub", href: "/wings#startup-hub" },
-      { label: "Research & Innovation", href: "/wings#research" },
+      {
+        label: "ITCCF",
+        href: "/wings#itccf",
+        image: "/images/sections/wings-itccf.webp",
+        desc: "National network of training & placement officers",
+      },
+      {
+        label: "Startup Hub",
+        href: "/wings#startup-hub",
+        image: "/images/sections/wings-startup-hub.webp",
+        desc: "Incubation, mentorship & seed investment",
+      },
+      {
+        label: "Research & Innovation",
+        href: "/wings#research",
+        image: "/images/sections/wings-research.webp",
+        desc: "Industry R&D, patent support & labs",
+      },
     ],
   },
   {
     label: "Membership",
     href: "/membership",
     children: [
-      { label: "Student Membership", href: "/membership#students" },
-      { label: "Institution Membership", href: "/membership#institutions" },
-      { label: "Corporate Membership", href: "/membership#corporate" },
+      {
+        label: "Student Membership",
+        href: "/membership#students",
+        image: "/images/sections/membership-students.webp",
+        desc: "Skill pathways, live projects & career support",
+      },
+      {
+        label: "Institution Membership",
+        href: "/membership#institutions",
+        image: "/images/sections/membership-institutions.webp",
+        desc: "Colleges, accreditation & faculty network",
+      },
+      {
+        label: "Corporate Membership",
+        href: "/membership#corporate",
+        image: "/images/sections/membership-corporate.webp",
+        desc: "Talent acquisition & technology partnership",
+      },
     ],
   },
   {
     label: "Projects",
     href: "/projects",
     children: [
-      { label: "Live Projects", href: "/projects#live-projects" },
-      { label: "Post a Project", href: "/projects#post-project" },
+      {
+        label: "Live Projects",
+        href: "/projects#live-projects",
+        image: "/images/sections/projects-live-projects.webp",
+        desc: "Real-world industry projects & challenges",
+      },
+      {
+        label: "Post a Project",
+        href: "/projects#post-project",
+        image: "/images/sections/projects-post-project.webp",
+        desc: "Outsource development to student & pro teams",
+      },
     ],
   },
   {
     label: "Internship & Jobs",
     href: "/internships",
     children: [
-      { label: "Internships", href: "/internships#internships" },
-      { label: "Placements", href: "/internships#placements" },
+      {
+        label: "Internships",
+        href: "/internships#internships",
+        image: "/images/sections/internships-internships.webp",
+        desc: "Hands-on industry exposure with top companies",
+      },
+      {
+        label: "Placements",
+        href: "/internships#placements",
+        image: "/images/sections/internships-placements.webp",
+        desc: "Direct recruitment & campus hiring drives",
+      },
     ],
   },
   {
     label: "Resources",
     href: "/resources",
     children: [
-      { label: "Certifications", href: "/resources#certifications" },
-      { label: "Blogs", href: "/resources#blogs" },
-      { label: "ITBC Talks", href: "/resources#talks" },
+      {
+        label: "Certifications",
+        href: "/resources#certifications",
+        image: "/images/sections/resources-certifications.webp",
+        desc: "Industry-aligned tech skill certifications",
+      },
+      {
+        label: "Blogs",
+        href: "/resources#blogs",
+        image: "/images/sections/resources-blogs.webp",
+        desc: "Tech trends, best practices & articles",
+      },
+      {
+        label: "ITBC Talks",
+        href: "/resources#talks",
+        image: "/images/sections/resources-talks.webp",
+        desc: "Podcasts & webinars with industry leaders",
+      },
     ],
   },
   { label: "Events", href: "/events" },
@@ -192,7 +292,7 @@ export const stakeholders: Stakeholder[] = [
     icon: GraduationCap,
     title: "For Students",
     text: "Access live projects, training, internships and career guidance to build your future.",
-    image: u("photo-1522202176988-66273c2fd55f"),
+    image: "/images/sections/membership-students.webp",
     accent: "bg-emerald-600",
     titleColor: "text-emerald-700",
     href: "/membership#students",
@@ -201,7 +301,7 @@ export const stakeholders: Stakeholder[] = [
     icon: UserCheck,
     title: "For Faculty",
     text: "Enhance teaching, research, industry connect and professional growth.",
-    image: u("photo-1524178232363-1fb2b075b655"),
+    image: "/images/sections/membership-institutions.webp",
     accent: "bg-blue-600",
     titleColor: "text-blue-700",
     href: "/membership#institutions",
@@ -210,7 +310,7 @@ export const stakeholders: Stakeholder[] = [
     icon: Building2,
     title: "For Institutions",
     text: "Strengthen academia–industry connect, accreditations, placements and innovation.",
-    image: u("photo-1562774053-701939374585"),
+    image: "/images/sections/about-who-we-are.webp",
     accent: "bg-indigo-700",
     titleColor: "text-indigo-700",
     href: "/membership#institutions",
@@ -219,7 +319,7 @@ export const stakeholders: Stakeholder[] = [
     icon: Briefcase,
     title: "For Corporates",
     text: "Hire talent, outsource projects, CSR partnerships and drive innovation.",
-    image: u("photo-1521791136064-7986c2920216"),
+    image: "/images/sections/membership-corporate.webp",
     accent: "bg-orange-500",
     titleColor: "text-orange-600",
     href: "/membership#corporate",
@@ -228,7 +328,7 @@ export const stakeholders: Stakeholder[] = [
     icon: Rocket,
     title: "For Startups",
     text: "Incubation, mentorship, funding support and market access to grow & scale.",
-    image: u("photo-1552664730-d307ca884978"),
+    image: "/images/sections/wings-startup-hub.webp",
     accent: "bg-violet-600",
     titleColor: "text-violet-700",
     href: "/wings#startup-hub",
@@ -237,7 +337,7 @@ export const stakeholders: Stakeholder[] = [
     icon: BarChart3,
     title: "For Investors",
     text: "Discover startups, innovations and high impact investment opportunities.",
-    image: u("photo-1556761175-b413da4baf72"),
+    image: "/images/sections/membership-stakeholders.webp",
     accent: "bg-blue-700",
     titleColor: "text-blue-800",
     href: "/wings#startup-hub",
